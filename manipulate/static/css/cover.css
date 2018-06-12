@@ -1,0 +1,90 @@
+#nav {
+    box-shadow: inset 0px -8px 20px 0px rgb(3, 85, 198);
+    background: transparent;
+}
+#nav .nav_middle .main_li .li_a {
+    color:rgb(108, 197, 255);
+}
+#container {
+    width: 100%;
+    position: relative;
+    /*background: url("/static/images/body.jpg") no-repeat;*/
+    /*background-size: 100% 100%;*/
+}
+#content {
+    width: 100%;
+    height: 100%;
+    /*background: rgba(25, 25, 25, 0.8);*/
+    background: rgb(23, 32, 78);
+}
+#content .chart {
+    width: 3rem;
+    height: 3rem;
+    width:30%;
+    height: 30%;
+    float: left;
+}
+.wordList .word {
+    font-size: 0.26rem;
+    /*margin-bottom: 0.15rem;*/
+    color: white;
+}
+.wordList .word strong {
+    display: inline-block;
+    /*width:2.2rem;*/
+}
+.wordList .word span {
+    letter-spacing: 0.05rem;
+    /* display: block; */
+    display: inline-block;
+    text-align: left;
+    padding-left: 0.8rem;
+}
+.wordList .yearTop .word span.one_{
+    display: inline-block;
+    width: 1.05rem;
+    text-align: right;
+}
+.wordList .word i {
+    font-style: normal;
+}
+.wordList .word span:nth-child(2) {
+    margin:0.05rem 0 0 1.55rem;
+}
+.wordList .word b {
+    display: inline-block;
+    padding: 0.02rem;
+    margin: 0 0.05rem;
+    border: 1px solid #27489d;
+}
+.wordList .word b i {
+    font-family: MyMontserrat;
+    font-style: normal;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    text-align: center;
+    width: 0.3rem;
+    margin: 0 1px;
+    display: inline-block;
+    background-image: url('/static/images/word.png');
+    background-size: 100% 100%;
+}
+.allRight .wordImg {
+    width: 100%;
+    height:2rem;
+    text-align: center;
+    line-height: 2rem;
+    color: #1fc0ee;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 900;
+}
+.allRight img {
+    width:3rem;height:1.5rem;margin-top: 0.5rem;
+
+    margin-top: 0.7rem;
+    width: 96%;
+    height: 19%;
+    position: relative;
+    top: 7%;
+}
