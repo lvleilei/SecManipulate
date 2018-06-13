@@ -1,0 +1,43 @@
+#nav {
+    width: 100%;
+    /* height: 1.3rem; */
+    height: 0.9rem;
+    background: url("/static/images/nav.png") no-repeat;
+    background-size: 100% 100%;
+}
+#nav .nav_left {
+    /* margin-top:0.2rem; */
+    float: left;
+}
+#nav .nav_middle {
+    display: none;
+    float: right;
+    /* margin-top:0.2rem; */
+    /* line-height:1rem; */
+    line-height:0.9rem;
+}
+#nav .nav_left h2 {
+    font-size: 0.34rem;
+    cursor: pointer;
+}
+#nav .nav_middle .main_li {
+    float: left;
+    text-align: center;
+    font-size: 0.26rem;
+    overflow: hidden;
+}
+#nav .nav_middle .main_li .li_a {
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    width: 2.5rem;
+}
+#nav .nav_middle .main_li:hover a,
+#nav .nav_middle .main_li:hover i {
+    /*color: #fae703;*/
+    color: #ffbf1d;
+    /*font-weight: 800;*/
+}
+#nav:hover #nav .nav_middle {
+    display: block;
+}

@@ -1,0 +1,105 @@
+#nav {
+    box-shadow: inset 0px -8px 20px 0px rgb(3, 85, 198);
+    background: transparent;
+}
+#nav .nav_middle .main_li .li_a {
+    color:rgb(108, 197, 255)
+}
+body {overflow: hidden;}
+#container {
+    width: 100%;
+    position: relative;
+    /*background: url("/static/images/body.jpg") no-repeat;
+    background-size: 100% 100%;*/
+}
+#content {
+    width: 100%;
+    height: 100%;
+    /*background: rgba(25, 25, 25, 0.9);*/
+    background: rgb(23, 32, 78);
+}
+#content .inforList {
+    color: white;
+    font-size: 0.16rem;
+    font-weight: 600;
+}
+#content .infor {
+    /* width: 60%; */
+    width: 80%;
+    margin:0 auto;
+}
+#content .inforList p {
+    margin-top:0.1rem;
+    /* font-size: 0.26rem; */
+    font-size: 0.20rem;
+}
+#content .tit {
+    color: white;
+    margin:0.2rem 0;
+    font-weight: 600;
+}
+.inforList p i{
+    color: aqua;
+    display: inline-block;
+    width:0.25rem;
+    text-align: center;
+}
+.inforList p b {
+    display: inline-block;
+    /*max-width: 4rem;*/
+    /*vertical-align: bottom;*/
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+}
+.infor-1{float: left}
+.infor-3{float: right}
+#radarBox,#radarBox2 {
+    width:100%;
+    height: 2.6rem;
+}
+
+.tags {
+    margin-top: 0.2rem;
+    color:#fff;
+}
+.tags, .tags .fa{
+    font-size: .24rem;
+    text-align: center;
+}
+.tags .category {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    padding: 0.07rem;
+    background-color: #e63c3c;
+    text-shadow: 1px 1px 1px #222;
+    background-size: 100% 100%;
+    border-radius:5px;
+}
+.tags .category:after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: -.5rem;
+    top: -.03rem;
+    border-width: 0.27rem;
+    border-style: solid;
+    border-radius:10px;
+    border-color:  transparent transparent transparent #e63c3c;
+}
+
+.tags .category:before {
+    position: absolute;
+    right: -.14rem;
+    top: .19rem;
+    content: "";
+    display: block;
+    width: .1rem;
+    height: .1rem;
+    background-color: #050c19;
+    border-radius:5px;
+    z-index:1;
+}
+
+

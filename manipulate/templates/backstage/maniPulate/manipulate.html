@@ -1,0 +1,415 @@
+{% extends "publicNav.html" %}
+{% block title %}<title>操纵监测</title>{% endblock %}
+{% block my_css %}
+    <!-- <link rel="stylesheet" href="/static/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="/static/css/bootstrap-table.min.css"> -->
+    <!-- <link rel="stylesheet" href="/static/css/font-awesome.min.css"> -->
+
+    <!-- <link rel="stylesheet" href="/static/css/jquery.fullPage.css"> -->
+    <link href="https://cdn.bootcss.com/fullPage.js/1.7/jquery.fullPage.min.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="/static/css/public_nav.css"> -->
+    <link rel="stylesheet" href="/static/css/modalANDtable.css">
+    <link rel="stylesheet" href="/static/css/manipulate.css">
+    <style>
+        /* 因为隐藏了 旧的 微博热点和溯源分析 */
+        #nav .nav_middle .main_li:nth-of-type(1) {
+            -webkit-transform: scale(1.3);
+            -moz-transform: scale(1.3);
+            -ms-transform: scale(1.3);
+            -o-transform: scale(1.3);
+            transform: scale(1.3);
+        }
+        #nav .nav_middle .main_li:nth-of-type(1) a, #nav .nav_middle .main_li:nth-of-type(1) a i{
+            color: #ffbf1d;
+        }
+        #fullPage-nav li .active span, .fullPage-slidesNav .active span {background: transparent;}
+        #fullPage-nav span, .fullPage-slidesNav span {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #fcf8e3;
+        }
+        #fullPage-nav li .active span, .fullPage-slidesNav .active span {
+            background: #dff0d8;
+        }
+        #fullPage-nav li, .fullPage-slidesNav li {margin: 12px 7px;}
+        /* .recordingTable .fixed-table-toolbar, */
+        .recordingTable .fixed-table-pagination .page-list,
+        .placeRank .fixed-table-toolbar,.placeRank .fixed-table-pagination .page-list {
+            display: none;
+        }
+        /*#nav {background: rgba(60, 118, 130, 0.52)}*/
+        #nav {background: rgba(18, 146, 175, 0.52);}
+        #nav .nav_middle, #nav .nav_right {display: block;}
+        /*======*/
+        .loading {
+            color:#fff;
+            text-align:center;
+        }
+        /* 搜索框 */
+        #container .searchbox {
+            /* float:right; */
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .recordingTable .fixed-table-toolbar,
+        .recordingTable_second .fixed-table-toolbar,
+        .recordingTable_third .fixed-table-toolbar{
+            display:block;
+        }
+        .recordingTable .fixed-table-toolbar .search,
+        .recordingTable_second .fixed-table-toolbar .search ,
+        .recordingTable_third .fixed-table-toolbar .search {
+            width:20%;
+            position:absolute;
+            /* top:2%; */
+            top:0;
+            /* right:100px; */
+            right:60px;
+            margin:0;
+        }
+        .recordingTable .fixed-table-toolbar .search input,
+        .recordingTable_second .fixed-table-toolbar .search input,
+        .recordingTable_third .fixed-table-toolbar .search input{
+            height:30px;
+            padding: 3px 6px;
+            background: transparent;
+            border: 1px solid silver;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        .recordingTable .fixed-table-toolbar .search input:focus,
+        .recordingTable_second .fixed-table-toolbar .search input:focus,
+        .recordingTable_third .fixed-table-toolbar .search input:focus{
+            background: #f8f8f8;
+            color: #3c3c3c;
+        }
+
+
+        /* 下拉导航 */
+        li#maniPulate {
+            overflow: visible !important;
+        }
+        #downList {
+            position: absolute;
+            display:none;
+            padding:0.1rem 0;
+            background-color: #ccc;
+            /* opacity:.7; */
+            width:100%;
+            text-align:center;
+            background-color: #096f83;
+        }
+        .downList_li {
+
+            color: #fff;
+            /* padding:5px 8px; */
+            border-bottom:1px solid rgba(255,255,255,.3);
+        }
+        .downList_li:hover {
+            background-color: #0f2c54;
+        }
+        .downList_li a,
+        .downList_li i
+        {
+            color: #fff !important;
+            font-size: .14rem;
+        }
+
+        #maniPulate p.line{
+            display:none;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block main %}
+
+    <div id="container" class="fullpage">
+        <div class="section firstScreen">
+            <div class="topTitle" style="margin: 0.1rem auto;margin-top:0;">
+                <dl>
+                    <dd>全市场</dd>
+                    <dt class="com-1">加载中...</dt>
+                </dl>
+                <dl>
+                    <dd>上交所</dd>
+                    <dt class="com-2">加载中...</dt>
+                </dl>
+                <dl>
+                    <dd>深交所</dd>
+                    <dt class="com-3">加载中...</dt>
+                </dl>
+            </div>
+
+            <!-- 一级可疑股票池 -->
+            <div style="position:relative;">
+
+                <div style="color: white;font-weight:700;font-size:0.24rem;position: relative;margin-bottom:0.2rem;" class="clearfix">
+                    <h3 style="float:left;font-weight:700;"><i class="fa fa-eye"></i>&nbsp;三级可疑股票池</h3>
+                    <div class="searchbox">
+                        <button type="button" class="btn btn-primary btn-sm" style="vertical-align:top;">确定</button>
+                    </div>
+                </div>
+                <div class="content" style="display: none;margin:5px 0 0 40px;">
+                    <div class="content-1 conLeft" style="margin-top:20px;">
+                        <span class="ct-tit">预警时间：</span>
+                        <select id="select-1" class="selectLab">
+                            <option value="1">近一天</option>
+                            <option value="7" selected>近一周</option>
+                            <option value="30">近一个月</option>
+                            <option value="90">近三个月</option>
+                            <option value="365">近一年</option>
+                        </select>
+                    </div>
+                    <div class="content-2 conLeft">
+                        <span class="ct-tit">运营模式：</span>
+                        <select id="select-2" class="selectLab">
+                            <option value="0" >全部</option>
+                            <!-- <option value="P2P理财">P2P理财</option>
+                            <option value="投资项目">投资项目</option>
+                            <option value="游戏">游戏</option>
+                            <option value="任务奖励">任务奖励</option>
+                            <option value="股权私募基金">股权私募基金</option> -->
+                        </select>
+                    </div>
+                    <div class="content-3 conLeft">
+                        <span class="ct-tit">预警类型：</span>
+                        <select id="select-3" class="selectLab">
+                            <option value="0" selected>全部</option>
+                            <!-- <option value="舆情预警">舆情预警</option> -->
+                            <!-- 改为动态生成的 -->
+                            <!-- <option value="模型预警">模型预警</option>
+                            <option value="指标预警">指标预警</option> -->
+                        </select>
+                    </div>
+                    <div class="content-4 conLeft">
+                        <span class="ct-tit">相关问题：</span>
+                        <select id="select-5" class="selectLab">
+                            <option value="all" selected>全部</option>
+                            <!-- <option value="舆情预警">舆情预警</option> -->
+                            <!-- 改为动态生成的 -->
+                            <!-- <option value="模型预警">模型预警</option>
+                            <option value="指标预警">指标预警</option> -->
+                        </select>
+                    </div>
+                    <div class="content-4 conLeft">
+                        <span class="ct-tit">实体类型：</span>
+                        <select id="select-4" class="selectLab">
+                            <option value="0" selected>全部</option>
+                            <option value="1">平台</option>
+                            <option value="2">公司</option>
+                            <option value="3">项目</option>
+                        </select>
+                    </div>
+                    <div class="content-5 conLeft">
+                        <span style="display: inline-block;" class="ct-tit">预警分布：</span>
+                        <select id="city34" class="selectLab">
+                            <option value="all" selected>全部</option>
+                            <option value='北京'>北京</option>
+                            <option value='天津'>天津</option>
+                            <option value='安徽'>安徽</option>
+                            <option value='澳门'>澳门</option>
+                            <option value='福建'>福建</option>
+                            <option value='甘肃'>甘肃</option>
+                            <option value='广东'>广东</option>
+                            <option value='广西'>广西</option>
+                            <option value='贵州'>贵州</option>
+                            <option value='海南'>海南</option>
+                            <option value='河北'>河北</option>
+                            <option value='河南'>河南</option>
+                            <option value='黑龙江'>黑龙江</option>
+                            <option value='湖北'>湖北</option>
+                            <option value='湖南'>湖南</option>
+                            <option value='吉林'>吉林</option>
+                            <option value='江苏'>江苏</option>
+                            <option value='江西'>江西</option>
+                            <option value='辽宁'>辽宁</option>
+                            <option value='内蒙古'>内蒙古</option>
+                            <option value='青海'>青海</option>
+                            <option value='山东'>山东</option>
+                            <option value='山西'>山西</option>
+                            <option value='陕西'>陕西</option>
+                            <option value='上海'>上海</option>
+                            <option value='四川'>四川</option>
+                            <option value='台湾'>台湾</option>
+                            <option value='西藏'>西藏</option>
+                            <option value='香港'>香港</option>
+                            <option value='新疆'>新疆</option>
+                            <option value='云南'>云南</option>
+                            <option value='浙江'>浙江</option>
+                            <option value='重庆'>重庆</option>
+                            <option value='宁夏'>宁夏</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="recordingTable" style="font-size: 0.16rem!important;">
+                    <div id="recordingTable">
+                        <center class="loading">正在加载中...</center>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="section secondScreen">
+            <!-- 二级可疑股票池 -->
+            <div style="position:relative;margin-top:0.2rem;">
+                <div style="color: white;font-weight:700;font-size:0.24rem;position: relative;margin-bottom:0.2rem;" class="clearfix">
+                    <h3 style="float:left;font-weight:700;"><i class="fa fa-eye"></i>&nbsp;二级可疑股票池</h3>
+                    <div class="searchbox">
+                        <button type="button" class="btn btn-primary btn-sm" style="vertical-align:top;">确定</button>
+                    </div>
+                </div>
+
+                <div class="recordingTable_second" style="font-size: 0.16rem!important;">
+                    <div id="recordingTable_second">
+                        <center class="loading">正在加载中...</center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section thirdScreen">
+            <!-- 三级可疑股票池 -->
+            <div style="position:relative;margin-top:0.2rem;">
+                <div style="color: white;font-weight:700;font-size:0.24rem;position: relative;margin-bottom:0.2rem;" class="clearfix">
+                    <h3 style="float:left;font-weight:700;"><i class="fa fa-eye"></i>&nbsp;一级可疑股票池</h3>
+                    <div class="searchbox">
+                        <button type="button" class="btn btn-primary btn-sm" style="vertical-align:top;">确定</button>
+                    </div>
+                </div>
+
+                <div class="recordingTable_third" style="font-size: 0.16rem!important;">
+                    <div id="recordingTable_third">
+                        <center class="loading">正在加载中...</center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 模态框 -->
+    <!-- 是否谣言 提示框 -->
+    <div class="modal fade" id="success" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="coverbody">
+                        <p style="text-align: center;font-size: 18px;font-weight: 400;">修改成功</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block my_js %}
+
+    <!-- <script src="/static/js/publicNav.js"></script> -->
+    <!-- <script src="/static/js/bootstrap.min.js"></script> -->
+    <!-- <script src="/static/js/bootstrap-table.min.js"></script> -->
+    <!-- <script src="/static/js/bootstrap-table-zh-CN.min.js"></script> -->
+    <!-- <script src="/static/echarts/echarts.min.js"></script> -->
+    <!-- <script src="/static/js/chalk.js"></script> -->
+    <!-- <script src="/static/js/echarts-2/build/dist/echarts.js"></script> -->
+
+    <!-- <script src="/static/js/jquery.fullPage.min.js"></script> -->
+    <script src="https://cdn.bootcss.com/fullPage.js/1.7/jquery.fullPage.min.js"></script>
+
+    <!-- 操纵表格 -->
+    <script type="text/javascript" src="/static/js/bigMainpulateData.js"></script>
+
+    <script>
+        $('.fullpage').fullpage({
+            'verticalCentered': false,
+            'css3': true,
+            // 'anchors': ['page1', 'page2','page3','page4','page5','page6','page7'],
+            // 'navigation': 'true',
+            // 'loopBottom':'true',
+            // 'navigationPosition': 'right',
+            'fixedElements':'#nav, #success',
+            // 'navigationTooltips': ['疑似操纵预警','预警态势','操纵影响','行业分布','操纵类型','市值分布']
+            // 'navigationTooltips': ['疑似操纵预警','预警态势','操纵影响','行业分布','操纵类型','板块分布']
+            'keyboardScrolling':false,//是否使用键盘方向键导航
+            afterLoad: function (anchorLink, index) {
+                $.fn.fullpage.setAllowScrolling(false, 'down');
+                $.fn.fullpage.setAllowScrolling(false, 'up');
+            },
+            afterRender:function(anchorLink, index) {
+                $.fn.fullpage.setAllowScrolling(false, 'down');
+                $.fn.fullpage.setAllowScrolling(false, 'up');
+            },
+        });
+
+        function Lscroll_full(sectionNum){
+            $.fn.fullpage.moveTo(sectionNum);
+        }
+
+        // ====
+        $('#container').css({minHeight:$(window).height()});
+        $('.firstScreen').css('padding-top',$('#nav').outerHeight(true));
+
+        $(document).ready(function(){
+            var downStr = '<ul id="downList">'+
+                '<li class="downList_li" onclick="Lscroll_full(1)">'+
+                    '<a class="list_three li_a" href="javascript:;">'+
+                        '<i class="fa fa-cog"></i>&nbsp;三级股票池'+
+                    '</a>'+
+                '</li>'+
+                '<li class="downList_li" onclick="Lscroll_full(2)">'+
+                    '<a class="list_three li_a" href="javascript:;">'+
+                        '<i class="fa fa-cog"></i>&nbsp;二级股票池'+
+                    '</a>'+
+                '</li>'+
+                '<li class="downList_li" onclick="Lscroll_full(3)">'+
+                    '<a class="list_three li_a" href="javascript:;">'+
+                        '<i class="fa fa-cog"></i>&nbsp;一级股票池'+
+                    '</a>'+
+                '</li>'+
+            '</ul>';
+            $('#maniPulate').append(downStr);
+            $('#maniPulate a').attr('href','javascript:;')
+
+            // =========
+                $('.nav_middle>li').eq(0).on('mouseover',function(){
+                    // alert(1);
+                    $(this).find('#downList').stop().slideDown(400);
+                }).on('mouseout',function(){
+                    // alert(1);
+                    $(this).find('#downList').stop().slideUp(400);
+                })
+
+                // $('.nav_middle>li').eq(0).on('click',function(){
+                //     // alert(1);
+                //     $(this).find('#downList').stop().slideToggle(400);
+                // })
+
+                $('#downList li').on('click',function(){
+
+                })
+
+            // ========
+        })
+
+    </script>
+    <script src="/static/js/manipulate.js"></script>
+{% endblock %}

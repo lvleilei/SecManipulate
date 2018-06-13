@@ -1,0 +1,125 @@
+#nav {
+    box-shadow: inset 0px -8px 20px 0px rgb(3, 85, 198);
+    background: transparent;
+}
+#container {
+    width: 100%;
+    position: relative;
+    /*background: url("/static/images/body.jpg") no-repeat;
+    background-size: 100% 100%;*/
+}
+#content {
+    width: 100%;
+    height: 100%;
+    background: rgb(23, 32, 78);
+    /*background:rgba(25, 25, 25, 0.9);*/
+}
+.all{font-size: 0;}
+#container .topTitle {
+    width: 28%;
+    position: relative;
+    padding: 0.2rem;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+#container .topTitle .topTitleModal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    /*background: rgba(230, 230, 230, 0.56);*/
+    border:0.1rem solid #ffbf1d;
+}
+
+#container .topTitle1{
+    /*background: -webkit-linear-gradient(left, rgb(29, 118, 209) , rgb(37, 169, 195)); /* Safari 5.1 - 6.0 */
+    /*background: -o-linear-gradient(right, rgb(29, 118, 209) , rgb(37, 169, 195)); /* Opera 11.1 - 12.0 */
+    /*background: -moz-linear-gradient(right, rgb(29, 118, 209) , rgb(37, 169, 195)); /* Firefox 3.6 - 15 */
+    /*background: linear-gradient(to right, rgb(29, 118, 209) , rgb(37, 169, 195)); /* 标准的语法 */
+    background: -webkit-linear-gradient(left,  rgb(12, 122, 206) ,rgb(112,73,240)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right,  rgb(12, 122, 206) ,rgb(112,73,240)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, rgb(12, 122, 206) ,rgb(112,73,240)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, rgb(12, 122, 206) ,rgb(112,73,240));/* 标准的语法 */
+}
+#container .topTitle2{
+    /*background: -webkit-linear-gradient(left, rgb(69, 173, 81) , rgb(134, 202, 97)); /* Safari 5.1 - 6.0 */
+    /*background: -o-linear-gradient(right, rgb(69, 173, 81) , rgb(134, 202, 97)); /* Opera 11.1 - 12.0 */
+    /*background: -moz-linear-gradient(right, rgb(69, 173, 81) , rgb(134, 202, 97)); /* Firefox 3.6 - 15 */
+    /*background: linear-gradient(to right, rgb(69, 173, 81) , rgb(134, 202, 97)); /* 标准的语法 */
+    background: -webkit-linear-gradient(left, rgb(122, 171, 94) , rgb(43, 171, 167)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, rgb(122, 171, 94) , rgb(43, 171, 167)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, rgb(122, 171, 94) , rgb(43, 171, 167)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, rgb(122, 171, 94) , rgb(43, 171, 167)); /* 标准的语法 */
+}
+#container .topTitle3{
+    /*background: -webkit-linear-gradient(left, rgb(231, 117, 115) , rgb(247, 145, 108)); /* Safari 5.1 - 6.0 */
+    /*background: -o-linear-gradient(right, rgb(231, 117, 115) , rgb(247, 145, 108)); /* Opera 11.1 - 12.0 */
+    /*background: -moz-linear-gradient(right, rgb(231, 117, 115) , rgb(247, 145, 108)); /* Firefox 3.6 - 15 */
+    /*background: linear-gradient(to right, rgb(231, 117, 115) , rgb(247, 145, 108)); /* 标准的语法 */
+    background: -webkit-linear-gradient(left, rgb(212, 138, 106) , rgb(179,49,95)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, rgb(212, 138, 106) , rgb(179,49,95)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, rgb(212, 138, 106) , rgb(179,49,95)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right,rgb(212, 138, 106) , rgb(179,49,95)); /* 标准的语法 */
+}
+#container .topTitle dl{
+    display: inline-block;
+    padding: 0.2rem;
+    font-size: 0.26rem;
+    color: white;
+}
+#container .topTitle dl dt {
+    font-size: 0.32rem;
+    font-weight: 900;
+    /*color: #ff9645;*/
+}
+#container .option .tit{
+    display: inline-block;
+    padding: 0.05rem;
+    /* width: 9%; */
+    width: 8%;
+    text-align: center;
+    color: #fff;
+    font-weight: 900;
+    font-size: 0.18rem;
+    border-bottom: 0.03rem solid #fff;
+}
+#container .option span:nth-of-type(6) {
+	width: 18%;
+}
+#container .option span:nth-of-type(even),
+#container #content .list_lh li span:nth-of-type(even) {
+    margin: 0 0.05rem;
+}
+#container #content .list_lh li {
+    position:relative;
+}
+#container #content .list_lh li span {
+    display: inline-block;
+    padding:0 0.05rem;
+    /* width: 10%; */
+    width: 8%;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.16rem;
+}
+#container #content .list_lh li span:nth-of-type(6) {
+	width: 18%;
+}
+#container #content .list_lh li span:first-child{
+    position: relative;
+}
+#container #content .list_lh li img{
+    position: absolute;
+    left:4%;
+}
+#container #content .list_lh li:hover span{
+    color: #ff9645;
+}
+#container #content .list_lh li {
+    line-height:36px;
+    cursor: pointer;
+}
