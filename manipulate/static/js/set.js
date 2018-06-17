@@ -1,5 +1,5 @@
 // 操纵详情 页 js
-console.log("LLLLLLLLLLLLLLL");
+
 stock = '南风股份';
 // 基本信息
     var gongshang_url = '/maniPulate/manipulateReport/gongshang/?id=' + id;
@@ -75,7 +75,8 @@ stock = '南风股份';
         {
             increase_ratio: 0.105675,
             // manipulate_type: "尾盘操纵",
-            manipulate_type: "内幕操纵",
+            // manipulate_type: "内幕操纵",
+            manipulate_type: "内幕交易",
             manipulate_type_num: 0,
             end_date: "2018-02-02",
             ifthis: 0,
@@ -85,6 +86,36 @@ stock = '南风股份';
             name: "南风股份(300004)"
         }
     ]
+
+    if(id == '3520'){//内幕交易那条记录
+        table1Data = [
+            {
+            increase_ratio: 0.105675,
+            // manipulate_type: "尾盘操纵",
+            manipulate_type: "内幕交易",
+            manipulate_type_num: 0,
+            end_date: "2018-02-02",
+            ifthis: 1,
+            id: 3520,
+            start_date: "2018-01-10",
+            manipulate_state: "已完成操纵",
+            name: "南风股份(300004)"
+            },
+            {
+            increase_ratio: -0.470543,
+            // manipulate_type: "伪市值管理",
+            manipulate_type: "上市公司伙同他人操纵",
+            manipulate_type_num: 1,
+            end_date: "2018-05-16",
+            ifthis: 0,
+            id: 3519,
+            start_date: "2017-01-20",
+            manipulate_state: "已完成操纵",
+            name: "南风股份(300004)"
+            }
+        ]
+    }
+
     function table1(data) {
         $('#Manipulating_details_content').bootstrapTable('load', data);
         $('#Manipulating_details_content').bootstrapTable({
@@ -2282,6 +2313,139 @@ stock = '南风股份';
         0.00719939480405219
         ]
     }
+
+    if(id == '3520'){//内幕交易那条记录
+        priceData = {
+            industry_price: [
+            19.70437043795622,
+            19.504593978102182,
+            19.617577554744532,
+            19.51987226277366,
+            19.043006386861286,
+            19.181938868613134,
+            19.20069799270074,
+            19.24362682481751,
+            19.188923357664244,
+            19.235734489051094,
+            19.28109945255475,
+            19.412166970802915,
+            19.333412408759088,
+            19.237253649635033,
+            18.95534215328468,
+            18.901874999999944,
+            18.460939781021914,
+            17.792162408759136,
+            17.640031934306595
+            ],
+            ratio: [
+            -0.011605415860734934,
+            -0.03131115459882586,
+            0.015151515151515187,
+            0.0019900497512437385,
+            0.017874875868917547,
+            0.03609756097560968,
+            0.04708097928436912,
+            -0.0197841726618704,
+            0.011926605504587065,
+            0.032638259292837826,
+            -0.049165935030728754,
+            0.013850415512465407,
+            -0.006375227686703122,
+            0.009165902841429848,
+            0.04450499545867395,
+            0.017391304347826025,
+            -0.04871794871794859,
+            -0.035938903863432195,
+            0.05312208760484625
+            ],
+            D_value: [
+            -0.015599357305861481,
+            -0.021172466814657277,
+            0.009358850266042749,
+            0.006970547047518819,
+            0.04230464003401429,
+            0.028801838917368695,
+            0.04610302162241972,
+            -0.02201996805499056,
+            0.014769285195440292,
+            0.03019877217236043,
+            -0.05152430421748772,
+            0.007052695363223631,
+            -0.002318258562015587,
+            0.014139611418633218,
+            0.059159451935921786,
+            0.020211994834569386,
+            -0.02539035719710575,
+            0.00028771190995813267,
+            0.06167250834390417
+            ],
+            price: [
+            10.22,
+            9.9,
+            10.05,
+            10.07,
+            10.25,
+            10.62,
+            11.12,
+            10.9,
+            11.03,
+            11.39,
+            10.83,
+            10.98,
+            10.91,
+            11.01,
+            11.5,
+            11.7,
+            11.13,
+            10.73,
+            11.3
+            ],
+            date: [
+            "2018-01-09",
+            "2018-01-10",
+            "2018-01-11",
+            "2018-01-12",
+            "2018-01-15",
+            "2018-01-16",
+            "2018-01-17",
+            "2018-01-18",
+            "2018-01-19",
+            "2018-01-22",
+            "2018-01-23",
+            "2018-01-24",
+            "2018-01-25",
+            "2018-01-26",
+            "2018-01-29",
+            "2018-01-30",
+            "2018-01-31",
+            "2018-02-01",
+            "2018-02-02"
+            ],
+            industry_ratio: [
+            0.003993941445126548,
+            -0.010138687784168581,
+            0.005792664885472439,
+            -0.004980497296275081,
+            -0.02442976416509674,
+            0.0072957220582409825,
+            0.0009779576619494028,
+            0.0022357953931201584,
+            -0.002842679690853228,
+            0.0024394871204773956,
+            0.002358369186758966,
+            0.006797720149241775,
+            -0.004056969124687535,
+            -0.00497370857720337,
+            -0.014654456477247838,
+            -0.0028206904867433607,
+            -0.023327591520842843,
+            -0.03622661577339033,
+            -0.008550420739057924
+            ]
+        }
+        // console.log("2222");
+    }
+
     function Price(data){
         var date_data = data.date || [];
 
@@ -5749,7 +5913,8 @@ stock = '南风股份';
     myChart_Stock_4.showLoading();
     var holderspctline_url = '/maniPulate/manipulateReport/holderspctline?id=' + id;
     // public_ajax.call_request('get',holderspctline_url,holderspctline);
-    var holderspctlineData = {
+    // var holderspctlineData = {
+    var holderspctlineData_old = {
         season: [
         "2014年第四季度",
         "2015年第一季度",
@@ -5799,6 +5964,31 @@ stock = '南风股份';
         3.3068
         ]
     };
+    // 只显示特定时间的
+    var holderspctlineData = {
+        season: [
+        "2017年第一季度",
+        "2017年第二季度",
+        "2017年第三季度",
+        "2017年第四季度",
+        "2018年第一季度"
+        ],
+        top10: [
+        51.98,
+        51.79,
+        51.71,
+        51.71,
+        52.84
+        ],
+        inst: [
+        2.0505,
+        1.7635,
+        0.8455,
+        0.8455,
+        3.3068
+        ]
+    }
+
     function holderspctline(data){
         var option_Stock_3 = {
             title: {
@@ -5920,7 +6110,7 @@ stock = '南风股份';
 // 财报数据
     var profit_url = '/maniPulate/manipulateReport/profit?id=' + id;
     // public_ajax.call_request('get',profit_url,profit_table);
-    var profit_tableData = [
+    var profit_tableData_old = [
         {
         bips: 1.7193,
         business_income: 875.5168,
@@ -6202,6 +6392,67 @@ stock = '南风股份';
         date: "2011年第一季度"
         }
     ];
+    // 只显示特定时间内
+    var profit_tableData = [
+        // {
+        //     roe      net_profit_ratio  gross_profit_rate  net_profits 
+        //     -0.57               -15.7                24.2                   -17.7767
+
+        //     eps     business_income    bips
+        //     -0.0349         113.2126           0.2223
+        // },
+        {
+            bips: 0.2223,
+            business_income: 113.2126,
+            net_profits: -17.7767,
+            roe: -0.57,
+            eps: -0.0349,
+            net_profit_ratio: -15.7,
+            gross_profit_rate: 24.2,
+            date: "2018年第一季度"
+        },
+        {
+        bips: 1.7193,
+        business_income: 875.5168,
+        net_profits: 30.1007,
+        roe: 0.96,
+        eps: 0.0591,
+        net_profit_ratio: 3.43,
+        gross_profit_rate: 30.1133,
+        date: "2017年第四季度"
+        },
+        {
+        bips: 0.9964,
+        business_income: 507.4136,
+        net_profits: 130.0321,
+        roe: 4.03,
+        eps: 0.2553,
+        net_profit_ratio: 25.62,
+        gross_profit_rate: 24.8737,
+        date: "2017年第三季度"
+        },
+        {
+        bips: 0.5444,
+        business_income: 277.2511,
+        net_profits: 98.8988,
+        roe: 3.09,
+        eps: 0.1942,
+        net_profit_ratio: 35.67,
+        gross_profit_rate: 18.8401,
+        date: "2017年第二季度"
+        },
+        {
+        bips: 0.2171,
+        business_income: 110.5521,
+        net_profits: -19.4855,
+        roe: -0.63,
+        eps: -0.0382,
+        net_profit_ratio: -17.62,
+        gross_profit_rate: 18.6643,
+        date: "2017年第一季度"
+        },
+    ];
+
     function profit_table(data) {
         $('#profit-content').bootstrapTable('load', data);
         $('#profit-content').bootstrapTable({
