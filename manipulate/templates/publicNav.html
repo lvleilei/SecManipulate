@@ -41,13 +41,9 @@
     <!-- <link rel="stylesheet" href="/static/css/bootstrap-datetimepicker.min.css"> -->
     <!-- <link rel="stylesheet" href="/static/css/font-awesome.min.css"> -->
     <!-- <link rel="stylesheet" href="/static/css/modalANDtable.css"> -->
-
-
-
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="/static/css/public_nav.css">
 
     {% endblock %}
@@ -63,47 +59,63 @@
 
 {% block header %}
 <div id="nav">
-    <div class="nav_left">
-        <h3 style="color:#fff;">
-            <!-- <img src="/static/images/newLogo.png" style="width:0.6rem;">&nbsp;&nbsp;证券市场信息操纵洞察系统 -->
-            <img src="/static/images/white_logo.png" style="width:0.6rem;">&nbsp;&nbsp;证券市场信息操纵洞察系统
-        </h3>
+    <div style="width: 1200px;margin: 0 auto;overflow: hidden;width:90%;">
+        <div class="nav_left clearfix" style="">
+            <div style="color:#fff;font-weight: 900;font-size:0.2rem;overflow: hidden;float:left;margin-right:.2rem;">
+                <!-- <img src="/static/images/newLogo.png" style="width:0.6rem;">&nbsp;&nbsp;证券市场信息操纵洞察系统 -->
+                <!-- <img src="/static/images/logo2.png" style="height:1.2rem;">&nbsp;&nbsp; -->
+                <img src="/static/images/realLogo.png" style="height:0.5rem;">&nbsp;&nbsp;
+                <!-- <img src="/static/images/realLogo.jpg" style="height:0.5rem;">&nbsp;&nbsp; -->
+                <div style="text-align: center;display:inline-block;vertical-align:middle;">
+                    <p style="letter-spacing: 4px;">证券市场信息操纵洞察系统</p>
+                    <p style="font-size: 0.06rem;color:#acb8dc;">Securities Market Information Manipulation Insight System</p>
+                </div>
+            </div>
+            <div class="nav_bg clearfix" style="float:left;">
+                    <ul class="nav_middle clearfix">
+                        <li class="main_li" id="maniPulate">
+                            <a class="list_one li_a" href="/index/maniPulate">预警推送</a>
+                        </li>
+                        <li class="main_li">
+                            <a class="list_two li_a" href="/index/newSituationtem">态势分析</a>
+                        </li>
+                        <li class="main_li">
+                            <a class="list_three li_a" href="/index/historicalCase">历史案例</a>
+                        </li>
+                        <li class="main_li">
+                            <a class="list_four li_a" href="/index/stockResults">智能引擎</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+        <div class="nav_right clearfix">
+            <div class="r-1 pull-right" style="text-align: right;margin: 0.1rem 0;margin-left:.2rem;">
+                <span class="login"><i class="fa fa-user-circle-o"></i>&nbsp;登录</span>
+                <span class="registered"><i class="fa fa-drivers-license-o"></i>&nbsp;注册</span>
+                <span class="screen"><i class="fa fa-desktop"></i>&nbsp;大屏系统</span>
+            </div>
+            <div class="r-2 pull-right" style="margin:.1rem 0;">
+                <input type="text" class="searchContent" placeholder="请输入个股关键字"/>
+                <img id="searchGG" src="/static/images/search_btn.png" style="cursor: pointer;width:0.27rem;">
+            </div>
+        </div>
     </div>
-    <div class="nav_right" style="font-size: 0.14rem!important;margin-left: 0.2rem;">
-        <span class="login">
-            <a href="/index/manage">登录</a>
-        </span>
-        <span class="registered">
-
-            <a href="/index/manage">注册</a>
-        </span>
-    </div>
-    <ul class="nav_middle">
-
-        <li class="main_li" id="maniPulate" style="">
-            <!-- <a class="list_three li_a" href="/index/maniPulate"> -->
-            <a class="list_three li_a" href="/index/maniPulate">
-                <i class="fa fa-cog"></i>&nbsp;操纵监测
-            </a>
-            <p class="line" style=""></p>
-
-        </li>
-        <li class="main_li">
-            <a class="list_three li_a" href="/index/newSituationtem">
-                <i class="fa fa-line-chart"></i>&nbsp;态势分析
-            </a>
-            <p class="line"></p>
-        </li>
-
-        <li class="main_li">
-            <a class="list_three li_a" href="/index/cover">
-                <i class="fa fa-desktop"></i>&nbsp;大屏展示
-            </a>
-            <p class="line"></p>
-        </li>
-
-
-    </ul>
+    <!-- <div class="nav_bg">
+        <ul class="nav_middle">
+            <li class="main_li" id="maniPulate">
+                <a class="list_one li_a" href="/index/maniPulate">操纵监测</a>
+            </li>
+            <li class="main_li">
+                <a class="list_two li_a" href="/index/newSituationtem">态势分析</a>
+            </li>
+            <li class="main_li">
+                <a class="list_three li_a" href="/index/stockResults">个股洞察</a>
+            </li>
+            <li class="main_li">
+                <a class="list_four li_a" href="/index/historicalCase">历史案例</a>
+            </li>
+        </ul>
+    </div> -->
 </div>
 <div class="modal fade" id="promptInfor" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -114,7 +126,7 @@
             </div>
             <div class="modal-body">
                 <div class="coverbody">
-                    <p style="text-align: center;font-size: 18px;color: #fff;font-weight: 900;"></p>
+                    <p style="text-align: center;font-size: .18rem;color: #fff;font-weight: 900;"></p>
                 </div>
             </div>
         </div>
@@ -135,7 +147,6 @@
 <!-- <script src="/static/js/jquery-3.2.1.min.js"></script> -->
 <!-- <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script> -->
 <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.js"></script><!-- 为了鱼骨图js中的.size()方法 -->
-
 <script src="/static/js/publicNav.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
 <script src="/static/js/bootstrap-table.min.js"></script>
@@ -144,18 +155,14 @@
 <script src="/static/js/moment.min.js"></script>
 <script src="/static/echarts/echarts.min.js"></script>
 <script src="/static/js/chalk.js"></script>
-
 <!-- <script src="/static/js/echarts-2/build/dist/echarts.js"></script> -->
 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
-
 <script src="/static/echarts/china.js"></script>
 {% endblock %}
 
 
 {% block write_js %}
 <script>
-
-
     $(document).ready(function() {
         $(document).on('show.bs.modal', '.modal', function() {
             var zIndex = 1040 + (10 * $('.modal:visible').length);
@@ -264,23 +271,25 @@
     //删除 localStorage.removeItem(i);
 
     //<!---->
-    $('#nav .nav_middle .main_li .li_a').on('mouseover',function () {
-        $(this).siblings('.line').css({left:'0%'});
-    }).on('mouseout',function () {
-        $(this).siblings('.line').css({left:'-100%'});
-    });
-    // 首页需要
-    // $('#nav').hover(function () {
-    //     $('#nav .nav_middle').slideDown(300);
-    //     $('#nav .nav_right').slideDown(300);
-    //     $(this).css({background:'rgba(25, 107, 123, 0.7)'});//rgba(19, 18, 18, 0.67)
-    //     $(this).css({borderBottom:'1px solid rgba(255,255,255,0.1)'});
-    // },function () {
-    //     $('#nav .nav_middle').slideUp(100);
-    //     $('#nav .nav_right').slideUp(100);
-    //     $(this).css({background:''});
-    //     $(this).css({borderBottom:'none'});
-    // })
+    $('.screen').on('click',function () {
+        window.location.href='/index/cover/';
+    })
+    $('#searchGG').on('click',function () {
+        var _val=$('.searchContent').val();
+        if (_val==''){
+            $('#promptInfor p').text('请输入查询内容');
+            $('#promptInfor').modal('show');
+        }else {
+            window.open('/index/stockResults?keywords='+_val);
+        }
+    })
+
+    // nav适配1366的屏
+    if(screen.width<1920){
+        $('#nav .nav_middle .main_li .li_a').css({
+            'padding':'0 .3rem'
+        })
+    }
 
 </script>
 {% endblock %}
