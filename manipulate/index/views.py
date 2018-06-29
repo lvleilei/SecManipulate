@@ -29,6 +29,16 @@ def newSituationtem():
 def maniPulate():
     return render_template('backstage/maniPulate/manipulate.html')
 
+@mod.route('/stockResults')
+def stockResults():
+    keywords = request.args.get('keywords','')
+    return render_template('backstage/setDetail/stockResults.html',keywords=keywords)
+
+@mod.route('/historicalCase')
+def historicalCase():
+    name = request.args.get('name','')
+    return render_template('backstage/historicalCase/historicalCase.html',name=name)
+
 # 业务系统 -操纵监测-详情页
 @mod.route('/setDetail')
 def setDetail():

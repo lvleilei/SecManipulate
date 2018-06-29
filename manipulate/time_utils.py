@@ -5,6 +5,13 @@ import datetime
 import tushare as ts
 import pandas as pd
 
+while 1:
+    try:
+        tstradelist = ts.trade_cal()
+        break
+    except:
+        pass
+
 def today():
     return time.strftime('%Y-%m-%d', time.localtime(time.time()))
 
@@ -74,28 +81,16 @@ def get_datelist(year1,month1,day1,year2,month2,day2):
     return date_list
 
 def get_tradelist(year1,month1,day1,year2,month2,day2):
-    while 1:
-        try:
-            a = ts.trade_cal()
-            break
-        except:
-            pass
     l = get_datelist(year1,month1,day1,year2,month2,day2)
-    index = a[a.calendarDate == l[0]].index.tolist()[0]
+    index = tstradelist[tstradelist.calendarDate == l[0]].index.tolist()[0]
     li = []
     for i in range(index,index+len(l)):
-        if a.loc[i]['isOpen']:
-            li.append(a.loc[i]['calendarDate'])
+        if tstradelist.loc[i]['isOpen']:
+            li.append(tstradelist.loc[i]['calendarDate'])
     return li
 
 def get_tradelist_all():
-    while 1:
-        try:
-            a = ts.trade_cal()
-            break
-        except:
-            pass
-    df = a[a['isOpen'] == 1]
+    df = tstradelist[tstradelist['isOpen'] == 1]
     return list(df['calendarDate'])
 
 def int2datestr(year,month,day):
@@ -109,27 +104,21 @@ def lasttradedate(theday):   #theday为'2016-05-05'格式
     return trade_list[index - 1]
 
 def to_tradeday(theday,bora):   #输入bora=1向后最近的交易日，输入bora=-1向前最近的交易日
-    while 1:
-        try:
-            a = ts.trade_cal()
-            break
-        except:
-            pass
-    tradedaydf = a[a['calendarDate'] == theday]
+    tradedaydf = tstradelist[tstradelist['calendarDate'] == theday]
     if tradedaydf.iloc[0]['isOpen']:
         return theday
     else:
         dayindex = tradedaydf.index[0]
         if bora == 1:
             for i in range(dayindex + 1,dayindex + 30,1):
-                if a.loc[i]['isOpen'] == 1:
-                    date = a.loc[i]['calendarDate']
+                if tstradelist.loc[i]['isOpen'] == 1:
+                    date = tstradelist.loc[i]['calendarDate']
                     break
             return date
         elif bora == -1:
             for i in range(dayindex - 1,dayindex - 30,-1):
-                if a.loc[i]['isOpen'] == 1:
-                    date = a.loc[i]['calendarDate']
+                if tstradelist.loc[i]['isOpen'] == 1:
+                    date = tstradelist.loc[i]['calendarDate']
                     break
             return date
         else:
