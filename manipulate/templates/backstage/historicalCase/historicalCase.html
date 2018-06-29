@@ -1,0 +1,99 @@
+{% extends "publicNav.html" %}
+{% block title %}<title>历史案例</title>{% endblock %}
+{% block my_css %}
+<style>
+    /* 因为隐藏了 旧的 微博热点和溯源分析 */
+    #nav .nav_middle .main_li:nth-of-type(3) a, #nav .nav_middle .main_li:nth-of-type(3) a i{
+        color: #ffbf1d !important;
+    }
+    /*====== 2018年6月7日20:01:24*/
+
+    /* 上下 大div */
+    #topBox ,#botBox{
+        width: 100%;
+        height:68%;
+        /* background-color: #ccc; */
+    }
+    #botBox {
+        position: relative;
+        top: 1%;
+        height:30%;
+    }
+    /* 各图表 div */
+    /* .topBoxchart, .botBoxchart{ */
+    .topBoxchart{
+        width: 49%;
+        height: 100%;
+        float:left;
+        /* background-color: #eee; */
+        /* border: 1px solid #eee; */
+        /* background-color: rgba(0,0,0,.2); */
+    }
+
+    #topBox_left, #topBox_right {
+        width: 25%;
+    }
+
+    /* 上部 左右两侧的上下两个小div */
+    .topBox_content {
+        width: 100%;
+        height: 49.5%;
+        /* background-color: red; */
+    }
+    #topBox_left_b, #topBox_right_b {
+        position: relative;
+        top:1%;
+    }
+
+    #container .menuList {
+        position: absolute;
+        padding: 8px;
+        z-index: 2222;
+        top:8%;
+        left:0;
+    }
+    #container .menuList li {
+
+    }
+    #container .menuList li span {
+        vertical-align: middle;
+        font-size: 12px;
+    }
+    #container .menuList li a {
+        display:block;
+        /*margin-right: 10px;*/
+        text-align: center;
+        padding:5px 20px;
+        font-size: 16px;
+        color: white;
+        font-weight: 700;
+        /*background: linear-gradient(to right, #4861b3 0%, #2e48a5 100%);*/
+        /*background:linear-gradient(to right, #316b7b 0%, #455f72 100%);*/
+        background:linear-gradient(to right, rgb(76, 107, 219) 0%, rgb(36, 114, 171) 100%);
+    }
+    #container .menuList li:nth-child(1) a {
+        /* color: rgb(36, 200, 237); */
+        /* background: url(/static/images/zwzlink_bg2.png) no-repeat; */
+        /*background: url(/static/images/zwzlink_bg4.png) no-repeat;*/
+        /*background-size: 100% 100%;*/
+        background: #3654aa;
+        border:1px solid #b9b2b2;
+    }
+
+</style>
+{% endblock %}
+
+{% block main %}
+<div id="container" style="background:rgba(46, 72, 167,0.9);">
+
+</div>
+{% endblock %}
+
+{% block my_js %}
+<script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+</script>
+
+{% endblock %}
