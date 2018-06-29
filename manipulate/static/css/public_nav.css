@@ -114,6 +114,19 @@ body {
     background: white;
     color: black;
 }
+#nav .nav_right span a{
+    color:#fff;
+}
+#nav .nav_right span a:hover{
+    color: black;
+}
+#nav .nav_right span:hover {
+    background: white;
+    color: black;
+}
+#nav .nav_right span:hover a{
+    color: black;
+}
 /**/
 #fullPage-nav span, .fullPage-slidesNav span {
     width: 0.15rem;

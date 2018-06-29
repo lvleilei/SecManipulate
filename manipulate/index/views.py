@@ -14,6 +14,11 @@ def test():
 def test2():
 	return render_template('dashboard/2.html')
 
+# 业务系统 -注册-登录页
+@mod.route('/manage')
+def manage():
+    return render_template('backstage/manage/login.html')
+
 # 业务系统 -态势分析
 @mod.route('/newSituationtem')
 def newSituationtem():
