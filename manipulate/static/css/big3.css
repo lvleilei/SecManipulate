@@ -1,0 +1,78 @@
+#nav {
+    box-shadow: inset 0px -8px 20px 0px rgb(3, 85, 198);
+    background: transparent;
+}
+#nav .nav_middle .main_li .li_a {
+    color:rgb(108, 197, 255)
+}
+#container {
+    width: 100%;
+    position: relative;
+    /*background: url("/static/images/body.jpg") no-repeat;*/
+    /*background-size: 100% 100%;*/
+}
+#content {
+    width: 100%;
+    height: 100%;
+    /*background: rgba(25, 25, 25, 0.8);*/
+    background: rgb(23, 32, 78);
+}
+#topBox ,#botBox{
+    width: 100%;
+    padding: 0 0.1rem;
+    /* margin-top: 0.1rem; */
+    padding-top: 0.5%;
+    height:49%;
+    /* background-color: #ccc; */
+}
+#botBox {
+    position: relative;
+    /*top:0.2rem;*/
+}
+
+/* 各图表 div */
+.topBoxchart, .botBoxchart{
+    width: 32%;
+    height: 100%;
+    margin: 0 0.1rem;
+    padding: 0.2rem;
+    float: left;;
+    /*display: inline-block;*/
+    background-color: rgb(14, 20, 66);
+}
+
+/* 预警指数 */
+#theNum {
+    width: 100%;
+    height: 22%;
+    text-align: center;
+    /* background-color: rgba(255,255,255,.2); */
+    font-size:0.32rem;
+    color:#fff;
+}
+#theNum span.theNum-content{
+    display:inline-block;
+    width: 30%;
+    height: 100%;
+    line-height: 100%;
+    background-color:rgb(27, 34, 90);
+    /*background-color:rgba(243, 233, 233, 0.11);*/
+    /*background-color: rgba(155,155,155,.1);*/
+    border-radius: 5px;
+    padding:0.07rem;
+}
+#theNum span.theNum-content>span:nth-child(1){
+    font-size: 0.3rem;
+}
+#theNum span.theNum-content>span:nth-child(2){
+    display:block;
+    width: 100%;
+    font-size: 0.14rem;
+}
+
+/* 横向条形图 */
+#topBox_mid {
+    width: 100%;
+    height: 76%;
+    margin-top: 2%;
+}

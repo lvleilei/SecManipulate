@@ -1,0 +1,199 @@
+#container {
+    position: relative;
+    z-index: 999;
+    overflow: hidden;
+    /* overflow-y:auto; */
+    /* width: 1200px; */
+    width: 90%;
+    margin: 0 auto;
+    background: transparent!important;
+}
+#container #card {
+    /* margin-top:5px; */
+    /* padding: 20px; */
+    font-size: 14px;
+    /* background: rgba(226, 220, 220, 0.71); */
+}
+/* lvlei_1-11 */
+.main_content {
+    /* padding: 20px; */
+    font-size: 14px;
+    background:rgba(226, 220, 220, 0.71);
+    /* margin: 5px 0; */
+    border: 2px solid #9a949491;
+
+    position: relative;
+    top:0.5%;
+}
+/* 基本信息 */
+#container .infor .inforLine {
+    display: inline-block;
+    max-width: 24%;
+    min-width: 24%;
+    /* margin-right: 0.5%; */
+    float: left;
+}
+#container .infor .inforLine b {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*max-width: 1.8rem;*/
+    max-width: 60%;
+    text-align: left;
+    position: relative;
+    top: 0.05rem;
+}
+#container .infor p {
+    /* font-size: 14px; */
+    font-size: 0.16rem;
+    /* margin: 8px 0; */
+    margin: 4px 0;
+    text-align: left;
+}
+#container .infor p span {
+    display: inline-block;
+    /* width: 30%; */
+    /* text-align: right; */
+}
+#container .menuList {
+    width:100%;
+    background: #7083c2;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#container .menuList li {
+    float: left;
+}
+#container .menuList li span {
+    vertical-align: middle;
+}
+#container .menuList li a {
+    display:inline-block;
+    margin-right: .15rem;
+    text-align: center;
+    /* padding:10px 40px; */
+    padding:.1rem .34rem;
+    font-size: .16rem;
+    color: white;
+    font-weight: 700;
+    background: url(/static/images/zwzlink_bg.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+#container .menuList li:nth-child(1) a {
+    color: #ff9645;
+}
+/* 操纵详情 */
+#container #Manipulating_details {
+    position: relative;
+    /* padding: 20px; */
+    padding: 5px;
+    font-size:14px;
+    /* background: rgba(226, 220, 220, 0.71); */
+}
+/*#container #Manipulating_details p{*/
+    /*margin:.07114602rem!* 10px *!;*/
+/*}*/
+/*#container #Manipulating_details p span {*/
+    /*display: inline-block;*/
+    /*width: 19%;*/
+    /*text-align: center;*/
+/*}*/
+/* 价格与收益率 */
+#container #Price {
+    /* padding: 20px; */
+    font-size: 14px;
+    /* background: rgba(226, 220, 220, 0.71); */
+}
+#Price h3, #trading h3 {
+    display:inline-block;
+    /* margin-right:20px; */
+    margin-right:0.1rem;
+    vertical-align:bottom;
+}
+/* 时间框 */
+#Price ._time{
+    display: inline-block;
+    /* padding: 3px 7px; */
+    border: 1px solid silver;
+    border-radius: 5px;
+    background: transparent;
+    /* color: white; */
+}
+.half {
+    width:49%;
+    height:400px;
+    float:left;
+    margin-top: 20px;
+}
+/* 公告信息 */
+#Bulletin_information {
+    /* padding: 20px; */
+    font-size:14px;
+    /* background: rgba(226, 220, 220, 0.71); */
+}
+/* 交易分析 */
+#Transaction_analysis ._time2,
+#Stock ._time2,
+#Shareholding .shareholding_time{
+    float: right;
+    border: 1px solid silver;
+    border-radius: 5px;
+    background: transparent;
+}
+#Transaction_analysis .anaDown ,
+#Stock .anaDown {
+    overflow: hidden;
+    padding: 10px;
+}
+#Transaction_analysis .anaDown b ,
+#Stock .anaDown b {
+    font-weight: 900;
+    font-size: 18px;
+}
+/* 股权分析 */
+
+/* 虚假消息 */
+.False_content{
+    text-indent:20px;
+}
+
+/* lvlei_1-11 */
+/* 操纵详情 历史记录 高亮显示 */
+#Manipulating_details_content .this-stock {
+    color:#ff6d70;
+}
+/* 表格 分页步进值隐藏 */
+.Manipulating_details_content .page-list ,
+.Bulletin_content .page-list ,
+.Transaction-1 .page-list ,
+.Transaction-2 .page-list ,
+.opinion .page-list
+{
+    display:none;
+}
+
+.fixed-table-container{
+    border-bottom: none;
+}
+/* 表格表头上边框 */
+.Manipulating_details_content thead tr th ,
+.Bulletin_content thead tr th ,
+.Transaction-1 thead tr th ,
+.Transaction-2 thead tr th ,
+.opinion thead tr th
+{
+    border-top:none;
+}
+
+/* 历史预警的表格 */
+#Manipulating_details_content .theStock {
+    /* width: 0.7rem;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis; */
+}
+#Manipulating_details .fixed-table-pagination .pagination-detail {
+    display:none;
+}

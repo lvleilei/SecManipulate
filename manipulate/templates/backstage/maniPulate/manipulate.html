@@ -1,0 +1,313 @@
+{% extends "publicNav.html" %}
+{% block title %}<title>预警推送</title>{% endblock %}
+{% block my_css %}
+    <link rel="stylesheet" href="/static/css/manipulate.css">
+    <style>
+        #nav .nav_middle .main_li:nth-of-type(1) a, #nav .nav_middle .main_li:nth-of-type(1) a i{
+            color: #ffbf1d !important;
+        }
+        /* 因为隐藏了 旧的 微博热点和溯源分析 */
+        .recordingTable .fixed-table-pagination .page-list,
+        .placeRank .fixed-table-toolbar,.placeRank .fixed-table-pagination .page-list {
+            display: none;
+        }
+        /*#nav {background: rgba(60, 118, 130, 0.52)}*/
+        /*#nav {background: rgba(18, 146, 175, 0.52);}*/
+        /*======*/
+        .loading {
+            color:#333;
+            text-align:center;
+        }
+        /* 搜索框 */
+        #container .searchbox {
+             float:right;
+            /*position: absolute;*/
+            /*top: 0;*/
+            /*right: 0;*/
+        }
+        .recordingTable .fixed-table-toolbar,
+        .recordingTable_second .fixed-table-toolbar,
+        .recordingTable_third .fixed-table-toolbar{
+            display:block;
+        }
+        .recordingTable .fixed-table-toolbar .search,
+        .recordingTable_second .fixed-table-toolbar .search ,
+        .recordingTable_third .fixed-table-toolbar .search {
+            width:20%;
+            position:absolute;
+            /* top:2%; */
+            top:0;
+            /* right:100px; */
+            right:95px;
+            margin:0;
+        }
+        .recordingTable .fixed-table-toolbar .search input,
+        .recordingTable_second .fixed-table-toolbar .search input,
+        .recordingTable_third .fixed-table-toolbar .search input{
+            height:31px;
+            padding: 3px 6px;
+            background: transparent;
+            border: 1px solid silver;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        .recordingTable .fixed-table-toolbar .search input:focus,
+        .recordingTable_second .fixed-table-toolbar .search input:focus,
+        .recordingTable_third .fixed-table-toolbar .search input:focus{
+            background: #f8f8f8;
+            color: #3c3c3c;
+        }
+
+
+        /* 下拉导航 */
+        li#maniPulate {
+            overflow: visible!important;
+        }
+        #downList {
+            position: absolute;
+            display:none;
+            padding:0.1rem 0;
+            /*background-color: #ccc;*/
+            /* opacity:.7; */
+            width:100%;
+            text-align:center;
+            background-color: #096f83;
+        }
+        .downList_li {
+            color: #fff;
+            /* padding:5px 8px; */
+            border-bottom:1px solid rgba(255,255,255,.3);
+        }
+        .downList_li:hover {
+            background-color: #0f2c54;
+        }
+        .downList_li a,
+        .downList_li i
+        {
+            color: #fff !important;
+            font-size: .14rem;
+        }
+
+        #maniPulate p.line{
+            display:none;
+        }
+
+        /*去边框*/
+        .fixed-table-container thead th .both {background-image: none;}
+        .fixed-table-container thead th .sortable{padding: 5px 15px;}
+        .bootstrap-table .table thead>tr>th {width: 1%;}
+        .bootstrap-table .table thead{background: #7083c2;color: white;}
+        .fixed-table-container,.bootstrap-table .table,.bootstrap-table .table>thead>tr>th,
+        .fixed-table-container tbody td{border: none;}
+        /*  */
+        #recordingTable thead th:nth-of-type(3),
+        #recordingTable thead th:nth-of-type(7) {
+            width:6%;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <div id="container" class="fullpage">
+        <div style="width: 100%;overflow: hidden;text-align: center;background: #7083c2;padding: 10px;">
+            <!--<div class="menuList" style="float: left;">-->
+                <!--<ul class="list" style="display:inline-block;">-->
+                    <!--<li class="level" data-table="level3"><a href="###"><img src="/static/images/j11.png">&nbsp;<span>三级可疑股票池</span></a></li>-->
+                    <!--<li class="level" data-table="level2" style="margin: 0 120px;"><a href="###"><img src="/static/images/j2.png">&nbsp;<span>二级可疑股票池</span></a></li>-->
+                    <!--<li class="level" data-table="level1"><a href="###"><img src="/static/images/j3.png">&nbsp;<span>一级可疑股票池</span></a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <div class="menuList" style="display:inline-block;margin-right: 80px;">
+                <ul class="list" style="display:inline-block;">
+                    <li class="level l2" data-table="level2"><a href="###"><img src="/static/images/j2.png">&nbsp;<span>二级</span></a></li>
+                    <li class="level l1" data-table="level1"><a href="###"><img src="/static/images/j3.png">&nbsp;<span>一级</span></a></li>
+                    <li class="level l3" data-table="level3"><a href="###"><img src="/static/images/j11.png">&nbsp;<span>三级可疑股票池</span></a></li>
+
+                </ul>
+            </div>
+            <div style="padding:8px;display:inline-block;vertical-align: text-bottom;">
+                <div class="topTitle">
+                    <span class="tit"><span class="cir">全市场</span></span>
+                    <p class="con"><span class="num n1">000</span>条</p>
+                </div>
+                <div class="topTitle" style="margin: 0 80px;">
+                    <span class="tit"><span class="cir">上交所</span></span>
+                    <p class="con"><span class="num n2">000</span>条</p>
+                </div>
+                <div class="topTitle">
+                    <span class="tit"><span class="cir">深交所</span></span>
+                    <p class="con"><span class="num n3">000</span>条</p>
+                </div>
+            </div>
+        </div>
+        <!-- <div style="width: 100%;padding: 0.2rem;background:#d4d9e0;text-align: center;"> -->
+        <div class="firstScreen section">
+            <!-- 一级可疑股票池 -->
+            <div style="position:relative;margin-top: 10px;">
+                <div style="color: white;font-weight:700;font-size:24px;position: relative;margin-bottom: 10px;" class="clearfix">
+                    <div class="searchbox">
+                        <button type="button" class="btn btn-primary btn-sm onePLUS" style="vertical-align:top;"><i class="fa fa-plus"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" style="vertical-align:top;">确定</button>
+                    </div>
+                </div>
+                <div class="content" style="display:none;margin: 10px 0;">
+                    <div class="content-1 conLeft">
+                        <span class="ct-tit">操纵类型：</span>
+                        <div id="select-1" class="selectBox">
+                            <div class="inputCase">
+                                <input class="imitationSelect" type="text" oulName="" oulId="" value="上市公司伙同他人操纵" readonly/>
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <ul class="selectUl">
+                                <li oliName="上市公司伙同他人操纵" oliId="1" class="actived_li">上市公司伙同他人操纵</li>
+                                <li oliName="上市公司单独操纵" oliId="2">上市公司单独操纵</li>
+                                <li oliName="抢帽子型操纵" oliId="4">抢帽子型操纵</li>
+                                <li oliName="内幕交易" oliId="5">内幕交易</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-2 conLeft">
+                        <span class="ct-tit">操纵状态：</span>
+                        <div id="select-2" class="selectBox">
+                            <div class="inputCase">
+                                <input class="imitationSelect" type="text" oulName="" oulId="" value="正在操纵" readonly/>
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <ul class="selectUl">
+                                <li oliName="正在操纵" oliId="1" class="actived_li">正在操纵</li>
+                                <li oliName="已完成操纵" oliId="2">已完成操纵</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-3 conLeft">
+                        <span class="ct-tit">行业：</span>
+                        <div id="select-3" class="selectBox">
+                            <div class="inputCase">
+                                <input class="imitationSelect" type="text" oulName="" oulId="" value="伪市值管理" readonly/>
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <ul class="selectUl">
+                                <li oliName="采矿业" oliId="1" class="actived_li">采矿业</li>
+                                <li oliName="文化、体育和娱乐业" oliId="2">文化、体育和娱乐业</li>
+                                <li oliName="建筑业" oliId="3">建筑业</li>
+                                <li oliName="综合" oliId="4">综合</li>
+                                <li oliName="电力、热力、燃气及水生产和供应业" oliId="5">电力、热力、燃气及水生产和供应业</li>
+                                <li oliName="金融业" oliId="6">金融业</li>
+                                <li oliName="信息传输、软件和信息技术服务业" oliId="7">信息传输、软件和信息技术服务业</li>
+                                <li oliName="水利、环境和公共设施管理业" oliId="8">水利、环境和公共设施管理业</li>
+                                <li oliName="卫生和社会工作" oliId="9">卫生和社会工作</li>
+                                <li oliName="居民服务、修理和其他服务业" oliId="10">居民服务、修理和其他服务业</li>
+                                <li oliName="租赁和商务服务业" oliId="1">租赁和商务服务业</li>
+                                <li oliName="房地产业" oliId="12">房地产业</li>
+                                <li oliName="农、林、牧、渔业" oliId="13">农、林、牧、渔业</li>
+                                <li oliName="批发和零售业" oliId="14">批发和零售业</li>
+                                <li oliName="交通运输、仓储和邮政业" oliId="15">交通运输、仓储和邮政业</li>
+                                <li oliName="住宿和餐饮业" oliId="16">住宿和餐饮业</li>
+                                <li oliName="制造业" oliId="17">制造业</li>
+                                <li oliName="科学研究和技术服务业" oliId="18">科学研究和技术服务业</li>
+                                <li oliName="教育" oliId="19">教育</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="recordingTable" style="font-size:16px;">
+                    <div id="recordingTable">
+                        <center class="loading">正在努力地加载数据中，请稍候……</center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 模态框 -->
+    <!-- 是否谣言 提示框 -->
+    <div class="modal fade" id="success" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="coverbody">
+                        <p style="text-align: center;font-size: 18px;font-weight: 400;">修改成功</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block my_js %}
+<!-- 操纵表格 -->
+<script src="/static/js/count.js" ></script>
+<script type="text/javascript" src="/static/js/bigMainpulateData.js"></script>
+<script>
+    function numList(m1,m2,m3){
+        $(".n1").numberRock({
+            speed:14,//数字越大数字滚动速度越慢
+            count:m1//最终停留数字
+        });
+        $(".n2").numberRock({
+            speed:14,//数字越大数字滚动速度越慢
+            count:m2//最终停留数字
+        });
+        $(".n3").numberRock({
+            speed:14,//数字越大数字滚动速度越慢
+            count:m3//最终停留数字
+        });
+    };
+
+    $('.level').on('click',function () {
+        $('.content').hide();
+        $('.onePLUS').find('i').removeClass('fa-minus');//切换图标
+        $('.onePLUS').find('i').addClass('fa-plus');//切换图标
+        var table=$(this).attr('data-table');
+        $('#recordingTable center.loading').show();
+        var c='';
+        if (table=='level3'){
+            c='rgb(36, 200, 237)';
+            warningNumber_url='/backstage_detect/thirdlevelnum/';
+            earlyWarning_url='/backstage_detect/thirdleveltable/';
+        } else if(table=='level2'){
+            c='rgb(88, 181, 86)';
+            warningNumber_url='/backstage_detect/secondlevelnum/';
+            earlyWarning_url='/backstage_detect/secondleveltable/';
+        }else {
+            c='rgb(236, 126, 113)';
+            warningNumber_url='/backstage_detect/firstlevelnum/';
+            earlyWarning_url='/backstage_detect/firstleveltable/';
+        }
+        public_ajax.call_request('get',warningNumber_url,warningNumber);//预警数
+        public_ajax.call_request('get',earlyWarning_url,earlyWarning);//预警表格
+        // $(this).find('a').css({color:c,background:'url(/static/images/zwzlink_bg2.png) no-repeat',backgroundSize:'100% 100%'});
+        $(this).find('a').css({color:c,background:'url(/static/images/zwzlink_bg3.png) no-repeat',backgroundSize:'100% 100%'});
+        var txt=$(this).find('span').text().replace(/可疑股票池/g,'');
+        $(this).find('span').text(txt+'可疑股票池');
+
+        $(this).siblings('li').find('a').css({color:'#fff',background:'linear-gradient(to right, #4861b3 0%, #2e48a5 100%)'});
+        var Ospan=$(this).siblings('li').find('span');
+        for(var a=0;a<Ospan.length;a++){$(Ospan[a]).text($(Ospan[a]).text().replace(/可疑股票池/g,''));}
+        $('.menuList .list').append($(this).eq(0));
+        // $(this).siblings('li').find('a').css({color:'#fff',background:'linear-gradient(to right, #99a3c5 0%, #27325d 100%)'});
+    });
+    var a=0;
+    $('.onePLUS').on('click',function () {
+        if (a==0){
+            $('.content').show();a=1;
+        }else {
+            $('.content').hide();a=0;
+        }
+        $(this).find('i').toggleClass('fa-plus fa-minus');//切换图标
+    });
+</script>
+<script src="/static/js/manipulate.js"></script>
+{% endblock %}

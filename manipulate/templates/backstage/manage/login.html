@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>登录-注册</title>
+        <link rel="stylesheet" href="/static/LLLmanage/css/style.css"></head>
+
+
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+        <body>
+            <div class="cotn_principal">
+                <div class="cont_centrar">
+                    <div class="cont_login">
+                        <div class="cont_info_log_sign_up">
+                            <div class="col_md_login">
+                                <div class="cont_ba_opcitiy">
+                                    <h2>登录</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur.</p>
+                                    <button class="btn_login" onclick="cambiar_login()">登录</button></div>
+                            </div>
+                            <div class="col_md_sign_up">
+                                <div class="cont_ba_opcitiy">
+                                    <h2>注册</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur.</p>
+                                    <button class="btn_sign_up" onclick="cambiar_sign_up()">注册</button></div>
+                            </div>
+                        </div>
+                        <div class="cont_back_info">
+                            <div class="cont_img_back_grey">
+                                <!-- <img src="po.jpg" alt="" /></div> -->
+                                <!-- <img src="dc.jpg" alt="" /></div> -->
+                                <img src="/static/LLLmanage/po.jpg" alt="" /></div>
+                        </div>
+                        <div class="cont_forms">
+                            <div class="cont_img_back_">
+                                <!-- <img src="po.jpg" alt="" /></div> -->
+                                <!-- <img src="dc.jpg" alt="" /></div> -->
+                                <img src="/static/LLLmanage/po.jpg" alt="" /></div>
+                            <div class="cont_form_login">
+                                <a href="#" onclick="ocultar_login_sign_up()">
+                                    <i class="material-icons">&#xE5C4;</i></a>
+                                <h2>登录</h2>
+                                <input type="text" placeholder="用户名" />
+                                <input type="password" placeholder="密码" />
+                                <button class="btn_login" onclick="cambiar_login()" id="siginUp">登录</button></div>
+                            <div class="cont_form_sign_up">
+                                <a href="#" onclick="ocultar_login_sign_up()">
+                                    <i class="material-icons">&#xE5C4;</i></a>
+                                <h2>注册</h2>
+                                <input type="text" placeholder="Email" />
+                                <input type="text" placeholder="用户名" />
+                                <input type="password" placeholder="密码" />
+                                <input type="password" placeholder="确认密码" />
+                                <button class="btn_sign_up" onclick="cambiar_sign_up()" id="register">注册</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="/static/LLLmanage/js/index.js"></script>
+        </body>
+
+    <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.js"></script>
+    <script type="text/javascript">
+        $('#siginUp').on('click',function(){
+            window.location.href = '/index/maniPulate'
+        })
+    </script>
+
+</html>

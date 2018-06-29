@@ -1,0 +1,216 @@
+{% extends "publicNav.html" %}
+{% block title %}<title>个股洞察</title>{% endblock %}
+{% block my_css %}
+<link rel="stylesheet" href="/static/css/manipulate.css">
+<style>
+    #nav .nav_middle .main_li:nth-of-type(4) a, #nav .nav_middle .main_li:nth-of-type(4) a i{
+        color: #ffbf1d !important;
+    }
+    #container .section {
+        width: 1200px;
+        margin: 0 auto;
+    }
+    #container .firstScreen .search .searchWord {
+        padding: 0.03rem 0.06rem;
+        background: transparent;
+        border: 0.01rem solid silver;
+        border-radius: 0.05rem;
+        text-align: center;
+        font-size: 0.14rem;
+        vertical-align: middle;
+    }
+    #container .firstScreen .search{
+        float: right;
+    }
+    #container .firstScreen .search .searchWord:focus {
+        background: #f8f8f8;
+        color: #3c3c3c;
+    }
+    /*======*/
+    .loading {
+        color:#fff;
+        text-align:center;
+    }
+    /* 搜索框 */
+    #container .searchbox {
+        float:right;
+    }
+    .recordingTable .fixed-table-toolbar{
+        display:block;
+    }
+    .recordingTable .fixed-table-toolbar .search {
+        width:20%;
+        position:absolute;
+        /* top:2%; */
+        top:0;
+        /* right:100px; */
+        right:60px;
+        margin:0;
+    }
+    .recordingTable .fixed-table-toolbar .search input{
+        height:31px;
+        padding: 3px 6px;
+        background: transparent;
+        border: 1px solid silver;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+    .recordingTable .fixed-table-toolbar .search input:focus{
+        background: #f8f8f8;
+        color: #3c3c3c;
+    }
+
+    /*去边框*/
+    .fixed-table-container thead th .both {background-image: none;}
+    .fixed-table-container thead th .sortable{padding: 5px 15px;}
+    .bootstrap-table .table thead>tr>th {width: 1%;}
+    .bootstrap-table .table thead{background: #7083c2;color: white;}
+    .fixed-table-container,.bootstrap-table .table,.bootstrap-table .table>thead>tr>th,
+    .fixed-table-container tbody td{border: none;}
+
+</style>
+{% endblock %}
+
+{% block main %}
+<div id="container" class="fullpage">
+    <div class="firstScreen section">
+        <div style="position:relative;margin-top: 10px;">
+            <div style="color: white;font-weight:700;font-size:24px;position: relative;margin-bottom: 10px;" class="clearfix">
+                <div class="searchbox">
+                    <button type="button" class="btn btn-primary btn-sm" style="vertical-align:top;">确定</button>
+                </div>
+            </div>
+            <div class="content" style="display: none;margin:5px 0 0 40px;">
+                <div class="content-1 conLeft" style="margin-top:20px;">
+                    <span class="ct-tit">预警时间：</span>
+                    <select id="select-1" class="selectLab">
+                        <option value="1">近一天</option>
+                        <option value="7" selected>近一周</option>
+                        <option value="30">近一个月</option>
+                        <option value="90">近三个月</option>
+                        <option value="365">近一年</option>
+                    </select>
+                </div>
+                <div class="content-2 conLeft">
+                    <span class="ct-tit">运营模式：</span>
+                    <select id="select-2" class="selectLab">
+                        <option value="0" >全部</option>
+                        <!-- <option value="P2P理财">P2P理财</option>
+                        <option value="投资项目">投资项目</option>
+                        <option value="游戏">游戏</option>
+                        <option value="任务奖励">任务奖励</option>
+                        <option value="股权私募基金">股权私募基金</option> -->
+                    </select>
+                </div>
+                <div class="content-3 conLeft">
+                    <span class="ct-tit">预警类型：</span>
+                    <select id="select-3" class="selectLab">
+                        <option value="0" selected>全部</option>
+                        <!-- <option value="舆情预警">舆情预警</option> -->
+                        <!-- 改为动态生成的 -->
+                        <!-- <option value="模型预警">模型预警</option>
+                        <option value="指标预警">指标预警</option> -->
+                    </select>
+                </div>
+                <div class="content-4 conLeft">
+                    <span class="ct-tit">相关问题：</span>
+                    <select id="select-5" class="selectLab">
+                        <option value="all" selected>全部</option>
+                        <!-- <option value="舆情预警">舆情预警</option> -->
+                        <!-- 改为动态生成的 -->
+                        <!-- <option value="模型预警">模型预警</option>
+                        <option value="指标预警">指标预警</option> -->
+                    </select>
+                </div>
+                <div class="content-4 conLeft">
+                    <span class="ct-tit">实体类型：</span>
+                    <select id="select-4" class="selectLab">
+                        <option value="0" selected>全部</option>
+                        <option value="1">平台</option>
+                        <option value="2">公司</option>
+                        <option value="3">项目</option>
+                    </select>
+                </div>
+                <div class="content-5 conLeft">
+                    <span style="display: inline-block;" class="ct-tit">预警分布：</span>
+                    <select id="city34" class="selectLab">
+                        <option value="all" selected>全部</option>
+                        <option value='北京'>北京</option>
+                        <option value='天津'>天津</option>
+                        <option value='安徽'>安徽</option>
+                        <option value='澳门'>澳门</option>
+                        <option value='福建'>福建</option>
+                        <option value='甘肃'>甘肃</option>
+                        <option value='广东'>广东</option>
+                        <option value='广西'>广西</option>
+                        <option value='贵州'>贵州</option>
+                        <option value='海南'>海南</option>
+                        <option value='河北'>河北</option>
+                        <option value='河南'>河南</option>
+                        <option value='黑龙江'>黑龙江</option>
+                        <option value='湖北'>湖北</option>
+                        <option value='湖南'>湖南</option>
+                        <option value='吉林'>吉林</option>
+                        <option value='江苏'>江苏</option>
+                        <option value='江西'>江西</option>
+                        <option value='辽宁'>辽宁</option>
+                        <option value='内蒙古'>内蒙古</option>
+                        <option value='青海'>青海</option>
+                        <option value='山东'>山东</option>
+                        <option value='山西'>山西</option>
+                        <option value='陕西'>陕西</option>
+                        <option value='上海'>上海</option>
+                        <option value='四川'>四川</option>
+                        <option value='台湾'>台湾</option>
+                        <option value='西藏'>西藏</option>
+                        <option value='香港'>香港</option>
+                        <option value='新疆'>新疆</option>
+                        <option value='云南'>云南</option>
+                        <option value='浙江'>浙江</option>
+                        <option value='重庆'>重庆</option>
+                        <option value='宁夏'>宁夏</option>
+                    </select>
+                </div>
+            </div>
+            <div class="recordingTable" style="font-size:16px!important;">
+                <div id="recordingTable">
+                    <center class="loading">正在加载中...</center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 模态框 -->
+<div class="modal fade" id="success" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">温馨提示</h4>
+            </div>
+            <div class="modal-body">
+                <p class="word" style="text-align: center;font-size: 18px;font-weight: 400;"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block my_js %}
+<!-- 操纵表格 -->
+<script type="text/javascript" src="/static/js/bigMainpulateData.js"></script>
+<script>
+    var keywords='{{keywords}}';
+    $('.searchContent').val(keywords);
+    $('.recordingTable .fixed-table-toolbar .search').val(keywords);
+</script>
+<script src="/static/js/stockResults.js"></script>
+{% endblock %}

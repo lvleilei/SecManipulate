@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <title>证券市场信息操纵洞察系统---预警详情</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/js/script.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/nav.css">
+    <link rel="stylesheet" href="/static/css/big1.css">
+    <style type="text/css">
+        #nav .nav_middle{display: block;}
+        #nav .nav_middle .main_li .list_three ,#nav .nav_middle .main_li .list_three i{color: #ffbf1d;}
+        #totalLine,#totalLine2 {
+            width:100%;
+            /* height:3.5rem; */
+            height:4.5rem;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <div id="nav">
+            <div style="width: 100%;height: 100%;padding:0 0.2rem;">
+                <div class="nav_left">
+                    <h2 style="color:rgb(108, 197, 255);font-size: 0.36rem;font-weight:900;">
+                        <img src="/static/images/logo.png" style="width:1.4rem;height:0.9rem;vertical-align: middle;">&nbsp;&nbsp;证券市场信息操纵洞察系统
+                    </h2>
+                </div>
+                <ul class="nav_middle">
+                     <li class="main_li">
+                        <a class="list_one li_a" href="/index/trend">
+                            <i class="fa fa-area-chart"></i>&nbsp;态势分析
+                        </a>
+                    </li>
+                    <li class="main_li">
+                        <a class="list_two li_a" href="/index/detect">
+                            <i class="fa fa-bullhorn"></i>&nbsp;预警推送
+                        </a>
+                    </li>
+                    <li class="main_li">
+                        <a class="list_three li_a" href="/index/stockDetail">
+                            <i class="fa fa-building"></i>&nbsp;预警详情
+                        </a>
+                    </li>
+                    <li class="main_li">
+                        <a class="list_four li_a" href="/index/maniPulate">
+                            <i class="fa fa-compass"></i>&nbsp;业务系统
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="showCon" style="width: 100%;overflow: hidden;">
+            <div class="showTwo" style="width: 200%;">
+                <div class="show1 showTT" style="width:50%;height:100%;float: left;">
+                    <div class="infor" style="padding: 0 0.2rem;overflow: hidden;">
+                        <div style="overflow: hidden;position: relative;height: 4rem;">
+                            <div class="infor-1">
+                                <h2 class="tit" style="margin-top:0.8rem;">基本信息</h2>
+                                <div class="inforList">
+                                    <p><i class="fa fa-address-card"></i>&nbsp;<span>公司名称：</span><b>南方风机股份有限公司</b></p>
+                                    <p><i class="fa fa-calendar-plus-o"></i>&nbsp;<span>成立时间：</span><b>1999年05月24日</b></p>
+                                    <p><i class="fa fa-random"></i>&nbsp;<span>所属行业：</span><b>制造业</b></p>
+                                    <p><i class="fa fa-jpy"></i>&nbsp;<span>注册资本：</span><b>5.09亿</b></p>
+                                    <p><i class="fa fa-user-circle-o"></i>&nbsp;<span>法人代表：</span><b>杨子善</b></p>
+                                </div>
+                            </div>
+                            <!-- <div class="infor-2" style="width: 4rem;position:absolute;left: 50%;margin-left: -2rem;"> -->
+                            <div class="infor-2" style="width: 4rem;position:absolute;left: 46%;margin-left: -2rem;">
+                                <h2 class="tit" style="text-align: center;">
+                                    <span class="t1">南风股份（300004）</span>
+                                </h2>
+                                <div id="radarBox"></div>
+                                <div class="tags" style="margin:0.2rem auto 0;">
+                                    <span class="t3 category">
+                                        <i class="fa fa-tags"></i>&nbsp;疑似信息操纵<b style="color:#ffeb3b">三级预警</b>：<b style="color:#ffeb3b;">99</b>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="infor-3">
+                                <h2 class="tit" style="margin-top:0.8rem;">预警理由</h2>
+                                <div class="inforList">
+                                    <p><i class="fa fa-linode"></i>&nbsp;<span>股权质押：</span><b>大股东股票质押率高达99.12%</b></p>
+                                    <p><i class="fa fa-bell"></i>&nbsp;<span>利好公告：</span><b>利好公告29条，披露延迟</b></p>
+                                    <p><i class="fa fa-area-chart"></i>&nbsp;<span>投资者异动：</span><b>新进股东3家，1家私募，2家牛散</b></p>
+                                    <p><i class="fa fa-exclamation-triangle"></i>&nbsp;<span>财报异常：</span><b>高投资低收益，变卖资产粉刷业绩</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="totalLine"></div>
+                </div>
+                <div class="show2 showTT" style="width:50%;height:100%;float:right;">
+                    <div class="infor" style="padding: 0 0.2rem;overflow: hidden;">
+                        <div style="overflow: hidden;position: relative;height: 4rem;">
+                            <div class="infor-1">
+                                <h2 class="tit" style="margin-top:0.8rem;">基本信息</h2>
+                                <div class="inforList">
+                                    <p><i class="fa fa-address-card"></i>&nbsp;<span>公司名称：</span><b>江苏宏达新材料股份有限公司</b></p>
+                                    <p><i class="fa fa-calendar-plus-o"></i>&nbsp;<span>成立时间：</span><b>1992年04月24日</b></p>
+                                    <p><i class="fa fa-random"></i>&nbsp;<span>所属行业：</span><b>制造业</b></p>
+                                    <p><i class="fa fa-jpy"></i>&nbsp;<span>注册资本：</span><b>4.32亿</b></p>
+                                    <p><i class="fa fa-user-circle-o"></i>&nbsp;<span>法人代表：</span><b>何百祥</b></p>
+                                </div>
+                            </div>
+                            <!-- <div class="infor-2" style="width: 4rem;position:absolute;left: 50%;margin-left: -2rem;"> -->
+                            <div class="infor-2" style="width: 4rem;position:absolute;left: 46%;margin-left: -2rem;">
+                                <h2 class="tit" style="text-align: center;">
+                                    <span class="t1">宏达新材（002211）</span>
+                                </h2>
+                                <div id="radarBox2"></div>
+                                <div class="tags" style="margin:0.2rem auto 0;">
+                                    <span class="t3 category">
+                                        <i class="fa fa-tags"></i>&nbsp;疑似信息操纵<b style="color:#ffeb3b">三级预警</b>：<b style="color:#ffeb3b;">99</b>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="infor-3">
+                                <h2 class="tit" style="margin-top:0.8rem;">预警理由</h2>
+                                <div class="inforList">
+                                    <p><i class="fa fa-linode"></i>&nbsp;<span>大宗交易：</span><b>大宗交易记录高达51条</b></p>
+                                    <p><i class="fa fa-area-chart"></i>&nbsp;<span>投资者异动：</span><b>新进股东9家，9家私募</b></p>
+                                    <p><i class="fa fa-warning"></i>&nbsp;<span>股东减持：</span><b>江苏伟伦投资管理有限公司减持数量2千万股</b></p>
+                                    <p><i class="fa fa-linode"></i>&nbsp;<span>股权质押：</span><b>大股东股票质押率高达27.37%</b></p>
+                                    <p><i class="fa fa-bell"></i>&nbsp;<span>利好公告：</span><b>利好公告4条，披露延迟</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="totalLine2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/static/js/bigData.js"></script>
+<script src="/static/js/bigThing.js"></script>
+<script src="/static/js/chalk.js"></script>
+<script>
+    $('#container').css({minHeight:$(window).height()-130});
+    $('#container #content').css({minHeight:$(window).height()});
+    $('#container .showTT').css({minHeight:$(window).height()});
+    $('#score').text(Math.round(Math.random()*800)+20);
+    var clickKey=0;
+    document.onkeydown = chang_page;
+    function chang_page() {
+        if (event.keyCode==37){//左键
+            if (clickKey==0){
+                $('.showTwo').animate({marginLeft:'-100%'});
+                clickKey=1;
+            }else {
+                $('.showTwo').animate({marginLeft:'0'});
+                clickKey=0;
+            }
+        }
+        if (event.keyCode==39){//右键
+            if (clickKey==0){
+                $('.showTwo').animate({marginLeft:'-100%'});
+                clickKey=1;
+            }else {
+                $('.showTwo').animate({marginLeft:'0'});
+                clickKey=0;
+            }
+        }
+    }
+    // 雷达图
+    var radarBox_chart = echarts.init(document.getElementById('radarBox'));
+    radarBox_chart.showLoading({
+        text: '加载中...',
+        color: '#fff',
+        textColor: '#fff',
+        maskColor: 'rgba(0,0,0,.1)',
+    });
+    var radarOption = {
+        backgroundColor: 'transparent',
+        title: {
+            // text: '基础雷达图'
+        },
+        tooltip: {
+            confine:true,
+        },
+        radar: {
+            radius:'77%',
+            splitNumber:2,
+            shape: 'circle',
+            splitLine: {
+                lineStyle: {
+                    type:'solid',
+                    color: [
+                        '#1894f5'
+                    ]
+                }
+            },
+            name: {
+                textStyle: {
+                    color: '#fff',
+                    fontSize:16
+                }
+            },
+            splitArea: {
+                areaStyle: {
+                    color: 'rgba(10, 101, 218, 0.3)',
+                    opacity: 1,
+                    shadowBlur: 45,
+                }
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#eee',
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: 'red',
+                    shadowColor:'red'
+                }
+            },
+            indicator: [
+                { name: '行情异动', max: 1},
+                { name: '大宗交易', max: 1},
+                { name: '股东减持', max: 1},
+                { name: '股权质押', max: 1},
+                { name: '市场消息', max: 1},
+                { name: '投资者\n异动', max: 1},
+                { name: '财报异常', max: 1},
+                { name: '利好公告', max: 1}
+            ]
+        },
+        series: [{
+            name: '南风股份（300004）',
+            type: 'radar',
+            areaStyle: {normal: {
+                color:'#1cbbf5'
+            }},
+            itemStyle:{
+                normal:{
+                    color:'#fff'
+                }
+            },
+            lineStyle:{
+                normal:{
+                    color:'#00c6ff',
+                    type:'solid',
+                }
+            },
+            data : [
+                {
+                    value :[0.75,0.5,0.25,0.95,0.9,0.9,0.9,0.95],
+                    name : ''
+                }
+            ]
+        }]
+    };
+    setTimeout(function(){
+        radarBox_chart.hideLoading();
+        radarBox_chart.setOption(radarOption);
+    },800)
+
+    // 底部柱状折线图====
+
+    // k线图
+    var upColor = '#fc97af';
+    var upBorderColor = '#fc97af';
+    var downColor = 'transparent';
+    var downBorderColor = '#87f7cf';
+
+    // 数据意义：开盘(open)，收盘(close)，最低(lowest)，最高(highest)
+
+    // bigData.js
+    // var data0 = splitData(bigData);
+    var data0 = splitData(bigData_new);
+
+    // 处理数据
+    function splitData(rawData) {
+        var categoryData = [];//x轴-- 时间
+        var values = []; //K线图 --
+
+        //var turnoverData = [];//收盘价 大盘指数 --折线图
+
+        var volumeData = [];//成交量 --柱状图
+
+        //var scatterData = [];//成交量 --柱状图
+
+        var m5Data = [];
+
+        for (var i = 0; i < rawData.length; i++) {
+            categoryData.push(rawData[i]['日期']);
+
+            // turnoverData.push({
+            //     value:rawData[i]['收盘价(元)']
+            //     // value:rawData[i]['上证指数']
+            // });//成交额
+
+            volumeData.push((rawData[i]['成交量(股)']/1000000).toFixed(2));//成交量
+
+            values.push([rawData[i]['开盘价(元)'],rawData[i]['收盘价(元)'],rawData[i]['最低价(元)'],rawData[i]['最高价(元)']]);
+
+            m5Data.push(Number(rawData[i]['M5']).toFixed(2))
+
+        }
+        return {
+            categoryData: categoryData,
+            values: values,
+            //turnover :turnoverData,
+            volume :volumeData,
+            //scatter:scatterData
+            m5Data : m5Data
+        };
+    }
+    var scatterData = [];
+    $.each(things,function (index,item) {
+        var color='';
+        if (item['事件类型']=='行情异动'){
+            color='#ee506e';
+        }else if (item['事件类型']=='大宗交易'){
+            color='#ed4aff';
+        }else if (item['事件类型']=='股东减持'){
+            color='#29a415';
+        }else if (item['事件类型']=='股权质押'){
+            color='#fff957';
+        }else if (item['事件类型']=='市场消息'){
+            color='#cd0020';
+        }else if (item['事件类型']=='牛散入场'||item['事件类型']=='私募入场'){
+            color='#ac4fcd';
+        }else if (item['事件类型']=='财报异动'){
+            color='#00ff0b';
+        }else if (item['事件类型']=='利好公告'){
+            color='#1cd8ff';
+        }else {
+            color='#0093e1';
+        }
+        scatterData.push(
+            {
+                value:[item['日期'],4000,item['事件类型'],item['事件简述']],
+                itemStyle:{
+                    normal:{
+                        color:color,
+                    },
+                    emphasis:{
+                        color:'#ffaa00',
+                    }
+
+                },
+            },
+        );//散点图 预警点
+    });
+
+    //工业机械指数
+    // var industyData=[];
+    // $.each(bigData,function (index,item) {
+    //     industyData.push(item['收盘价(元)']);
+    // });
+    //创业板指数
+    var gemData=[];
+    $.each(bigData2,function (index,item) {
+        gemData.push(item['收盘价(元)']);
+    });
+
+    // 预警区间小旗
+    var sectionData = [
+        {
+            value:['2017/1/20',4000,'上市公司伙同他人 -- 2017年1月20日 开始'],
+            symbol: 'image:///static/images/公共-红旗 (4).png',//小旗 矢量图
+            // itemStyle:{
+            //     normal:{
+            //         // color:'#fff',
+            //         color:'#ffee51',
+            //     },
+            //     emphasis:{
+            //         color:'#ffaa00',
+            //     }
+            // },
+        },
+        {
+            value:['2018/5/16',4000,'上市公司伙同他人 -- 2018年5月16日 结束'],
+            symbol: 'image:///static/images/公共-红旗 (4).png',//小旗 矢量图
+            // itemStyle:{
+            //     normal:{
+            //         color:'#ffee51',
+            //     },
+            //     emphasis:{
+            //         color:'#ffaa00',
+            //     }
+            // },
+        },
+        {
+            value:['2018/1/10',4000,'内幕交易 -- 2018年1月10日 开始'],
+            itemStyle:{
+                normal:{
+                    color:'#c1232b',
+                },
+                emphasis:{
+                    color:'#ffaa00',
+                }
+            },
+            symbol: 'image:///static/images/公共-红旗 (3).png',//小旗 矢量图
+
+        },
+        {
+            value:['2018/2/2',4000,'内幕交易 -- 2018年2月2日 结束'],
+            itemStyle:{
+                normal:{
+                    color:'#c1232b',
+                },
+                emphasis:{
+                    color:'#ffaa00',
+                }
+            },
+            symbol: 'image:///static/images/公共-红旗 (3).png',//小旗 矢量图
+        },
+    ]
+
+    // 折线图 预警点
+    //  图表配置
+    var line_chart = echarts.init(document.getElementById('totalLine'),'chalk');
+    line_chart.showLoading({
+        text: '加载中...',
+        color: '#fff',
+        textColor: '#fff',
+        maskColor: 'rgba(0,0,0,.1)',
+    });
+
+    var lineOption = {
+        backgroundColor: 'transparent',
+        tooltip: {
+            trigger: 'axis',//x轴 触发
+            // trigger: 'item',
+            axisPointer: {
+                type: 'cross',
+                crossStyle: {
+                    color: '#999',
+                }
+            }
+        },
+        legend: {
+            data:[
+                // '交易量','自身价格','MA5','大盘指数'],
+                {name:'交易量',
+
+                },
+                {name:'自身价格'},
+                {name:'交易量'},
+                {name:'MA5',
+                    // textStyle:{
+                    //     color:'#f7f494'
+                    // },
+                    // itemStyle:{
+                    //     color:'#f7f494'
+                    // }
+
+                },
+                {name:'大盘指数'},
+                {name:'创业板指数'},
+                {name:''},
+            ],
+            x:'10%',
+            y:'10'
+        },
+        axisPointer: {
+            link: {xAxisIndex: 'all'}
+        },
+        grid: [{
+            left: 70,
+            right: 50,
+            // height: '40%'
+            height: '50%'
+        }, {
+            left: 70,
+            right: 50,
+            top: '75%',
+            height: '18%'
+        }],
+        // 缩放
+        dataZoom: [
+            {
+                type: 'inside',
+                xAxisIndex: [0, 1],
+                start: 70,
+                end: 100,
+                // borderColor:"red",
+            },
+            {
+                show: true,
+                xAxisIndex: [0, 1],
+                type: 'slider',
+                top: 'bottom',
+                start: 70,
+                end: 100,
+                fillerColor:'rgba(66,66,66,0.57)',
+                // borderColor:"red",
+                // handleColor: 'red'//手柄颜色
+                textStyle:{
+                    color:'#fff'
+                }
+            }
+        ],
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                // data: day30
+                data: data0.categoryData,
+                axisLine:{
+                    onZero: true,
+                    lineStyle:{
+                        color:'#fff',
+
+                    }
+                },
+                axisPointer:{
+                    label:{
+                        backgroundColor:'#666666'
+                    }
+                },
+            },
+            {
+                gridIndex: 1,
+                type : 'category',
+                boundaryGap : false,
+                axisLine: {onZero: true},
+                // data: day30,
+                data: data0.categoryData,
+                position: 'bottom',
+                show:false,
+                axisLine:{
+                    lineStyle:{
+                        color:'#fff'
+                    }
+                },
+                axisPointer:{
+                    label:{
+                        backgroundColor:'#666666'
+                    }
+                },
+            },
+        ],
+        yAxis : [
+            {
+                name : '股价(元)',//k线图（上 左y轴）
+                type : 'value',
+                // max : 500
+                scale: true,
+                splitArea: {
+                    show: false
+                },
+                nameTextStyle:{
+                    color:'#fff',
+                    fontWeight:'700'
+                },
+                axisLine:{
+                    lineStyle:{
+                        color:'#fff'
+                    }
+                },
+                axisPointer:{
+                    label:{
+                        backgroundColor:'#666666'
+                    }
+                },
+
+                splitLine:{
+                    show:false,
+                    lineStyle:{
+                        color:'#ccc',
+                        opacity:.3
+                    }
+                }
+            },
+            {
+                name:'创业板',//折线图 （上 右y轴）
+                type: 'value',
+                scale: true,//只在数值轴中（type: 'value'）有效。是否是脱离 0 值比例。设置成 true 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。在设置 min 和 max 之后该配置项无效。
+                splitArea: {
+                    show: false
+                },
+                nameTextStyle:{
+                    color:'#fff',
+                    fontWeight:'700'
+                },
+                axisLine:{
+                    lineStyle:{
+                        color:'#fff'
+                    }
+                },
+                axisPointer:{
+                    label:{
+                        backgroundColor:'#666666'
+                    }
+                },
+                splitLine:{
+                    show:true,
+                    lineStyle:{
+                        color:'#ccc',
+                        opacity:.1
+                    }
+                }
+            },
+            {
+                gridIndex: 1,
+                name : '交易量(百万股)',//柱状图
+                type : 'value',
+                inverse: false,
+                // nameLocation: 'start',
+                nameLocation: 'end',
+                position:'left',
+                // nameRotate:90,
+                axisLabel:{
+                    // rotate:45
+                },
+                scale: true,
+                splitArea: {
+                    show: false
+                },
+                nameTextStyle:{
+                    color:'#fff',
+                    fontWeight:'700'
+                },
+                axisLine:{
+                    lineStyle:{
+                        color:'#fff'
+                    }
+                },
+                axisPointer:{
+                    label:{
+                        backgroundColor:'#666666'
+                    }
+                },
+            },
+            {
+                name:'预警点',//散点图 （上 右y轴）
+                show:false,
+                type: 'value',
+                scale: false,//只在数值轴中（type: 'value'）有效。是否是脱离 0 值比例。设置成 true 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。在设置 min 和 max 之后该配置项无效。
+                max:4000,
+                splitArea: {
+                    show: false
+                },
+                axisPointer:{
+                    label:{
+                        backgroundColor:'#666666'
+                    }
+                },
+                splitLine:{
+                    show:true,
+                    lineStyle:{
+                        color:'#ccc',
+                        opacity:.3
+                    }
+                }
+            },
+            // {
+            //     boundaryGap: [0, '50%'],
+            //     type: 'value',
+            //     name: '工业机械指数',
+            //     position: 'right',
+            //     offset: -70,
+            //     splitNumber: 10,
+            //     nameTextStyle:{
+            //         color:'#fff',
+            //         fontWeight:'700'
+            //     },
+            //     axisLine:{
+            //         lineStyle:{
+            //             color:'#fff'
+            //         }
+            //     },
+            //     axisPointer:{
+            //         label:{
+            //             backgroundColor:'#666666'
+            //         }
+            //     },
+            //     splitLine:{
+            //         show:true,
+            //         lineStyle:{
+            //             color:'#ccc',
+            //             opacity:.1
+            //         }
+            //     }
+            // },
+        ],
+        series: [
+            {
+                name:'交易量',//柱状图
+                type:'bar',
+                // data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+                // data:day30Data,
+                data: data0.volume,
+                xAxisIndex: 1,
+                yAxisIndex: 2,
+                // hoverAnimation: false,
+                // barWidth:10
+                itemStyle:{
+                    normal:{
+                        color:'#31aff1'
+                    }
+
+                }
+            },
+            {
+                name:'自身价格',//k线图
+                type:'candlestick',
+                // data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+                data: data0.values,
+                itemStyle: {
+                    normal: {
+                        color: upColor,
+                        color0: downColor,
+                        borderColor: upBorderColor,
+                        borderColor0: downBorderColor,
+                        borderWidth:2
+                    }
+                },
+            },
+            {
+                name: 'MA5',
+                type: 'line',
+                data: data0.m5Data,
+                smooth: true,
+                lineStyle: {
+                    normal: {
+                        opacity: 0.5
+                        // color:'#f7f494'
+                    }
+                }
+            },
+            // {
+            //     name:'大盘指数',//折线图
+            //     type:'line',
+            //     data: data0.turnover,//暂 用收盘价
+            //     yAxisIndex: 0,
+            //     symbol:'circle',//ECharts 提供的标记类型包括 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+            //     lineStyle: {
+            //         normal: {
+            //             // color: '#fff',
+            //             // color: '#e01f54',
+            //             width:1
+            //         }
+            //     },
+            // },
+            // {
+            //     name:'工业机械指数',//折线图
+            //     type:'line',
+            //     data: industyData,//暂 用收盘价
+            //     yAxisIndex: 1,
+            //     symbol:'circle',//ECharts 提供的标记类型包括 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+            //     lineStyle: {
+            //         normal: {
+            //             // color: '#fff',
+            //             // color: '#e01f54',
+            //             width:1
+            //         }
+            //     },
+            // },
+            {
+                name:'创业板指数',//折线图
+                type:'line',
+                data: gemData,//暂 用收盘价
+                yAxisIndex: 1,
+                symbol:'circle',//ECharts 提供的标记类型包括 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+                lineStyle: {
+                    normal: {
+                        // color: '#fff',
+                        // color: '#e01f54',
+                        width:1
+                    }
+                },
+            },
+            {
+                name:'预警点',//预警点
+                type: 'scatter',
+                yAxisIndex: 3,
+                // symbol: 'path://M853.333 682.667L739.556 398.222l113.777-284.444H227.556v-56.89h-56.89v853.334h-56.888v56.89h170.666v-56.89h-56.888V682.667h625.777z m-85.333-512l-91.022 227.555L768 625.778H227.556V170.667H768z',//小旗 矢量图
+                symbol: 'circle',
+                symbolSize:15,
+                // itemStyle:{
+                //     normal:{
+                //         color:'#ee506e',
+                //     },
+                //     emphasis:{
+                //         color:'#ffaa00',
+                //     }
+                //
+                // },
+                data: scatterData,
+                cursor: 'pointer',
+                hoverAnimation:true,
+                tooltip: {
+                    // show:false
+                    trigger: 'item',
+                    axisPointer: {
+                        type: 'cross',
+                        crossStyle: {
+                            color: '#999',
+                        }
+                    },
+                    // backgroundColor:'rgba(0,0,0,.5)',
+                    // backgroundColor:'#343d5f',
+                    backgroundColor:'#0e2c55',
+                    // backgroundColor:'rgba(52,61,92,.5)',
+                    borderColor:'rgba(52,61,92,.5)',
+                    borderWidth: 1,
+                    padding: 5,
+                    textStyle:{
+                        // fontSize: 16,
+                        fontSize: 18,
+                        color:'#fff',
+                        fontWeight:700
+                    },
+                    extraCssText: 'box-shadow: 0 0 3px rgba(52,61,92,.5);',
+                    formatter:function(params){
+                        var txt=params.value[3].replace(/(.{20})/g,'$1<br>');
+                        // return params.value[0]+' --- '+params.value[2]+'<br/>'+txt;
+                        return '【'+params.value[2]+'】'+ ' --- '+params.value[0]+'<br/>'+txt;
+                    }
+                }
+            },
+            {
+                name:'预警区间',//预警点
+                type: 'scatter',
+                yAxisIndex: 3,
+                // symbol: 'path://M853.333 682.667L739.556 398.222l113.777-284.444H227.556v-56.89h-56.89v853.334h-56.888v56.89h170.666v-56.89h-56.888V682.667h625.777z m-85.333-512l-91.022 227.555L768 625.778H227.556V170.667H768z',//小旗 矢量图
+                // symbol: 'image:///static/images/公共-红旗(1).png',//小旗 矢量图
+                symbolSize:25,
+                data: sectionData,
+                cursor: 'pointer',
+                hoverAnimation:true,
+                symbolOffset:[0,-10],
+                tooltip: {
+                    // show:false
+                    trigger: 'item',
+                    axisPointer: {
+                        type: 'cross',
+                        crossStyle: {
+                            color: '#999',
+                        }
+                    },
+                    backgroundColor:'#0e2c55',
+                    borderColor:'rgba(52,61,92,.5)',
+                    borderWidth: 1,
+                    padding: 5,
+                    textStyle:{
+                        // fontSize: 16,
+                        fontSize: 18,
+                        color:'#fff',
+                        fontWeight:700
+                    },
+                    extraCssText: 'box-shadow: 0 0 3px rgba(52,61,92,.5);',
+                    formatter:function(params){
+                        // console.log(params);
+                        // var txt=params.value[3].replace(/(.{20})/g,'$1<br>');
+                        var txt=params.value[2];
+
+                        // return '【'+params.value[2]+'】'+ ' --- '+params.value[0]+'<br/>'+txt;
+                        return txt;
+                    }
+                }
+            },
+        ]
+    };
+
+    setTimeout(function(){
+        line_chart.hideLoading();
+        line_chart.setOption(lineOption);
+    },800);
+</script>
+<script src="/static/js/details2.js"></script>
+</body>
+</html>
