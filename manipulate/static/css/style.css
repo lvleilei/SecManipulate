@@ -14,6 +14,9 @@ menu, nav, output, ruby, section, summary, time, mark, audio, video {
 html {
     line-height: 1;
 }
+body {
+    overflow:hidden;
+}
 input {
     outline: none;
 }

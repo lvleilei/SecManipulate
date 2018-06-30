@@ -1,6 +1,48 @@
 // 操纵详情 页 js
 
+<<<<<<< HEAD
+$(document).ready(function(){
+    console.log("document--ready------2-------");
+    console.log($('.half').height());
+})
+
+//下拉菜单
+    $(function(){
+        $(".selectBox .imitationSelect").on("click",function(){
+            $(this).parent().next().toggle();//ul弹窗展开
+            $(this).next().toggleClass("fa-caret-up")//点击input选择适合，小图标动态切换
+            if (event.stopPropagation) {
+                // 针对 Mozilla 和 Opera
+                event.stopPropagation();
+            }else if (window.event) {
+                // 针对 IE
+                window.event.cancelBubble = true;
+            }   /*阻止事件传播，事件从点击的元素出发，向外（window）传播，
+                            如果不写个阻止事件，会导致下面的document点击函数一起执行，导致显示失败*/
+
+        });
+        $(".selectUl li").click(function(event){
+            $(this).addClass("actived_li").siblings().removeClass("actived_li");//点击当前的添加。actived_li这个类；其他的移除这个类名
+            var oliName = $(this).attr("oliName");//定义一个name属性，获取点击的元素属性赋值到当前，方便动态化传值
+            var oliId = $(this).attr("oliId");//定义一个id属性，获取点击的元素属性赋值到当前，方便动态化传值
+            $(this).parent().prev().children().val(oliName); //把当前点击的name赋值到显示的input的val里面
+            $(this).parent().prev().children().attr("oliName",oliName);//把当前点击的oliName赋值到显示的input的oliName里面
+            $(this).parent().prev().children().attr("oliId",oliId);//把当前点击的oliId赋值到显示的input的oliId里面
+        });
+        $(document).click(function(event){
+            $(".inputCase .fa").removeClass("fa-caret-up").addClass("fa-caret-down")//当点隐藏ul弹窗时候，把小图标恢复原状
+            $(".selectUl").hide();//当点击空白处，隐藏ul弹窗
+        });
+
+    })
+
 stock = '南风股份';
+
+var pageSizeData = 10;
+if(screen.width<1920){
+    pageSizeData = 5;
+}
+
 // 基本信息
     var gongshang_url = '/maniPulate/manipulateReport/gongshang/?id=' + id;
     // public_ajax.call_request('get',gongshang_url,gongshang);
@@ -48,7 +90,6 @@ stock = '南风股份';
         }
     }
     gongshang(gongshangData);
-
 
 // 操纵详情   历史记录
     // var loadingHtml = '<center class="loading">正在加载中...</center>';
@@ -151,9 +192,10 @@ stock = '南风股份';
                             manipulate_state =  row.manipulate_state;
                         };
                         if(row.ifthis == 1){
-                            return '<span class="this-stock">'+manipulate_state+'</span>';
+                            return '<span class="theStock this-stock" title="'+manipulate_state+'">'+manipulate_state+'</span>';
                         }else {
-                            return manipulate_state;
+                            // return manipulate_state;
+                            return '<span class="theStock" title="'+manipulate_state+'">'+manipulate_state+'</span>';
                         }
                     }
                 },
@@ -172,9 +214,10 @@ stock = '南风股份';
                             date =  row.start_date + '~' + row.end_date;
                         };
                         if(row.ifthis == 1){
-                            return '<span class="this-stock">'+date+'</span>';
+                            return '<span class="theStock this-stock" title="'+date+'">'+date+'</span>';
                         }else {
-                            return date;
+                            // return date;
+                            return '<span class="theStock" title="'+date+'">'+date+'</span>';
                         }
                     }
 
@@ -194,12 +237,16 @@ stock = '南风股份';
                             manipulate_type =  row.manipulate_type;
                         };
                         if(row.ifthis == 1){
-                            return '<span class="this-stock">'+manipulate_type+'</span>';
+                            return '<span class="theStock this-stock" title="'+manipulate_type+'">'+manipulate_type+'</span>'
+                            +'<span class="this-stock" style="cursor:pointer;display:inline-block;margin-left:5px;" onclick="jumpFrame_1(\''+row.name+'\',\''+row.id+'\',\''+row.manipulate_type_num+'\')" title="查看详情"><i style="" class="fa fa-file-o"></i></span>';
                         }else {
-                            return manipulate_type;
+                            // return manipulate_type;
+                            return '<span class="theStock" title="'+manipulate_type+'">'+manipulate_type+'</span>'
+                            +'<span class="" style="cursor:pointer;display:inline-block;margin-left:5px;" onclick="jumpFrame_1(\''+row.name+'\',\''+row.id+'\',\''+row.manipulate_type_num+'\')" title="查看详情"><i style="" class="fa fa-file-o"></i></span>';
                         }
                     }
                 },
+              
                 {
                     title: "涨幅",//标题
                     field: "increase_ratio",//键名
@@ -285,7 +332,7 @@ stock = '南风股份';
                     data:data,
                     search: true,//是否搜索
                     pagination: true,//是否分页
-                    pageSize: 5,//单页记录数
+                    pageSize: pageSizeData,//单页记录数
                     pageList: [15,20,25],//分页步进值
                     sidePagination: "client",//服务端分页
                     searchAlign: "left",
@@ -3862,6 +3909,7 @@ stock = '南风股份';
     Trading(tradingData)
 
 
+>>>>>>> e89c800f0d9626800da195bccd0bfb6122a805be
 // 公告信息
     var announcement_url = '/maniPulate/manipulateReport/announcement/?id='+id;
     // public_ajax.call_request('get',announcement_url,table2);
@@ -5049,7 +5097,12 @@ stock = '南风股份';
             data:data,
             search: true,//是否搜索
             pagination: true,//是否分页
+<<<<<<< HEAD
+            // pageSize: 5,//单页记录数
+            pageSize: pageSizeData,//单页记录数
+=======
             pageSize: 5,//单页记录数
+>>>>>>> e89c800f0d9626800da195bccd0bfb6122a805be
             pageList: [15,20,25],//分页步进值
             sidePagination: "client",//服务端分页
             searchAlign: "left",
@@ -5386,7 +5439,13 @@ stock = '南风股份';
             data:data,
             search: true,//是否搜索
             pagination: true,//是否分页
+<<<<<<< HEAD
+            // pageSize: 5,//单页记录数
+            // pageSize: pageSizeData,//单页记录数
+            pageSize: 3,//单页记录数
+=======
             pageSize: 5,//单页记录数
+>>>>>>> e89c800f0d9626800da195bccd0bfb6122a805be
             pageList: [15,20,25],//分页步进值
             sidePagination: "client",//服务端分页
             searchAlign: "left",
@@ -5432,6 +5491,24 @@ stock = '南风股份';
                     }
                 },
                 {
+<<<<<<< HEAD
+                    title: "股东属性",//标题
+                    field: "ranking",//键名
+                    sortable: true,//是否可排序
+                    order: "desc",//默认排序方式
+                    align: "center",//水平
+                    valign: "middle",//垂直
+                    formatter: function (value, row, index) {
+                        if (row.ranking%2 == 0){
+                            return '个人';
+                        }else {
+                            return '投资者';
+                        };
+                    }
+                },
+                {
+=======
+>>>>>>> e89c800f0d9626800da195bccd0bfb6122a805be
                     title: "方向",//标题
                     field: "holder_hold_direction",//键名
                     sortable: true,//是否可排序
@@ -5542,7 +5619,12 @@ stock = '南风股份';
             data:data,
             search: true,//是否搜索
             pagination: true,//是否分页
+<<<<<<< HEAD
+            // pageSize: 5,//单页记录数
+            pageSize: pageSizeData,//单页记录数
+=======
             pageSize: 5,//单页记录数
+>>>>>>> e89c800f0d9626800da195bccd0bfb6122a805be
             pageList: [15,20,25],//分页步进值
             sidePagination: "client",//服务端分页
             searchAlign: "left",
@@ -5668,6 +5750,8 @@ stock = '南风股份';
     }
     table4(table4Data)
 
+<<<<<<< HEAD
+=======
 // 股权分析
     // var myChart_3 = echarts.init(document.getElementById('Stock_1'),'chalk');
     var myChart_3 = echarts.init(document.getElementById('Stock_1'));
@@ -6107,6 +6191,7 @@ stock = '南风股份';
     }
     holderspctline(holderspctlineData)
 
+>>>>>>> e89c800f0d9626800da195bccd0bfb6122a805be
 // 财报数据
     var profit_url = '/maniPulate/manipulateReport/profit?id=' + id;
     // public_ajax.call_request('get',profit_url,profit_table);
@@ -6395,7 +6480,11 @@ stock = '南风股份';
     // 只显示特定时间内
     var profit_tableData = [
         // {
+<<<<<<< HEAD
+        //     roe      net_profit_ratio  gross_profit_rate  net_profits
+=======
         //     roe      net_profit_ratio  gross_profit_rate  net_profits 
+>>>>>>> e89c800f0d9626800da195bccd0bfb6122a805be
         //     -0.57               -15.7                24.2                   -17.7767
 
         //     eps     business_income    bips
@@ -6459,7 +6548,12 @@ stock = '南风股份';
             data:data,
             search: true,//是否搜索
             pagination: true,//是否分页
+<<<<<<< HEAD
+            // pageSize: 5,//单页记录数
+            pageSize: pageSizeData,//单页记录数
+=======
             pageSize: 5,//单页记录数
+>>>>>>> e89c800f0d9626800da195bccd0bfb6122a805be
             pageList: [15,20,25],//分页步进值
             sidePagination: "client",//服务端分页
             searchAlign: "left",
@@ -6600,6 +6694,195 @@ stock = '南风股份';
     }
     profit_table(profit_tableData)
 
+<<<<<<< HEAD
+// 股权质押
+    // 只显示特定时间内
+    var stockRight_tableData = [
+        {"股东名称":"杨泽文","质押方":"中国银河证券","质押股数(万股)":"800.00","参考市值(万元)":"7,320.00","质押起始日期":"2018-05-08","质押截止日期":"2018-10-17",},
+        {"股东名称":"杨子善","质押方":"长城国瑞证券","质押股数(万股)":"914.00","参考市值(万元)":"9,514.74","质押起始日期":"2018-01-04","质押截止日期":"2018-12-30",},
+        {"股东名称":"仇云龙","质押方":"国泰君安证券","质押股数(万股)":"1,200.00","参考市值(万元)":"12,000.00","质押起始日期":"2017-11-29","质押截止日期":"2018-10-16",},
+        {"股东名称":"仇云龙","质押方":"国泰君安证券","质押股数(万股)":"800.00","参考市值(万元)":"8,000.00","质押起始日期":"2017-11-29","质押截止日期":"2018-11-29","解押日期":"2018-03-23"},
+        {"股东名称":"杨子善","质押方":"中国银河证券","质押股数(万股)":"74.00","参考市值(万元)":"737.04","质押起始日期":"2017-11-17","质押截止日期":"2017-12-22","解押日期":"2017-12-21"},
+        {"股东名称":"仇云龙","质押方":"国泰君安证券","质押股数(万股)":"3,150.00","参考市值(万元)":"35,784.00","质押起始日期":"2017-10-16","质押截止日期":"2018-10-16",},
+        {"股东名称":"杨子江","质押方":"中国银河证券","质押股数(万股)":"832.00","参考市值(万元)":"9,010.56","质押起始日期":"2017-07-26","质押截止日期":"2019-07-25",},
+        {"股东名称":"杨泽文","质押方":"中国银河证券","质押股数(万股)":"220.00","参考市值(万元)":"2,369.40","质押起始日期":"2017-07-18","质押截止日期":"2018-09-18",},
+        {"股东名称":"杨泽文","质押方":"中国银河证券","质押股数(万股)":"130.00","参考市值(万元)":"1,400.10","质押起始日期":"2017-07-18","质押截止日期":"2018-10-17",},
+        {"股东名称":"杨子善","质押方":"国泰君安证券","质押股数(万股)":"1,500.00","参考市值(万元)":"18,015.00","质押起始日期":"2017-06-29","质押截止日期":"2018-06-29",},
+        {"股东名称":"杨子善","质押方":"深圳市高新投集团","质押股数(万股)":"1,730.00","参考市值(万元)":"20,673.50","质押起始日期":"2017-06-27",},
+        {"股东名称":"杨子江","质押方":"中国银河证券","质押股数(万股)":"1,250.00","参考市值(万元)":"14,475.00","质押起始日期":"2017-05-24","质押截止日期":"2019-05-23",},
+        {"股东名称":"杨子善","质押方":"国泰君安证券","质押股数(万股)":"2,100.00","参考市值(万元)":"24,696.00","质押起始日期":"2017-05-18","质押截止日期":"2018-05-18",},
+    ]
+
+    function stockRight_table(data) {
+        $('#stockRight-content').bootstrapTable('load', data);
+        $('#stockRight-content').bootstrapTable({
+            data:data,
+            search: true,//是否搜索
+            pagination: true,//是否分页
+            // pageSize: 5,//单页记录数
+            pageSize: 3,//单页记录数
+            pageList: [15,20,25],//分页步进值
+            sidePagination: "client",//服务端分页
+            searchAlign: "left",
+            searchOnEnterKey: false,//回车搜索
+            showRefresh: false,//刷新按钮
+            showColumns: false,//列选择按钮
+            buttonsAlign: "right",//按钮对齐方式
+            locale: "zh-CN",//中文支持
+            detailView: false,
+            showToggle:false,
+            sortName:'bci',
+            sortOrder:"desc",
+            columns: [
+                {
+                    title: "股东名称",//标题
+                    field: "股东名称",//键名
+                    sortable: true,//是否可排序
+                    order: "desc",//默认排序方式
+                    align: "center",//水平
+                    valign: "middle",//垂直
+                    formatter: function (value, row, index) {
+                        // if (row.date=='null'||row.date=='unknown'){
+                        //     return '未知';
+                        // }else {
+                        //     return row.date;
+                        // };
+                        if(row['股东名称']=='null' || row['股东名称']=='unknown' || row['股东名称']==''){
+                            return '未知';
+                        }else {
+                            return row['股东名称'];
+                        };
+                    }
+                },
+                {
+                    title: "质押方",//标题
+                    field: "roe",//键名
+                    sortable: true,//是否可排序
+                    order: "desc",//默认排序方式
+                    align: "center",//水平
+                    valign: "middle",//垂直
+                    formatter: function (value, row, index) {
+                        // if (row.roe=='null'||row.roe=='unknown'){
+                        //     return '未知';
+                        // }else {
+                        //     return row.roe;
+                        // };
+                        if(row['质押方']=='null' || row['质押方']=='unknown' || row['质押方']==''){
+                            return '未知';
+                        }else {
+                            return row['质押方'];
+                        };
+                    }
+                },
+                {
+                    title: "质押股数(万股)",//标题
+                    field: "net_stockRight_ratio",//键名
+                    sortable: true,//是否可排序
+                    order: "desc",//默认排序方式
+                    align: "center",//水平
+                    valign: "middle",//垂直
+                    formatter: function (value, row, index) {
+                        // if (row.net_profit_ratio=='null'||row.net_profit_ratio=='unknown'){
+                        //     return '-';
+                        // }else {
+                        //     return row.net_profit_ratio;
+                        // };
+                        if(row['质押股数(万股)']=='null' || row['质押股数(万股)']=='unknown' || row['质押股数(万股)']==''){
+                            return '-';
+                        }else {
+                            return row['质押股数(万股)'];
+                        };
+                    }
+                },
+                {
+                    title: "参考市值(万元)",//标题
+                    field: "gross_profit_rate",//键名
+                    sortable: true,//是否可排序
+                    order: "desc",//默认排序方式
+                    align: "center",//水平
+                    valign: "middle",//垂直
+                    formatter: function (value, row, index) {
+                        // if (row.gross_profit_rate=='null'||row.gross_profit_rate=='unknown'){
+                        //     return '-';
+                        // }else {
+                        //     return row.gross_profit_rate;
+                        // };
+                        if(row['参考市值(万元)']=='null' || row['参考市值(万元)']=='unknown' || row['参考市值(万元)']==''){
+                            return '-';
+                        }else {
+                            return row['参考市值(万元)'];
+                        };
+                    }
+                },
+                {
+                    title: "质押起始日期",//标题
+                    field: "net_profits",//键名
+                    sortable: true,//是否可排序
+                    order: "desc",//默认排序方式
+                    align: "center",//水平
+                    valign: "middle",//垂直
+                    formatter: function (value, row, index) {
+                        // if (row.net_profits=='null'||row.net_profits=='unknown'){
+                        //     return '-';
+                        // }else {
+                        //     return row.net_profits;
+                        // };
+                        if(row['质押起始日期']=='null' || row['质押起始日期']=='unknown' || row['质押起始日期']==''){
+                            return '-';
+                        }else {
+                            return row['质押起始日期'];
+                        };
+                    }
+                },
+                {
+                    title: "质押截止日期",//标题
+                    field: "eps",//键名
+                    sortable: true,//是否可排序
+                    order: "desc",//默认排序方式
+                    align: "center",//水平
+                    valign: "middle",//垂直
+                    formatter: function (value, row, index) {
+                        // if (row.eps=='null'||row.eps=='unknown'){
+                        //     return '-';
+                        // }else {
+                        //     return row.eps;
+                        // };
+                        if(row['质押截止日期']=='null' || row['质押截止日期']=='unknown' || row['质押截止日期']==''){
+                            return '-';
+                        }else {
+                            return row['质押截止日期'];
+                        };
+                    }
+                },
+                {
+                    title: "解押日期",//标题
+                    field: "business_income",//键名
+                    sortable: true,//是否可排序
+                    order: "desc",//默认排序方式
+                    align: "center",//水平
+                    valign: "middle",//垂直
+                    formatter: function (value, row, index) {
+                        // if (row.business_income=='null'||row.business_income=='unknown'){
+                        //     return '-';
+                        // }else {
+                        //     return row.business_income;
+                        // };
+                        if(row['解押日期']=='null' || row['解押日期']=='unknown' || row['解押日期']==''){
+                            return '-';
+                        }else {
+                            return row['解押日期'];
+                        };
+                    }
+                },
+            ],
+        });
+
+        $('#stockRight-content center.loading').hide();
+    }
+    stockRight_table(stockRight_tableData)
+
+=======
+>>>>>>> e89c800f0d9626800da195bccd0bfb6122a805be
 // 历史信用
     var credit_url = '/maniPulate/manipulateReport/credit/?id='+id;
     // public_ajax.call_request('get',credit_url,creditHistory);
@@ -6627,7 +6910,12 @@ stock = '南风股份';
             data:data,
             search: true,//是否搜索
             pagination: true,//是否分页
+<<<<<<< HEAD
+            // pageSize: 5,//单页记录数
+            pageSize: pageSizeData,//单页记录数
+=======
             pageSize: 5,//单页记录数
+>>>>>>> e89c800f0d9626800da195bccd0bfb6122a805be
             pageList: [15,20,25],//分页步进值
             sidePagination: "client",//服务端分页
             searchAlign: "left",

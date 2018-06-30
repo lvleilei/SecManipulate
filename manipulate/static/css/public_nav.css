@@ -25,53 +25,43 @@ body {
 }
 /*内容样式*/
 #nav {
-    position: fixed;
-    z-index: 9999999;
+    /*position: fixed;
+    z-index: 9999999;*/
     width: 100%;
-    padding: 0.2rem;
     color: #fff;
-    top:0;
-    /* overflow: hidden; */
-    /*background: rgba(8,23,44,0.25);*/
-    /*border-bottom: 1px solid rgba(255,255,255,0.1);*/
+    /*top:0;*/
+     overflow: hidden;
+    background:url('/static/images/top_bg.jpg') no-repeat;
+    background-size: 100% 100%;
 }
 #container {
     position: relative;
     z-index: 999;
     width: 100%;
-    background: url("../images/bodyPic.png") no-repeat rgba(19, 18, 18, 0.67);
-    background-size:cover;
+    /*background: url("../images/bodyPic.png") no-repeat rgba(19, 18, 18, 0.67);
+    background-size:cover;*/
 }
 #nav .nav_left {
     margin:0 auto;
+    padding: 0.15rem 0;
 }
 #nav .nav_left {
     float: left;
-}
-#nav .nav_middle {
-    float: right;
- }
-#nav .nav_middle .main_li .line {
-    position: relative;
-    left: -100%;
-    top: 0.05rem;
-    height: 0.02rem;
-    background-color:#ffbf1d;
-    transition: all linear 0.2s;
-    /* margin-left:0.35rem; */
 }
 /**/
 #nav .nav_left h3 {
     font-size: 0.3rem;
 }
 /*---------*/
-#nav .nav_middle {
+#nav .nav_bg {
     /*width: 55%;*/
     /* margin: 0.15rem 0 0 0.1rem; */
-    margin: 0.1rem 0.5rem 0 0.1rem;
-}
-#nav .nav_middle,#nav .nav_right {
-    display: none;
+    /* background:url('/static/images/nav_bg.jpg') repeat-x center top; */
+    background-size: 100% 100%;
+    height: 0.48rem; line-height: 0.48rem; margin:0; position: relative; z-index: 99999;}
+#nav .nav_middle {
+    /* width: 1200px; */
+    margin:0 auto;
 }
 #nav .nav_middle .main_li {
     float: left;
@@ -80,53 +70,55 @@ body {
     margin-left:0.65rem;
     overflow: hidden;
     padding-bottom: 0.1rem;
-
     /* height:0.34rem; */
     line-height: 1em;
 }
+#nav .nav_middle .main_li {margin: 0;padding: 0 0px;float: left;width: auto;height:0.48rem;line-height:0.48rem;text-align: center;font-size:.14rem;}
 #nav .nav_middle .main_li .li_a {
+    padding:0 .45rem;
+    font-size: .22rem;
     color: white;
     cursor: pointer;
     /* margin-left:0.35rem; */
 }
-#nav .nav_middle .main_li:hover a,
-#nav .nav_middle .main_li:hover i {
-    /*color: #fae703;*/
+#nav .nav_middle .main_li .li_a:hover{
+    /*color:#FF6600;*/
     color: #ffbf1d;
-    /*font-weight: 800;*/
+    font-weight: 600;
 }
-/**/
+#nav .nav_middle .main_li:nth-child(1) .li_a,
+#nav .nav_middle .main_li:nth-child(2) .li_a,
+#nav .nav_middle .main_li:nth-child(3) .li_a  {
+    border-right: 1px solid #fff;
+}
+/*#nav .nav_middle .main_li:hover a,
+#nav .nav_middle .main_li:hover i {*/
+    /*color: #fae703;*/
+    /*color: #ffbf1d;*/
+    /*font-weight: 800;*/
+/*}*/
 #nav .nav_right {
     float: right;
-    margin-top: 0.1rem;
+    margin-top: 0.2rem;
 }
 #nav .nav_right span {
     display: inline-block;
     color: white;
-    padding: 0.05rem 0.1rem;
-    font-size: 0.14rem;
-    border: 0.01rem solid seashell;
+    padding:0.05rem;
+    /*font-size: 0.14rem;*/
+   /* border: 0.01rem solid seashell;
     border-radius: 0.05rem;
-    margin-right: 0.1rem;
+    margin-right: 0.1rem;*/
     cursor: pointer;
 }
 #nav .nav_right span:hover {
-    background: white;
-    color: black;
+    color:#f49a42;
 }
-#nav .nav_right span a{
-    color:#fff;
-}
-#nav .nav_right span a:hover{
-    color: black;
-}
-#nav .nav_right span:hover {
-    background: white;
-    color: black;
-}
-#nav .nav_right span:hover a{
-    color: black;
-}
+
+#nav .nav_right .r-2 {width:2.64rem;height:.3rem;background-color:#e3e8f3;border:none;border-radius:.2rem;}
+#nav .nav_right .r-2 input {position:relative;color:#4d64b5;width:75%;height:.3rem;line-height:.3rem;
+    background:none;border:none;padding:0px;margin:0px .15rem;outline:none;text-align: center;}
+
 /**/
 #fullPage-nav span, .fullPage-slidesNav span {
     width: 0.15rem;
@@ -226,15 +218,15 @@ body {
 }
 
 center {
-    font-size: 16px;
+    font-size: .16rem;
 }
 center.load {
     color:#fff;
-    margin-top:30px;
+    margin-top:.3rem;
 }
 
 .modal-dialog{
-    top:100px;
+    top:1rem;
 }
 .page-list {
     display:none !important;
