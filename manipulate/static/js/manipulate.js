@@ -121,7 +121,7 @@
                         if (row.status==''||row.status=='null' || row.status==null ||row.status=='unknown'||!row.status){
                             return '未知';
                         }else {
-                            return row.status;
+                            return row.status.replace(/'操纵'/g,'');
                         };
                     }
                 },
@@ -235,7 +235,7 @@
                     }
                 },
                 {
-                    title: "核验结果",//标题
+                    title: "是否处理",//标题
                     field: "ifpunish",//键名
                     sortable: true,//是否可排序
                     order: "desc",//默认排序方式
