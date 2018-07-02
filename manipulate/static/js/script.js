@@ -1,7 +1,7 @@
 !function() {
     var html = document.documentElement;
     var setFontSize = function() {
-        var width = html.offsetWidth;
+        var width = window.screen.width;
         html.style.fontSize = width / 19.2+ 'px';
     };
     var timer;
@@ -19,3 +19,4 @@ setTimeout(function () {
         window.open('/index/cover/');
     });
 },3000);
+
