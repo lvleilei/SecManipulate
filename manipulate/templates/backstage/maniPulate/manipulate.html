@@ -106,25 +106,33 @@
         #recordingTable thead th:nth-of-type(7) {
             width:6%;
         }
+        /**/
     </style>
 {% endblock %}
 
 {% block main %}
     <div id="container" class="fullpage">
-        <div style="width: 100%;overflow: hidden;text-align: center;background: #7083c2;padding: 10px;">
-            <!--<div class="menuList" style="float: left;">-->
-                <!--<ul class="list" style="display:inline-block;">-->
-                    <!--<li class="level" data-table="level3"><a href="###"><img src="/static/images/j11.png">&nbsp;<span>三级可疑股票池</span></a></li>-->
-                    <!--<li class="level" data-table="level2" style="margin: 0 120px;"><a href="###"><img src="/static/images/j2.png">&nbsp;<span>二级可疑股票池</span></a></li>-->
-                    <!--<li class="level" data-table="level1"><a href="###"><img src="/static/images/j3.png">&nbsp;<span>一级可疑股票池</span></a></li>-->
-                <!--</ul>-->
+        <div style="width:100%;overflow: hidden;text-align: center;background: #7083c2;padding: 10px;">
+            <!--<div style="width:200px; margin:0 auto; box-sizing:border-box;display:inline-block;">-->
+                <!--<div class="funnyNewsTicker fnt-radius fnt-shadow fnt-easing" id="funnyNewsTicker1">-->
+                    <!--<ul>-->
+                        <!--<li>-->
+                            <!--<div class="fnt-content" data-link="###"><a href="###"><img src="/static/images/j3.png">&nbsp;<span>三级可疑股票池</span></a></div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<div class="fnt-content" data-link="###"><a href="###"><img src="/static/images/j2.png">&nbsp;<span>二级可疑股票池</span></a></div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<div class="fnt-content" data-link="###"><a href="###"><img src="/static/images/j11.png">&nbsp;<span>一级可疑股票池</span></a></div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
             <!--</div>-->
             <div class="menuList" style="display:inline-block;margin-right: 80px;">
                 <ul class="list" style="display:inline-block;">
-                    <li class="level l2" data-table="level2"><a href="###"><img src="/static/images/j2.png">&nbsp;<span>二级</span></a></li>
-                    <li class="level l1" data-table="level1"><a href="###"><img src="/static/images/j3.png">&nbsp;<span>一级</span></a></li>
-                    <li class="level l3" data-table="level3"><a href="###"><img src="/static/images/j11.png">&nbsp;<span>三级可疑股票池</span></a></li>
-
+                    <li class="level l1" data-table="level1"><a href="###"><img src="/static/images/j11.png">&nbsp;<span>一级可疑股票池</span></a></li>
+                    <li class="level l2" data-table="level2"><a href="###"><img src="/static/images/j2.png">&nbsp;<span>二级可疑股票池</span></a></li>
+                    <li class="level l3" data-table="level3"><a href="###"><img src="/static/images/j3.png">&nbsp;<span>三级可疑股票池</span></a></li>
                 </ul>
             </div>
             <div style="padding:8px;display:inline-block;vertical-align: text-bottom;">
@@ -142,9 +150,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div style="width: 100%;padding: 0.2rem;background:#d4d9e0;text-align: center;"> -->
         <div class="firstScreen section">
-            <!-- 一级可疑股票池 -->
             <div style="position:relative;margin-top: 10px;">
                 <div style="color: white;font-weight:700;font-size:24px;position: relative;margin-bottom: 10px;" class="clearfix">
                     <div class="searchbox">
@@ -219,9 +225,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
     <!-- 模态框 -->
     <!-- 是否谣言 提示框 -->
     <div class="modal fade" id="success" tabindex="-1" role="dialog">
@@ -248,24 +252,24 @@
 
 {% block my_js %}
 <!-- 操纵表格 -->
+<!--<script type="text/javascript" src="/static/js/jsMove/move.js"></script>-->
 <script src="/static/js/count.js" ></script>
 <script type="text/javascript" src="/static/js/bigMainpulateData.js"></script>
 <script>
     function numList(m1,m2,m3){
         $(".n1").numberRock({
-            speed:14,//数字越大数字滚动速度越慢
+            speed:40,//数字越大数字滚动速度越慢
             count:m1//最终停留数字
         });
         $(".n2").numberRock({
-            speed:14,//数字越大数字滚动速度越慢
+            speed:40,//数字越大数字滚动速度越慢
             count:m2//最终停留数字
         });
         $(".n3").numberRock({
-            speed:14,//数字越大数字滚动速度越慢
+            speed:40,//数字越大数字滚动速度越慢
             count:m3//最终停留数字
         });
     };
-
     $('.level').on('click',function () {
         $('.content').hide();
         $('.onePLUS').find('i').removeClass('fa-minus');//切换图标
@@ -274,29 +278,39 @@
         $('#recordingTable center.loading').show();
         var c='';
         if (table=='level3'){
-            c='rgb(36, 200, 237)';
+            c='rgb(236, 126, 113)';
             warningNumber_url='/backstage_detect/thirdlevelnum/';
             earlyWarning_url='/backstage_detect/thirdleveltable/';
+            $('.l1').css({top:'-5px',transform: 'scale(0.6)',zIndex:5});
+            $('.l2').css({top:'15px',transform: 'scale(0.8)',zIndex:5});
+            $('.l3').css({top:'40px',transform: 'scale(1)',zIndex:10});
         } else if(table=='level2'){
             c='rgb(88, 181, 86)';
             warningNumber_url='/backstage_detect/secondlevelnum/';
             earlyWarning_url='/backstage_detect/secondleveltable/';
+            $('.l1').css({top:'0',transform: 'scale(0.8)',zIndex:5});
+            $('.l2').css({top:'26px',transform: 'scale(1)',zIndex:10});
+            $('.l3').css({top:'47px',transform: 'scale(0.8)',zIndex:5});
         }else {
-            c='rgb(236, 126, 113)';
+            c='rgb(36, 200, 237)';
             warningNumber_url='/backstage_detect/firstlevelnum/';
             earlyWarning_url='/backstage_detect/firstleveltable/';
+            $('.l1').css({top:'5px',transform: 'scale(1)',zIndex:10});
+            $('.l2').css({top:'29px',transform: 'scale(0.8)',zIndex:5});
+            $('.l3').css({top:'50px',transform: 'scale(0.6)',zIndex:5});
         }
         public_ajax.call_request('get',warningNumber_url,warningNumber);//预警数
         public_ajax.call_request('get',earlyWarning_url,earlyWarning);//预警表格
         // $(this).find('a').css({color:c,background:'url(/static/images/zwzlink_bg2.png) no-repeat',backgroundSize:'100% 100%'});
-        $(this).find('a').css({color:c,background:'url(/static/images/zwzlink_bg3.png) no-repeat',backgroundSize:'100% 100%'});
-        var txt=$(this).find('span').text().replace(/可疑股票池/g,'');
-        $(this).find('span').text(txt+'可疑股票池');
+        // $(this).find('a').css({color:c,background:'url(/static/images/zwzlink_bg3.png) no-repeat',backgroundSize:'100% 100%'});
+        $(this).find('a').css({color:c,background:'#203b9d',backgroundSize:'100% 100%'});
+        // var txt=$(this).find('span').text().replace(/可疑股票池/g,'');
+        // $(this).find('span').text(txt+'可疑股票池');
 
         $(this).siblings('li').find('a').css({color:'#fff',background:'linear-gradient(to right, #4861b3 0%, #2e48a5 100%)'});
-        var Ospan=$(this).siblings('li').find('span');
-        for(var a=0;a<Ospan.length;a++){$(Ospan[a]).text($(Ospan[a]).text().replace(/可疑股票池/g,''));}
-        $('.menuList .list').append($(this).eq(0));
+        // var Ospan=$(this).siblings('li').find('span');
+        // for(var a=0;a<Ospan.length;a++){$(Ospan[a]).text($(Ospan[a]).text().replace(/可疑股票池/g,''));}
+        //$('.menuList .list').append($(this).eq(0));
         // $(this).siblings('li').find('a').css({color:'#fff',background:'linear-gradient(to right, #99a3c5 0%, #27325d 100%)'});
     });
     var a=0;
@@ -310,4 +324,9 @@
     });
 </script>
 <script src="/static/js/manipulate.js"></script>
+<!--<script src="http://www.jq22.com/jquery/jquery-migrate-1.2.1.min.js"></script>-->
+<!--<script type="text/javascript" src="/static/js/jsMove/jquery.corner.js"></script>-->
+<!--<script type="text/javascript" src="/static/js/jsMove/jquery.roundabout.js"></script>-->
+<!--<script type="text/javascript" src="/static/js/jsMove/jquery.roundabout-shapes.js"></script>-->
+<!--<script type="text/javascript" src="/static/js/jsMove/index.js"></script>-->
 {% endblock %}
