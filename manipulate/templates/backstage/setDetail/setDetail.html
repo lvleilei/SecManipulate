@@ -238,6 +238,7 @@
         .bootstrap-table .table thead{background: #7083c2;color: white;}
         .main_content {
             background-color:#f1f1f1;
+            overflow:auto;
         }
         .table-hover>tbody>tr:hover {
             background-color: #4c4c4c;
@@ -247,11 +248,12 @@
         .sharesHalf {
             width:33%;
         }
-        /*  */
-        div.fishBone,
+        /* 上下结构 下方div */
+        /* div.fishBone, */
         div#trading,
         div#Shareholding ,
-        div#stockBot {
+        div#stockBot ,
+        div.bottomBox{
             position: relative;
             top: 1%;
             z-index:0;
@@ -417,8 +419,8 @@
 
         <!-- 基本信息 -->
         <div id="card" class=" conBox" style="height:auto;height:88%;">
-            <div class="infor clearfix main_content" style="padding:0.2rem;height:56%;">
-                <h3 style="margin-top:0;">
+            <div class="infor clearfix main_content" style="padding:0.2rem;height:56%;overflow:hidden;">
+                <h3 style="margin-top:0;display:block;">
                     <b class="stock-name"></b>&nbsp;
                     <!-- <i class="icon icon-edit comBisic" title="编辑" id="card-edit"></i> -->
                     <!-- <span class="nameStatus" style="font-size: 12px;color: #ff761f;">正在监测</span> -->
@@ -481,7 +483,7 @@
                     </div>
                 </div>
                 <!-- 操纵详情 -->
-                <div class="pull-left" style="width:0%;" style="display:none;"> <!-- 暂隐藏 改为标题后下拉框 -->
+                <div class="pull-left" style="width:0%;display:none;"> <!-- 暂隐藏 改为标题后下拉框 -->
 
                     <!-- <div id="Manipulating_details" style="margin:5px 0"> -->
                     <div id="Manipulating_details" style="margin:0">
@@ -529,7 +531,7 @@
             </div>
 
             <!-- 鱼骨图 -->
-            <div class="fishBone main_content" id="spread-pie-3" style="padding:0 0.2rem;height:42%;margin-bottom:0;">
+            <div class="fishBone main_content bottomBox" id="spread-pie-3" style="padding:0 0.2rem;height:42%;margin-bottom:0;">
                 <center>正在努力加载中...</center>
             </div>
         </div>
@@ -560,17 +562,25 @@
 
             <!-- 交易分析 大宗交易-->
             <div id="Transaction_analysis" class=" conBox">
-                <div class="main_content" style="height:98%;">
-                    <h3><i class="fa fa-random"></i>&nbsp;交易分析</h3>
-
-                    <div class="anaDown">
-                        <!-- <b>万科大宗交易</b> -->
+                <div class="main_content" style="height:50%;">
+                    <!-- <h3><i class="fa fa-random"></i>&nbsp;交易分析</h3> -->
+                    <h3><i class="fa fa-random"></i>&nbsp;<span class="stock-name"></span>大宗交易</h3>
+                    <p class="littleTagg">操纵期内大宗交易<span id="">16</span>笔</p>
+                    <!-- <div class="anaDown">
                         <b class="stock-name"></b><b>大宗交易</b>
-                    </div>
+                    </div> -->
                     <div class="Transaction-2">
                         <div id="Transaction-2">
                             <center class="loading">正在加载中...</center>
                         </div>
+                    </div>
+                </div>
+                <div class="main_content bottomBox" style="height:48%;">
+                    <div id="Transaction_lef" class="half" style="margin-right:2%;">
+
+                    </div>
+                    <div id="Transaction_rig" class="half" style="">
+
                     </div>
                 </div>
             </div>
@@ -594,12 +604,21 @@
 
             <!-- 股东减持 -->
             <div id="shareHolders" class="conBox">
-                <div class="main_content" style="height:98%;">
+                <div class="main_content" style="height:50%;">
                     <h3><i class="fa fa-caret-square-o-down"></i>&nbsp;股东减持</h3>
+                    <p class="littleTagg">操纵期内大股东减持<span id="">17</span>笔</p>
                     <div class="shareHolders-content">
                         <div id="shareHolders-content">
                             <center class="loading">正在加载中...</center>
                         </div>
+                    </div>
+                </div>
+                <div class="main_content bottomBox" style="height:48%;">
+                    <div id="shareHol_lef" class="half" style="margin-right:2%;">
+
+                    </div>
+                    <div id="shareHol_rig" class="half" style="">
+
                     </div>
                 </div>
             </div>
@@ -608,7 +627,8 @@
             <div id="stockRight" class="conBox">
                 <div class="main_content" style="height:48%;">
                     <h3><i class="fa fa-shopping-bag"></i>&nbsp;股权质押</h3>
-                    <p class="littleTagg">大股东未解押交易总质押股数占持股比例<span id="">199.12%</span></p>
+                    <!-- <p class="littleTagg">大股东未解押交易总质押股数占持股比例<span id="">199.12%</span></p> -->
+                    <p class="littleTagg">大股东质押率高达<span id="">99.12%</span>。</p>
                     <div class="stockRight-content">
                         <div id="stockRight-content">
                             <center class="loading">正在加载中...</center>
@@ -627,12 +647,43 @@
 
             <!-- 公告信息 -->
             <div id="Bulletin_information" class=" conBox" style="">
-                <div class="main_content" style="height:98%;">
-                    <h3><i class="fa fa-comments-o"></i>&nbsp;公告信息</h3>
-                    <div class="Bulletin_content">
-                        <div id="Bulletin_content">
-                            <center class="loading">正在加载中...</center>
+                <div class="main_content" style="height:50%;">
+                    <h3><i class="fa fa-commenting-o"></i>&nbsp;公告信息</h3>
+                    <p class="littleTagg">操纵期内利好公告<span id="">27</span>条。</p>
+                    <div>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-comments-o"></i>&nbsp;所有公告</a></li>
+                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-comments"></i>&nbsp;利好公告</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <!-- <h3><i class="fa fa-comments-o"></i>&nbsp;公告信息</h3> -->
+                                <div class="Bulletin_content">
+                                    <div id="Bulletin_content">
+                                        <center class="loading">正在加载中...</center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile">
+                                <div class="Bulletin_profile">
+                                    <div id="Bulletin_profile">
+                                        <center class="loading">正在加载中...</center>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+
+                </div>
+                <div class="main_content bottomBox" style="height:48%;">
+                    <div id="Bulletin_left" class="half" style="margin-right:2%;">
+
+                    </div>
+                    <div id="Bulletin_right" class="half" style="">
+
                     </div>
                 </div>
 
@@ -664,33 +715,62 @@
 
             </div>
 
-            <!-- 投资者异动 -->
+            <!-- 股东明细 投资者异动 -->
             <div id="boxStock" class="conBox">
+
                 <!-- 股权分析 前十大股东 -->
-                <div id="Stock" class="main_content clearfix " style="margin:5px 0;height:48%;margin:0;">
-                    <div class="clearfix">
-                        <h3 style="float:left;"><i class="fa fa-list-alt"></i>&nbsp;前十大股东</h3>
+                <div id="Stock" class="main_content clearfix " style="margin:5px 0;height:50%;margin:0;">
+                    <!-- <div class="clearfix"> -->
+                        <h3 style=""><i class="fa fa-list-alt"></i>&nbsp;股东明细</h3>
+                        <p class="littleTagg">操纵期内新进股东<span id="">3</span>家，私募<span id="">1</span>家，牛散<span id="">2</span>家，</p>
+                    <!-- </div> -->
 
-                        <div class="" style="float:right;">
-                            <!-- <b>万科前十大股东</b> -->
-                            <!-- <b class="stock-name">万科</b><b>前十大股东</b> -->
-                            <select class="_time2">
-                                <!-- <option value="1">2017年第一季度</option>
-                                <option value="2">2017年第二季度</option>
-                                <option value="3">2017年第三季度</option> -->
-                            </select>
+                    <div>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#home_Ten_major" aria-controls="home_Ten_major" role="tab" data-toggle="tab" id="tabLL_1">十大股东</a></li>
+                            <li role="presentation"><a href="#profile_Ten_major" aria-controls="profile_Ten_major" role="tab" data-toggle="tab" id="tabLL_2">十大流通股东</a></li>
+
+                            <div class="clearfix">
+                                <!-- <h3 style="float:left;"><i class="fa fa-list-alt"></i>&nbsp;前十大股东</h3> -->
+
+                                <div class="" style="float:right;">
+                                    <!-- <b>万科前十大股东</b> -->
+                                    <!-- <b class="stock-name">万科</b><b>前十大股东</b> -->
+                                    <select class="_time2">
+                                        <!-- <option value="1">2017年第一季度</option>
+                                        <option value="2">2017年第二季度</option>
+                                        <option value="3">2017年第三季度</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home_Ten_major">
+
+
+                                <div class="Transaction-1">
+                                    <div id="Transaction-1">
+                                        <center class="loading">正在加载中...</center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile_Ten_major">
+                                <div class="Transaction-circulation">
+                                    <div id="Transaction-circulation">
+                                        <center class="loading">正在加载中...</center>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="Transaction-1">
-                        <div id="Transaction-1">
-                            <center class="loading">正在加载中...</center>
-                        </div>
-                    </div>
+
                 </div>
 
                 <!-- 股权结构 -->
-                <div id="Shareholding" class="main_content clearfix " style="margin:5px 0;height:50%;margin:0;">
+                <div id="Shareholding" class="main_content clearfix " style="margin:5px 0;height:48%;margin:0;">
                     <h3 class="pull-left"><i class="fa fa-sitemap"></i>&nbsp;股权结构</h3>
                     <div class="pull-right clearfix">
                         <select class="shareholding_time">
@@ -698,7 +778,7 @@
                         </select>
                     </div>
 
-                    <div class="clearfix pull-left" style="width:100%;height:93%;">
+                    <div class="clearfix pull-left" style="width:100%;height:91%;">
                         <div id="Stock_1" class="sharesHalf half" style="">
 
                         </div>
@@ -763,7 +843,7 @@
         $('#title-1').text('南方风机股份有限公司');
         stock = unescape(stock);
         // $('b.stock-name').text(stock)
-        $('b.stock-name').text('南方风机股份有限公司')
+        $('.stock-name').text('南方风机股份有限公司')
         var id = '{{id}}';
 
         var manipulate_type_num = '{{manipulate_type_num}}';
@@ -1232,9 +1312,9 @@
                 // 'margin':'5px 0'
             });
 
-            // 行情异动 echarts div高度不为0
+            // 行情异动 行情信息 echarts div高度不为0
             if($('#boxPrice').height()>0){
-                console.log("行情异动");
+                console.log("行情信息");
                 // 价格与收益率
                     var myChart_1 = echarts.init(document.getElementById('Price_1'));
                     myChart_1.showLoading();
@@ -4833,35 +4913,88 @@
                     Trading(tradingData)
             }
 
-            // 股权质押
-            if($('#stockRight').height()>0){
-                // 左侧柱状图
-                var myChart_stockBot_lef = echarts.init(document.getElementById('stockBot_lef'));
-                myChart_stockBot_lef.showLoading();
+            // 大宗交易
+            if($('#Transaction_analysis').height()>0){
+                // 左侧 折线 图
+                var myChart_Transaction_lef = echarts.init(document.getElementById('Transaction_lef'));
+                myChart_Transaction_lef.showLoading();
 
                 // 右侧折线图
-                var myChart_stockBot_rig = echarts.init(document.getElementById('stockBot_rig'));
-                myChart_stockBot_rig.showLoading();
+                var myChart_Transaction_rig = echarts.init(document.getElementById('Transaction_rig'));
+                myChart_Transaction_rig.showLoading();
 
-                function stockRightChart(Data) {
+                function transactionChart(Data) {
                     //数据
-                    var industryData = [
-                        "",
-                        "杨子善",
-                        "杨子江",
-                        "杨泽文",
+
+                    var transBot_leftData = [
+                        {"date":"2016年1月","南风股份":"0","同行业":"0.165847117"},
+                        {"date":"2016年2月","南风股份":"0","同行业":"0.141707644"},
+                        {"date":"2016年3月","南风股份":"0","同行业":"0.276709879"},
+                        {"date":"2016年4月","南风股份":"0","同行业":"0.291014752"},
+                        {"date":"2016年5月","南风股份":"0","同行业":"0.364327224"},
+                        {"date":"2016年6月","南风股份":"0","同行业":"0.510058114"},
+                        {"date":"2016年7月","南风股份":"0","同行业":"0.506481895"},
+                        {"date":"2016年8月","南风股份":"0","同行业":"0.368350469"},
+                        {"date":"2016年9月","南风股份":"0","同行业":"0.383996424"},
+                        {"date":"2016年10月","南风股份":"0","同行业":"0.313366115"},
+                        {"date":"2016年11月","南风股份":"0","同行业":"0.556548949"},
+                        {"date":"2016年12月","南风股份":"0","同行业":"0.54984354"},
+                        {"date":"2017年1月","南风股份":"0","同行业":"0.365668306"},
+                        {"date":"2017年2月","南风股份":"0","同行业":"0.278945016"},
+                        {"date":"2017年3月","南风股份":"0","同行业":"0.432275369"},
+                        {"date":"2017年4月","南风股份":"1","同行业":"0.276262852"},
+                        {"date":"2017年5月","南风股份":"0","同行业":"0.292355834"},
+                        {"date":"2017年6月","南风股份":"0","同行业":"0.205632544"},
+                        {"date":"2017年7月","南风股份":"0","同行业":"0.186410371"},
+                        {"date":"2017年8月","南风股份":"0","同行业":"0.23737148"},
+                        {"date":"2017年9月","南风股份":"0","同行业":"0.324988824"},
+                        {"date":"2017年10月","南风股份":"0","同行业":"0.20786768"},
+                        {"date":"2017年11月","南风股份":"0","同行业":"0.413500224"},
+                        {"date":"2017年12月","南风股份":"0","同行业":"0.505140814"},
+                        {"date":"2018年1月","南风股份":"0","同行业":"0.409924005"},
+                        {"date":"2018年2月","南风股份":"0","同行业":"0.191774698"},
+                        {"date":"2018年3月","南风股份":"0","同行业":"0.352257488"},
+                        {"date":"2018年4月","南风股份":"0","同行业":"0.24541797"},
+                        {"date":"2018年5月","南风股份":"1","同行业":"0.341975861"}
                     ];
-                    var industry_valueData = [
-                        99.12,
-                        66.67,
-                        33.12,
-                        22.27,
+                    var transBot_left_legendData = ['南风股份','同行业'];
+                    var transBot_left_xData = [];
+                    var transBot_left_series_1_Data = [],transBot_left_series_2_Data = [],transBot_left_series_3_Data = [];
+                    for(var i=0;i<transBot_leftData.length;i++){
+                        transBot_left_xData.push(transBot_leftData[i].date);
+                        transBot_left_series_1_Data.push(transBot_leftData[i]['南风股份']);
+                        transBot_left_series_2_Data.push(transBot_leftData[i]['同行业']);
+                    }
+                    var transBot_left_seriesData = [
+                        {
+                            name:'南风股份',
+                            type:'line',
+                            // barWidth: '60%',
+                            data: transBot_left_series_1_Data
+                        },
+                        {
+                            name:'同行业',
+                            type:'line',
+                            // barWidth: '60%',
+                            data: transBot_left_series_2_Data
+                        },
                     ];
-                    var option_stockBot_lef = {
-                        color: colorItem,
+                    var option_transBot_lef = {
+                        // ============
+                        // color: colorItem,
                         backgroundColor: 'transparent',
                         title:{
-                            text:'行业分布'
+                            text:'大宗交易笔数变化'
+                        },
+
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        legend:{
+                            data:transBot_left_legendData
                         },
                         // 缩放
                         dataZoom: [
@@ -4879,76 +5012,884 @@
                                 fillerColor:'rgba(66,66,66,0.57)'
                             }
                         ],
-                        tooltip : {
-                            trigger: 'axis',
-                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                            }
-                        },
                         grid: {
                             left: '3%',
-                            right: '5%',
+                            right: '4%',
                             bottom: '3%',
                             containLabel: true
                         },
                         xAxis : [
                             {
                                 type : 'category',
-                                data : industryData,
-                                axisTick: {
-                                    alignWithLabel: true
-                                },
-                                axisLabel:{rotate:45},
-                                name:'股东',
-                                nameGap:4,
-                                nameTextStyle:{
-                                    color:'#fff'
-                                }
+                                data : transBot_left_xData
                             }
                         ],
                         yAxis : [
                             {
-                                type : 'value',
-                                name:'%',
-                                nameTextStyle:{
-                                    color:'#fff'
-                                }
+                                type : 'value'
                             }
                         ],
-                        series : [
-                            {
-                                name:'',
-                                type:'bar',
-                                barWidth: '60%',
-                                // itemStyle: {
-                                //     normal: {
-                                //         show: true,
-                                //         // color: 'rgba(230,56,16,0.2)',
-                                //         barBorderRadius: 50,
-                                //         borderWidth: 0,
-                                //         borderColor: '#333',
-                                //     }
-                                // },
-                                data: industry_valueData
+                        series : transBot_left_seriesData
+                    }
+
+                    myChart_Transaction_lef.hideLoading();
+                    myChart_Transaction_lef.setOption(option_transBot_lef);
+
+                    // ===============
+
+                    var transBot_rightData = [
+                        {"date":"2016年1月","南风股份":"0","同行业":"49.78024139"},
+                        {"date":"2016年2月","南风股份":"0","同行业":"53.64679928"},
+                        {"date":"2016年3月","南风股份":"0","同行业":"55.69610192"},
+                        {"date":"2016年4月","南风股份":"0","同行业":"57.83089405"},
+                        {"date":"2016年5月","南风股份":"0","同行业":"72.53772016"},
+                        {"date":"2016年6月","南风股份":"0","同行业":"114.1666249"},
+                        {"date":"2016年7月","南风股份":"0","同行业":"132.6563344"},
+                        {"date":"2016年8月","南风股份":"0","同行业":"87.06716138"},
+                        {"date":"2016年9月","南风股份":"0","同行业":"114.2143138"},
+                        {"date":"2016年10月","南风股份":"0","同行业":"79.48707644"},
+                        {"date":"2016年11月","南风股份":"0","同行业":"150.4061645"},
+                        {"date":"2016年12月","南风股份":"0","同行业":"185.9695753"},
+                        {"date":"2017年1月","南风股份":"0","同行业":"203.7627358"},
+                        {"date":"2017年2月","南风股份":"0","同行业":"120.073156"},
+                        {"date":"2017年3月","南风股份":"0","同行业":"113.9124095"},
+                        {"date":"2017年4月","南风股份":"120","同行业":"67.80042915"},
+                        {"date":"2017年5月","南风股份":"0","同行业":"74.66780063"},
+                        {"date":"2017年6月","南风股份":"0","同行业":"62.1664819"},
+                        {"date":"2017年7月","南风股份":"0","同行业":"74.23253017"},
+                        {"date":"2017年8月","南风股份":"0","同行业":"47.51423782"},
+                        {"date":"2017年9月","南风股份":"0","同行业":"107.5311354"},
+                        {"date":"2017年10月","南风股份":"0","同行业":"48.38721502"},
+                        {"date":"2017年11月","南风股份":"0","同行业":"92.49953956"},
+                        {"date":"2017年12月","南风股份":"0","同行业":"109.4202369"},
+                        {"date":"2018年1月","南风股份":"0","同行业":"75.39011176"},
+                        {"date":"2018年2月","南风股份":"0","同行业":"47.03159142"},
+                        {"date":"2018年3月","南风股份":"0","同行业":"77.04304873"},
+                        {"date":"2018年4月","南风股份":"0","同行业":"51.06392937"},
+                        {"date":"2018年5月","南风股份":"115","同行业":"79.15002682"}
+                    ];
+                    var transBot_right_legendData = ['南风股份','同行业'];
+                    var transBot_right_xData = [];
+                    var transBot_right_series_1_Data = [],transBot_right_series_2_Data = [],transBot_right_series_3_Data = [];
+                    for(var i=0;i<transBot_rightData.length;i++){
+                        transBot_right_xData.push(transBot_rightData[i].date);
+                        transBot_right_series_1_Data.push(transBot_rightData[i]['南风股份']);
+                        transBot_right_series_2_Data.push(transBot_rightData[i]['同行业']);
+                    }
+                    var transBot_right_seriesData = [
+                        {
+                            name:'南风股份',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: transBot_right_series_1_Data
+                        },
+                        {
+                            name:'同行业',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: transBot_right_series_2_Data
+                        },
+                    ];
+                    var option_transBot_rig = {
+                        // ============
+                        // color: colorItem,
+                        backgroundColor: 'transparent',
+                        title:{
+                            text:'大宗交易成交量变化'
+                        },
+
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                             }
-                        ]
+                        },
+                        legend:{
+                            data:transBot_right_legendData
+                        },
+                        // 缩放
+                        dataZoom: [
+                            {
+                                type: 'inside',
+                                start: 0,
+                                end: 100,
+                            },
+                            {
+                                show: false,
+                                type: 'slider',
+                                top: 'bottom',
+                                start: 0,
+                                end: 100,
+                                fillerColor:'rgba(66,66,66,0.57)'
+                            }
+                        ],
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : transBot_right_xData
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : transBot_right_seriesData
+                    }
+
+                    myChart_Transaction_rig.hideLoading();
+                    myChart_Transaction_rig.setOption(option_transBot_rig);
+
+                }
+                transactionChart();
+            }
+
+            // 股东减持
+            if($('#shareHolders').height()>0){
+                // 左侧柱状图
+                var myChart_shareHol_lef = echarts.init(document.getElementById('shareHol_lef'));
+                myChart_shareHol_lef.showLoading();
+
+                // 右侧折线图
+                var myChart_shareHol_rig = echarts.init(document.getElementById('shareHol_rig'));
+                myChart_shareHol_rig.showLoading();
+
+                function shareHolChart(Data) {
+                    //数据
+
+                    var shareHol_leftData = [
+                        {"date":"2013年8月","南风股份":"1","同行业":"0.008485931"},
+                        {"date":"2013年9月","南风股份":"0","同行业":"0.008932559"},
+                        {"date":"2013年10月","南风股份":"0","同行业":"0.005806163"},
+                        {"date":"2013年11月","南风股份":"0","同行业":"0.011165699"},
+                        {"date":"2013年12月","南风股份":"1","同行业":"0.023671282"},
+                        {"date":"2014年1月","南风股份":"1","同行业":"0.014738723"},
+                        {"date":"2014年2月","南风股份":"0","同行业":"0.004019652"},
+                        {"date":"2014年3月","南风股份":"0","同行业":"0.005359536"},
+                        {"date":"2014年4月","南风股份":"0","同行业":"0.001786512"},
+                        {"date":"2014年5月","南风股份":"0","同行业":"0.007592675"},
+                        {"date":"2014年6月","南风股份":"0","同行业":"0.012952211"},
+                        {"date":"2014年7月","南风股份":"1","同行业":"0.015631979"},
+                        {"date":"2014年8月","南风股份":"0","同行业":"0.011612327"},
+                        {"date":"2014年9月","南风股份":"2","同行业":"0.033943725"},
+                        {"date":"2014年10月","南风股份":"0","同行业":"0.009825815"},
+                        {"date":"2014年11月","南风股份":"0","同行业":"0.016078607"},
+                        {"date":"2014年12月","南风股份":"1","同行业":"0.025904422"},
+                        {"date":"2015年1月","南风股份":"0","同行业":"0.013845467"},
+                        {"date":"2015年2月","南风股份":"0","同行业":"0.008485931"},
+                        {"date":"2015年3月","南风股份":"1","同行业":"0.016971862"},
+                        {"date":"2015年4月","南风股份":"0","同行业":"0.020098258"},
+                        {"date":"2015年5月","南风股份":"0","同行业":"0.054041983"}
+                    ];
+                    var shareHol_left_legendData = ['南风股份','同行业'];
+                    var shareHol_left_xData = [];
+                    var shareHol_left_series_1_Data = [],shareHol_left_series_2_Data = [];
+                    for(var i=0;i<shareHol_leftData.length;i++){
+                        shareHol_left_xData.push(shareHol_leftData[i].date);
+                        shareHol_left_series_1_Data.push(shareHol_leftData[i]['南风股份']);
+                        shareHol_left_series_2_Data.push(shareHol_leftData[i]['同行业']);
+                    }
+                    var shareHol_left_seriesData = [
+                        {
+                            name:'南风股份',
+                            type:'line',
+                            // barWidth: '60%',
+                            data: shareHol_left_series_1_Data
+                        },
+                        {
+                            name:'同行业',
+                            type:'line',
+                            // barWidth: '60%',
+                            data: shareHol_left_series_2_Data
+                        },
+                    ];
+                    var option_shareHol_lef = {
+                        // ============
+                        // color: colorItem,
+                        backgroundColor: 'transparent',
+                        title:{
+                            text:'大股东减持笔数变化'
+                        },
+
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        legend:{
+                            data:shareHol_left_legendData
+                        },
+                        // 缩放
+                        dataZoom: [
+                            {
+                                type: 'inside',
+                                start: 0,
+                                end: 100,
+                            },
+                            {
+                                show: false,
+                                type: 'slider',
+                                top: 'bottom',
+                                start: 0,
+                                end: 100,
+                                fillerColor:'rgba(66,66,66,0.57)'
+                            }
+                        ],
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : shareHol_left_xData
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : shareHol_left_seriesData
+                    }
+
+                    myChart_shareHol_lef.hideLoading();
+                    myChart_shareHol_lef.setOption(option_shareHol_lef);
+
+                    // ===============
+
+                    var shareHol_rightData = [
+                        {"date":"2013年8月","杨子江":"0","杨子善":"0","刘基照":"1","周燕敏":"2"},
+                        {"date":"2013年9月","杨子江":"0","杨子善":"0","刘基照":"1","周燕敏":"3"},
+                        {"date":"2013年10月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2013年11月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2013年12月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年1月","杨子江":"4","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年2月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年3月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年4月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年5月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年6月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年7月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年8月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年9月","杨子江":"4","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年10月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2014年11月","杨子江":"0","杨子善":"0","刘基照":"1","周燕敏":"0"},
+                        {"date":"2014年12月","杨子江":"0","杨子善":"0","刘基照":"1","周燕敏":"0"},
+                        {"date":"2015年1月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2015年2月","杨子江":"0","杨子善":"0","刘基照":"1","周燕敏":"0"},
+                        {"date":"2015年3月","杨子江":"0","杨子善":"2","刘基照":"0","周燕敏":"0"},
+                        {"date":"2015年4月","杨子江":"0","杨子善":"0","刘基照":"0","周燕敏":"0"},
+                        {"date":"2015年5月","杨子江":"4","杨子善":"0","刘基照":"0","周燕敏":"0"}
+                    ];
+                    var shareHol_right_legendData = ['杨子江','杨子善','刘基照','周燕敏'];
+                    var shareHol_right_xData = [];
+                    var shareHol_right_series_1_Data = [],shareHol_right_series_2_Data = [],
+                        shareHol_right_series_3_Data = [],shareHol_right_series_4_Data = [];
+                    for(var i=0;i<shareHol_rightData.length;i++){
+                        shareHol_right_xData.push(shareHol_rightData[i].date);
+                        shareHol_right_series_1_Data.push(shareHol_rightData[i]['杨子江']);
+                        shareHol_right_series_2_Data.push(shareHol_rightData[i]['杨子善']);
+                        shareHol_right_series_3_Data.push(shareHol_rightData[i]['刘基照']);
+                        shareHol_right_series_4_Data.push(shareHol_rightData[i]['周燕敏']);
+                    }
+                    var shareHol_right_seriesData = [
+                        {
+                            name:'杨子江',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: shareHol_right_series_1_Data
+                        },
+                        {
+                            name:'杨子善',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: shareHol_right_series_2_Data
+                        },
+                        {
+                            name:'刘基照',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: shareHol_right_series_3_Data
+                        },
+                        {
+                            name:'周燕敏',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: shareHol_right_series_4_Data
+                        },
+                    ];
+                    var option_shareHol_rig = {
+
+                        // color: colorItem,
+                        backgroundColor: 'transparent',
+                        title:{
+                            text:'大股东质押笔数变化'
+                        },
+
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        legend:{
+                            data:shareHol_right_legendData
+                        },
+                        // 缩放
+                        dataZoom: [
+                            {
+                                type: 'inside',
+                                start: 0,
+                                end: 100,
+                            },
+                            {
+                                show: false,
+                                type: 'slider',
+                                top: 'bottom',
+                                start: 0,
+                                end: 100,
+                                fillerColor:'rgba(66,66,66,0.57)'
+                            }
+                        ],
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : shareHol_right_xData
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : shareHol_right_seriesData
+                    }
+
+                    myChart_shareHol_rig.hideLoading();
+                    myChart_shareHol_rig.setOption(option_shareHol_rig);
+
+                }
+                shareHolChart();
+            }
+
+            // 股权质押
+            if($('#stockRight').height()>0){
+                // 左侧柱状图
+                var myChart_stockBot_lef = echarts.init(document.getElementById('stockBot_lef'));
+                myChart_stockBot_lef.showLoading();
+
+                // 右侧折线图
+                var myChart_stockBot_rig = echarts.init(document.getElementById('stockBot_rig'));
+                myChart_stockBot_rig.showLoading();
+
+                function stockRightChart(Data) {
+                    //数据
+
+                    var stockBot_leftData = [
+                        {"date":"2016年1月","杨泽文":"0.574398114","杨子善":"0.873954836","仇云龙":"0.930945339"},
+                        {"date":"2016年2月","杨泽文":"0.574398114","杨子善":"0.873954836","仇云龙":"0.930945339"},
+                        {"date":"2016年3月","杨泽文":"0.574398114","杨子善":"0.310513156","仇云龙":"0.930945339"},
+                        {"date":"2016年4月","杨泽文":"0.574398114","杨子善":"0.310513156","仇云龙":"0.930945339"},
+                        {"date":"2016年5月","杨泽文":"0.574398114","杨子善":"0.446084851","仇云龙":"0.930945339"},
+                        {"date":"2016年6月","杨泽文":"0.574398114","杨子善":"0.958860182","仇云龙":"0.930945339"},
+                        {"date":"2016年7月","杨泽文":"0.574398114","杨子善":"0.958860182","仇云龙":"0.930945339"},
+                        {"date":"2016年8月","杨泽文":"0.574398114","杨子善":"0.958860182","仇云龙":"0.930945339"},
+                        {"date":"2016年9月","杨泽文":"0.480591921","杨子善":"0.958860182","仇云龙":"0.930945339"},
+                        {"date":"2016年10月","杨泽文":"0.449062034","杨子善":"0.958860182","仇云龙":"0.930945339"},
+                        {"date":"2016年11月","杨泽文":"0.449062034","杨子善":"0.958860182","仇云龙":"0.930945339"},
+                        {"date":"2016年12月","杨泽文":"0.449062034","杨子善":"0.979865857","仇云龙":"0.930945339"},
+                        {"date":"2017年1月","杨泽文":"0.449062034","杨子善":"0.979865857","仇云龙":"0.930945339"},
+                        {"date":"2017年2月","杨泽文":"0.449062034","杨子善":"0.979865857","仇云龙":"0.930945339"},
+                        {"date":"2017年3月","杨泽文":"0.449062034","杨子善":"0.979865857","仇云龙":"0.930945339"},
+                        {"date":"2017年4月","杨泽文":"0.449062034","杨子善":"0.979865857","仇云龙":"0.930945339"},
+                        {"date":"2017年5月","杨泽文":"0.449062034","杨子善":"0.979865857","仇云龙":"0.930945339"},
+                        {"date":"2017年6月","杨泽文":"0.449062034","杨子善":"0.979849982","仇云龙":"0.930945339"},
+                        {"date":"2017年7月","杨泽文":"0.515943613","杨子善":"0.979849982","仇云龙":"0.930945339"},
+                        {"date":"2017年8月","杨泽文":"0.515943613","杨子善":"0.979849982","仇云龙":"0.930945339"},
+                        {"date":"2017年9月","杨泽文":"0.515943613","杨子善":"0.979849982","仇云龙":"0.3580559"},
+                        {"date":"2017年10月","杨泽文":"0.515943613","杨子善":"0.979849982","仇云龙":"0.563938042"},
+                        {"date":"2017年11月","杨泽文":"0.515943613","杨子善":"0.991597412","仇云龙":"0.921993942"},
+                        {"date":"2017年12月","杨泽文":"0.515943613","杨子善":"0.846132476","仇云龙":"0.921993942"},
+                        {"date":"2018年1月","杨泽文":"0.515943613","杨子善":"0.991229115","仇云龙":"0.921993942"},
+                        {"date":"2018年2月","杨泽文":"0.515943613","杨子善":"0.991229115","仇云龙":"0.921993942"},
+                        {"date":"2018年3月","杨泽文":"0.515943613","杨子善":"0.991229115","仇云龙":"0.778771582"},
+                        {"date":"2018年4月","杨泽文":"0.515943613","杨子善":"0.991229115","仇云龙":"0.778771582"}
+                    ];
+                    var stockBot_left_legendData = ['杨泽文','杨子善','仇云龙'];
+                    var stockBot_left_xData = [];
+                    var stockBot_left_series_1_Data = [],stockBot_left_series_2_Data = [],stockBot_left_series_3_Data = [];
+                    for(var i=0;i<stockBot_leftData.length;i++){
+                        stockBot_left_xData.push(stockBot_leftData[i].date);
+                        stockBot_left_series_1_Data.push(stockBot_leftData[i]['杨泽文']);
+                        stockBot_left_series_2_Data.push(stockBot_leftData[i]['杨子善']);
+                        stockBot_left_series_3_Data.push(stockBot_leftData[i]['仇云龙']);
+                    }
+                    var stockBot_left_seriesData = [
+                        {
+                            name:'杨泽文',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: stockBot_left_series_1_Data
+                        },
+                        {
+                            name:'杨子善',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: stockBot_left_series_2_Data
+                        },
+                        {
+                            name:'仇云龙',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: stockBot_left_series_3_Data
+                        },
+                    ];
+                    var option_stockBot_lef = {
+                        // ============
+                        // color: colorItem,
+                        backgroundColor: 'transparent',
+                        title:{
+                            text:'大股东质押率变化'
+                        },
+
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        legend:{
+                            data:stockBot_left_legendData
+                        },
+                        // 缩放
+                        dataZoom: [
+                            {
+                                type: 'inside',
+                                start: 0,
+                                end: 100,
+                            },
+                            {
+                                show: false,
+                                type: 'slider',
+                                top: 'bottom',
+                                start: 0,
+                                end: 100,
+                                fillerColor:'rgba(66,66,66,0.57)'
+                            }
+                        ],
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : stockBot_left_xData
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : stockBot_left_seriesData
                     }
 
                     myChart_stockBot_lef.hideLoading();
                     myChart_stockBot_lef.setOption(option_stockBot_lef);
 
                     // ===============
+
+                    var stockBot_rightData = [
+                        {"date":"2016年1月","同行业均值":"0.05","南风股份":"0.27"},
+                        {"date":"2016年2月","同行业均值":"0.05","南风股份":"0.27"},
+                        {"date":"2016年3月","同行业均值":"0.05","南风股份":"0.29"},
+                        {"date":"2016年4月","同行业均值":"0.05","南风股份":"0.29"},
+                        {"date":"2016年5月","同行业均值":"0.05","南风股份":"0.31"},
+                        {"date":"2016年6月","同行业均值":"0.05","南风股份":"0.28"},
+                        {"date":"2016年7月","同行业均值":"0.05","南风股份":"0.28"},
+                        {"date":"2016年8月","同行业均值":"0.05","南风股份":"0.28"},
+                        {"date":"2016年9月","同行业均值":"0.05","南风股份":"0.27"},
+                        {"date":"2016年10月","同行业均值":"0.05","南风股份":"0.27"},
+                        {"date":"2016年11月","同行业均值":"0.06","南风股份":"0.27"},
+                        {"date":"2016年12月","同行业均值":"0.06","南风股份":"0.27"},
+                        {"date":"2017年1月","同行业均值":"0.06","南风股份":"0.27"},
+                        {"date":"2017年2月","同行业均值":"0.06","南风股份":"0.27"},
+                        {"date":"2017年3月","同行业均值":"0.06","南风股份":"0.27"},
+                        {"date":"2017年4月","同行业均值":"0.06","南风股份":"0.27"},
+                        {"date":"2017年5月","同行业均值":"0.06","南风股份":"0.29"},
+                        {"date":"2017年6月","同行业均值":"0.06","南风股份":"0.29"},
+                        {"date":"2017年7月","同行业均值":"0.06","南风股份":"0.32"},
+                        {"date":"2017年8月","同行业均值":"0.06","南风股份":"0.32"},
+                        {"date":"2017年9月","同行业均值":"0.06","南风股份":"0.25"},
+                        {"date":"2017年10月","同行业均值":"0.06","南风股份":"0.28"},
+                        {"date":"2017年11月","同行业均值":"0.06","南风股份":"0.32"},
+                        {"date":"2017年12月","同行业均值":"0.06","南风股份":"0.3"},
+                        {"date":"2018年1月","同行业均值":"0.06","南风股份":"0.32"},
+                        {"date":"2018年2月","同行业均值":"0.06","南风股份":"0.32"},
+                        {"date":"2018年3月","同行业均值":"0.07","南风股份":"0.3"},
+                        {"date":"2018年4月","同行业均值":"0.07","南风股份":"0.3"}
+                    ];
+                    var stockBot_right_legendData = ['同行业均值','南风股份'];
+                    var stockBot_right_xData = [];
+                    var stockBot_right_series_1_Data = [],stockBot_right_series_2_Data = [] ;
+                    for(var i=0;i<stockBot_rightData.length;i++){
+                        stockBot_right_xData.push(stockBot_rightData[i].date);
+                        stockBot_right_series_1_Data.push(stockBot_rightData[i]['同行业均值']);
+                        stockBot_right_series_2_Data.push(stockBot_rightData[i]['南风股份']);
+                    }
+                    var stockBot_right_seriesData = [
+                        {
+                            name:'同行业均值',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: stockBot_right_series_1_Data
+                        },
+                        {
+                            name:'南风股份',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: stockBot_right_series_2_Data
+                        },
+                    ];
+                    var option_stockBot_rig = {
+
+                        // color: colorItem,
+                        backgroundColor: 'transparent',
+                        title:{
+                            text:'未解押股数占总股本比例变化'
+                        },
+
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        legend:{
+                            data:stockBot_right_legendData
+                        },
+                        // 缩放
+                        dataZoom: [
+                            {
+                                type: 'inside',
+                                start: 0,
+                                end: 100,
+                            },
+                            {
+                                show: false,
+                                type: 'slider',
+                                top: 'bottom',
+                                start: 0,
+                                end: 100,
+                                fillerColor:'rgba(66,66,66,0.57)'
+                            }
+                        ],
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : stockBot_right_xData
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : stockBot_right_seriesData
+                    }
+
+                    myChart_stockBot_rig.hideLoading();
+                    myChart_stockBot_rig.setOption(option_stockBot_rig);
+
                 }
+                stockRightChart();
             }
 
-            // 投资者异动
+            // 公告信息
+            if($('#Bulletin_information').height()>0){
+                // 左侧柱状图
+                var myChart_BullBot_lef = echarts.init(document.getElementById('Bulletin_left'));
+                myChart_BullBot_lef.showLoading();
+
+                // 右侧折线图
+                var myChart_BullBot_rig = echarts.init(document.getElementById('Bulletin_right'));
+                myChart_BullBot_rig.showLoading();
+
+                function BullRightChart(Data) {
+                    //数据
+
+                    var BullBot_leftData = [
+                        {"date":"2016年1月","南风股份":"0","同行业":"0.203844435"},
+                        {"date":"2016年2月","南风股份":"0","同行业":"0.141707644"},
+                        {"date":"2016年3月","南风股份":"0","同行业":"0.257934734"},
+                        {"date":"2016年4月","南风股份":"1","同行业":"0.286544479"},
+                        {"date":"2016年5月","南风股份":"2","同行业":"0.257487707"},
+                        {"date":"2016年6月","南风股份":"0","同行业":"0.262405007"},
+                        {"date":"2016年7月","南风股份":"0","同行业":"0.189986589"},
+                        {"date":"2016年8月","南风股份":"3","同行业":"0.185516316"},
+                        {"date":"2016年9月","南风股份":"1","同行业":"0.159141708"},
+                        {"date":"2016年10月","南风股份":"1","同行业":"0.13589629"},
+                        {"date":"2016年11月","南风股份":"2","同行业":"0.146177917"},
+                        {"date":"2016年12月","南风股份":"0","同行业":"0.245864998"},
+                        {"date":"2017年1月","南风股份":"0","同行业":"0.13589629"},
+                        {"date":"2017年2月","南风股份":"0","同行业":"0.12114439"},
+                        {"date":"2017年3月","南风股份":"0","同行业":"0.223066607"},
+                        {"date":"2017年4月","南风股份":"0","同行业":"0.266428252"},
+                        {"date":"2017年5月","南风股份":"1","同行业":"0.204738489"},
+                        {"date":"2017年6月","南风股份":"0","同行业":"0.229324989"},
+                        {"date":"2017年7月","南风股份":"2","同行业":"0.181940098"},
+                        {"date":"2017年8月","南风股份":"0","同行业":"0.203844435"},
+                        {"date":"2017年9月","南风股份":"0","同行业":"0.154671435"},
+                        {"date":"2017年10月","南风股份":"0","同行业":"0.143942781"},
+                        {"date":"2017年11月","南风股份":"0","同行业":"0.174787662"},
+                        {"date":"2017年12月","南风股份":"0","同行业":"0.197139025"},
+                        {"date":"2018年1月","南风股份":"0","同行业":"0.138131426"},
+                        {"date":"2018年2月","南风股份":"3","同行业":"0.147518999"},
+                        {"date":"2018年3月","南风股份":"5","同行业":"0.248994189"},
+                        {"date":"2018年4月","南风股份":"4","同行业":"0.303531515"},
+                        {"date":"2018年5月","南风股份":"2","同行业":"0.239159589"}
+                    ];
+
+                    var BullBot_left_legendData = ['南风股份','同行业'];
+                    var BullBot_left_xData = [];
+                    var BullBot_left_series_1_Data = [],BullBot_left_series_2_Data = [];
+                    for(var i=0;i<BullBot_leftData.length;i++){
+                        BullBot_left_xData.push(BullBot_leftData[i].date);
+                        BullBot_left_series_1_Data.push(BullBot_leftData[i]['南风股份']);
+                        BullBot_left_series_2_Data.push(BullBot_leftData[i]['同行业']);
+                    }
+                    var BullBot_left_seriesData = [
+                        {
+                            name:'南风股份',
+                            type:'line',
+                            // barWidth: '60%',
+                            data: BullBot_left_series_1_Data
+                        },
+                        {
+                            name:'同行业',
+                            type:'line',
+                            // barWidth: '60%',
+                            data: BullBot_left_series_2_Data
+                        },
+                    ];
+                    var option_BullBot_lef = {
+                        // ============
+                        // color: colorItem,
+                        backgroundColor: 'transparent',
+                        title:{
+                            text:'利好公告数目变化'
+                        },
+
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        legend:{
+                            data:BullBot_left_legendData
+                        },
+                        // 缩放
+                        dataZoom: [
+                            {
+                                type: 'inside',
+                                start: 0,
+                                end: 100,
+                            },
+                            {
+                                show: false,
+                                type: 'slider',
+                                top: 'bottom',
+                                start: 0,
+                                end: 100,
+                                fillerColor:'rgba(66,66,66,0.57)'
+                            }
+                        ],
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : BullBot_left_xData
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : BullBot_left_seriesData
+                    }
+
+                    myChart_BullBot_lef.hideLoading();
+                    myChart_BullBot_lef.setOption(option_BullBot_lef);
+
+                    // ===============
+
+                    var BullBot_rightData = [
+                        {"date":"2016年1月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2016年2月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2016年3月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2016年4月","并购重组":"1","对外投资":"0","高送转":"0"},
+                        {"date":"2016年5月","并购重组":"1","对外投资":"1","高送转":"0"},
+                        {"date":"2016年6月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2016年7月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2016年8月","并购重组":"0","对外投资":"2","高送转":"1"},
+                        {"date":"2016年9月","并购重组":"0","对外投资":"1","高送转":"0"},
+                        {"date":"2016年10月","并购重组":"0","对外投资":"1","高送转":"0"},
+                        {"date":"2016年11月","并购重组":"2","对外投资":"0","高送转":"0"},
+                        {"date":"2016年12月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2017年1月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2017年2月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2017年3月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2017年4月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2017年5月","并购重组":"1","对外投资":"0","高送转":"0"},
+                        {"date":"2017年6月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2017年7月","并购重组":"1","对外投资":"0","高送转":"1"},
+                        {"date":"2017年8月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2017年9月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2017年10月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2017年11月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2017年12月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2018年1月","并购重组":"0","对外投资":"0","高送转":"0"},
+                        {"date":"2018年2月","并购重组":"3","对外投资":"0","高送转":"0"},
+                        {"date":"2018年3月","并购重组":"5","对外投资":"0","高送转":"0"},
+                        {"date":"2018年4月","并购重组":"4","对外投资":"0","高送转":"0"},
+                        {"date":"2018年5月","并购重组":"2","对外投资":"0","高送转":"0"}
+                    ];
+                    var BullBot_right_legendData = ['并购重组','对外投资','高送转'];
+                    var BullBot_right_xData = [];
+                    var BullBot_right_series_1_Data = [],BullBot_right_series_2_Data = [],
+                        BullBot_right_series_3_Data = [];
+                    for(var i=0;i<BullBot_rightData.length;i++){
+                        BullBot_right_xData.push(BullBot_rightData[i].date);
+                        BullBot_right_series_1_Data.push(BullBot_rightData[i]['并购重组']);
+                        BullBot_right_series_2_Data.push(BullBot_rightData[i]['对外投资']);
+                        BullBot_right_series_3_Data.push(BullBot_rightData[i]['高送转']);
+                    }
+                    var BullBot_right_seriesData = [
+                        {
+                            name:'并购重组',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: BullBot_right_series_1_Data
+                        },
+                        {
+                            name:'对外投资',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: BullBot_right_series_2_Data
+                        },
+                        {
+                            name:'高送转',
+                            type:'bar',
+                            // barWidth: '60%',
+                            data: BullBot_right_series_3_Data
+                        },
+                    ];
+                    var option_BullBot_rig = {
+
+                        // color: colorItem,
+                        backgroundColor: 'transparent',
+                        title:{
+                            text:'各类型利好公告数目变化'
+                        },
+
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        legend:{
+                            data:BullBot_right_legendData
+                        },
+                        // 缩放
+                        dataZoom: [
+                            {
+                                type: 'inside',
+                                start: 0,
+                                end: 100,
+                            },
+                            {
+                                show: false,
+                                type: 'slider',
+                                top: 'bottom',
+                                start: 0,
+                                end: 100,
+                                fillerColor:'rgba(66,66,66,0.57)'
+                            }
+                        ],
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : BullBot_right_xData
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : BullBot_right_seriesData
+                    }
+                    console.log(option_BullBot_rig);
+
+                    myChart_BullBot_rig.hideLoading();
+                    myChart_BullBot_rig.setOption(option_BullBot_rig);
+
+                }
+                BullRightChart();
+            }
+
+            // 投资者异动 股东明细
             if($('#boxStock').height()>0){
 
-                console.log("投资者异动");
+                console.log("投资者异动 股东明细");
                 // 股权分析
 
                     var myChart_3 = echarts.init(document.getElementById('Stock_1'));
                     myChart_3.showLoading();
+
+                    // 折线图
+                    var myChart_Stock_3 = echarts.init(document.getElementById('Stock_3'));
+                    myChart_Stock_3.showLoading();
+
                     var myChart_4 = echarts.init(document.getElementById('Stock_2'));
                     myChart_4.showLoading();
 
@@ -5174,7 +6115,879 @@
                         myChart_4.hideLoading();
                         myChart_4.setOption(option_4);
                     }
-                    Stock(StockData)
+                    // Stock(StockData)
+
+                    // 7-1 版
+                        // =============
+                            var StockData_7_1_leftData = [
+                                {"季度":"2016年第一季度","机构投资者":"4.91","非机构投资者":"95.09"},
+                                {"季度":"2016年第二季度","机构投资者":"4.91","非机构投资者":"95.09"},
+                                {"季度":"2016年第三季度","机构投资者":"3.10","非机构投资者":"96.90"},
+                                {"季度":"2016年第四季度","机构投资者":"3.18","非机构投资者":"96.82"},
+                                {"季度":"2017年第一季度","机构投资者":"3.18","非机构投资者":"96.82"},
+                                {"季度":"2017年第二季度","机构投资者":"1.38","非机构投资者":"98.62"},
+                                {"季度":"2017年第三季度","机构投资者":"1.38","非机构投资者":"98.62"},
+                                {"季度":"2017年第四季度","机构投资者":"0.72","非机构投资者":"99.28"},
+                                {"季度":"2018年第一季度","机构投资者":"0.72","非机构投资者":"99.28"},
+                            ]
+                            var StockData_7_1_left_legendData = ['机构投资者','非机构投资者'];
+                            var StockData_7_1_left_xData = [];
+                            var StockData_7_1_left_series_1_Data = [],StockData_7_1_left_series_2_Data = [];
+                            for(var i=0;i<StockData_7_1_leftData.length;i++){
+                                StockData_7_1_left_xData.push(StockData_7_1_leftData[i]['季度']);
+                                StockData_7_1_left_series_1_Data.push(StockData_7_1_leftData[i]['机构投资者']);
+                                StockData_7_1_left_series_2_Data.push(StockData_7_1_leftData[i]['非机构投资者']);
+                            }
+                            var StockData_7_1_left_seriesData = [
+                                {
+                                    name:'机构投资者',
+                                    type:'bar',
+                                    // barWidth: '60%',
+                                    data: StockData_7_1_left_series_1_Data
+                                },
+                                {
+                                    name:'非机构投资者',
+                                    type:'bar',
+                                    // barWidth: '60%',
+                                    data: StockData_7_1_left_series_2_Data
+                                },
+                            ];
+                            var option_StockData_7_1_left = {
+                                // ============
+                                // color: colorItem,
+                                backgroundColor: 'transparent',
+                                title:{
+                                    text:'机构投资者持股比例走势',
+                                    itemStyle:{
+                                        fontSize:12
+                                    }
+                                },
+
+                                tooltip : {
+                                    trigger: 'axis',
+                                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                    }
+                                },
+                                legend:{
+                                    data:StockData_7_1_left_legendData,
+                                    x:'right'
+                                },
+                                // 缩放
+                                dataZoom: [
+                                    {
+                                        type: 'inside',
+                                        start: 0,
+                                        end: 100,
+                                    },
+                                    {
+                                        show: false,
+                                        type: 'slider',
+                                        top: 'bottom',
+                                        start: 0,
+                                        end: 100,
+                                        fillerColor:'rgba(66,66,66,0.57)'
+                                    }
+                                ],
+                                grid: {
+                                    left: '3%',
+                                    right: '4%',
+                                    bottom: '3%',
+                                    containLabel: true
+                                },
+                                xAxis : [
+                                    {
+                                        type : 'category',
+                                        data : StockData_7_1_left_xData
+                                    }
+                                ],
+                                yAxis : [
+                                    {
+                                        type : 'value',
+                                        name:'%'
+                                    }
+                                ],
+                                series : StockData_7_1_left_seriesData
+                            }
+
+                            myChart_3.hideLoading();
+                            myChart_3.setOption(option_StockData_7_1_left);
+
+                        // ==============
+
+                            var StockData_7_1_midData = [
+                                {"季度":"2016年第一季度","前十大股东":"52.62","非前十大股东":"47.38"},
+                                {"季度":"2016年第二季度","前十大股东":"52.56","非前十大股东":"47.44"},
+                                {"季度":"2016年第三季度","前十大股东":"51.99","非前十大股东":"48.01"},
+                                {"季度":"2016年第四季度","前十大股东":"51.82","非前十大股东":"48.18"},
+                                {"季度":"2017年第一季度","前十大股东":"51.98","非前十大股东":"48.02"},
+                                {"季度":"2017年第二季度","前十大股东":"51.79","非前十大股东":"48.21"},
+                                {"季度":"2017年第三季度","前十大股东":"51.71","非前十大股东":"48.29"},
+                                {"季度":"2017年第四季度","前十大股东":"51.30","非前十大股东":"48.70"},
+                                {"季度":"2018年第一季度","前十大股东":"52.84","非前十大股东":"47.16"},
+                            ]
+                            var StockData_7_1_mid_legendData = ['前十大股东','非前十大股东'];
+                            var StockData_7_1_mid_xData = [];
+                            var StockData_7_1_mid_series_1_Data = [],StockData_7_1_mid_series_2_Data = [],StockData_7_1_mid_series_3_Data = [];
+                            for(var i=0;i<StockData_7_1_midData.length;i++){
+                                StockData_7_1_mid_xData.push(StockData_7_1_midData[i]['季度']);
+                                StockData_7_1_mid_series_1_Data.push(StockData_7_1_midData[i]['前十大股东']);
+                                StockData_7_1_mid_series_2_Data.push(StockData_7_1_midData[i]['非前十大股东']);
+                            }
+                            var StockData_7_1_mid_seriesData = [
+                                {
+                                    name:'前十大股东',
+                                    type:'bar',
+                                    // barWidth: '60%',
+                                    data: StockData_7_1_mid_series_1_Data
+                                },
+                                {
+                                    name:'非前十大股东',
+                                    type:'bar',
+                                    // barWidth: '60%',
+                                    data: StockData_7_1_mid_series_2_Data
+                                },
+                            ];
+                            var option_StockData_7_1_mid = {
+                                // ============
+                                // color: colorItem,
+                                backgroundColor: 'transparent',
+                                title:{
+                                    text:'前十大股东持股比例走势',
+                                    itemStyle:{
+                                        fontSize:12
+                                    }
+                                },
+
+                                tooltip : {
+                                    trigger: 'axis',
+                                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                    }
+                                },
+                                legend:{
+                                    data:StockData_7_1_mid_legendData,
+                                    x:'right'
+                                },
+                                // 缩放
+                                dataZoom: [
+                                    {
+                                        type: 'inside',
+                                        start: 0,
+                                        end: 100,
+                                    },
+                                    {
+                                        show: false,
+                                        type: 'slider',
+                                        top: 'bottom',
+                                        start: 0,
+                                        end: 100,
+                                        fillerColor:'rgba(66,66,66,0.57)'
+                                    }
+                                ],
+                                grid: {
+                                    left: '3%',
+                                    right: '4%',
+                                    bottom: '3%',
+                                    containLabel: true
+                                },
+                                xAxis : [
+                                    {
+                                        type : 'category',
+                                        data : StockData_7_1_mid_xData
+                                    }
+                                ],
+                                yAxis : [
+                                    {
+                                        type : 'value',
+                                        name:'%'
+                                    }
+                                ],
+                                series : StockData_7_1_mid_seriesData
+                            }
+
+                            myChart_Stock_3.hideLoading();
+                            myChart_Stock_3.setOption(option_StockData_7_1_mid);
+
+                        // =========
+                            var StockData_7_1_rigData = [
+                                {"季度":"2016年第一季度","机构投资者":"2","牛散":"0"},
+                                {"季度":"2016年第二季度","机构投资者":"2","牛散":"0"},
+                                {"季度":"2016年第三季度","机构投资者":"2","牛散":"0"},
+                                {"季度":"2016年第四季度","机构投资者":"2","牛散":"0"},
+                                {"季度":"2017年第一季度","机构投资者":"3","牛散":"0"},
+                                {"季度":"2017年第二季度","机构投资者":"3","牛散":"0"},
+                                {"季度":"2017年第三季度","机构投资者":"3","牛散":"0"},
+                                {"季度":"2017年第四季度","机构投资者":"3","牛散":"0"},
+                                {"季度":"2018年第一季度","机构投资者":"2","牛散":"1"},
+                            ]
+                            var StockData_7_1_rig_legendData = ['机构投资者','牛散'];
+                            var StockData_7_1_rig_xData = [];
+                            var StockData_7_1_rig_series_1_Data = [],StockData_7_1_rig_series_2_Data = [],StockData_7_1_rig_series_3_Data = [];
+                            for(var i=0;i<StockData_7_1_rigData.length;i++){
+                                StockData_7_1_rig_xData.push(StockData_7_1_rigData[i]['季度']);
+                                StockData_7_1_rig_series_1_Data.push(StockData_7_1_rigData[i]['机构投资者']);
+                                StockData_7_1_rig_series_2_Data.push(StockData_7_1_rigData[i]['牛散']);
+                            }
+                            var StockData_7_1_rig_seriesData = [
+                                {
+                                    name:'机构投资者',
+                                    type:'line',
+                                    // barWidth: '60%',
+                                    data: StockData_7_1_rig_series_1_Data
+                                },
+                                {
+                                    name:'牛散',
+                                    type:'line',
+                                    // barWidth: '60%',
+                                    data: StockData_7_1_rig_series_2_Data
+                                },
+                            ];
+                            var option_StockData_7_1_rig = {
+                                // ============
+                                // color: colorItem,
+                                backgroundColor: 'transparent',
+                                title:{
+                                    text:'机构投资者及牛散数目变化',
+                                    itemStyle:{
+                                        fontSize:12
+                                    }
+                                },
+
+                                tooltip : {
+                                    trigger: 'axis',
+                                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                    }
+                                },
+                                legend:{
+                                    data:StockData_7_1_rig_legendData,
+                                    x:'right'
+                                },
+                                // 缩放
+                                dataZoom: [
+                                    {
+                                        type: 'inside',
+                                        start: 0,
+                                        end: 100,
+                                    },
+                                    {
+                                        show: false,
+                                        type: 'slider',
+                                        top: 'bottom',
+                                        start: 0,
+                                        end: 100,
+                                        fillerColor:'rgba(66,66,66,0.57)'
+                                    }
+                                ],
+                                grid: {
+                                    left: '3%',
+                                    right: '4%',
+                                    bottom: '3%',
+                                    containLabel: true
+                                },
+                                xAxis : [
+                                    {
+                                        type : 'category',
+                                        data : StockData_7_1_rig_xData
+                                    }
+                                ],
+                                yAxis : [
+                                    {
+                                        type : 'value',
+                                        // name:'%'
+                                    }
+                                ],
+                                series : StockData_7_1_rig_seriesData
+                            }
+
+                            myChart_4.hideLoading();
+                            myChart_4.setOption(option_StockData_7_1_rig);
+
+                        $('#tabLL_1').on('click',function(){
+                            myChart_3.showLoading();
+                            myChart_Stock_3.showLoading();
+                            myChart_4.showLoading();
+
+                            // =============
+                                var StockData_7_1_leftData = [
+                                    {"季度":"2016年第一季度","机构投资者":"4.91","非机构投资者":"95.09"},
+                                    {"季度":"2016年第二季度","机构投资者":"4.91","非机构投资者":"95.09"},
+                                    {"季度":"2016年第三季度","机构投资者":"3.10","非机构投资者":"96.90"},
+                                    {"季度":"2016年第四季度","机构投资者":"3.18","非机构投资者":"96.82"},
+                                    {"季度":"2017年第一季度","机构投资者":"3.18","非机构投资者":"96.82"},
+                                    {"季度":"2017年第二季度","机构投资者":"1.38","非机构投资者":"98.62"},
+                                    {"季度":"2017年第三季度","机构投资者":"1.38","非机构投资者":"98.62"},
+                                    {"季度":"2017年第四季度","机构投资者":"0.72","非机构投资者":"99.28"},
+                                    {"季度":"2018年第一季度","机构投资者":"0.72","非机构投资者":"99.28"},
+                                ]
+                                var StockData_7_1_left_legendData = ['机构投资者','非机构投资者'];
+                                var StockData_7_1_left_xData = [];
+                                var StockData_7_1_left_series_1_Data = [],StockData_7_1_left_series_2_Data = [];
+                                for(var i=0;i<StockData_7_1_leftData.length;i++){
+                                    StockData_7_1_left_xData.push(StockData_7_1_leftData[i]['季度']);
+                                    StockData_7_1_left_series_1_Data.push(StockData_7_1_leftData[i]['机构投资者']);
+                                    StockData_7_1_left_series_2_Data.push(StockData_7_1_leftData[i]['非机构投资者']);
+                                }
+                                var StockData_7_1_left_seriesData = [
+                                    {
+                                        name:'机构投资者',
+                                        type:'bar',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_left_series_1_Data
+                                    },
+                                    {
+                                        name:'非机构投资者',
+                                        type:'bar',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_left_series_2_Data
+                                    },
+                                ];
+                                var option_StockData_7_1_left = {
+                                    // ============
+                                    // color: colorItem,
+                                    backgroundColor: 'transparent',
+                                    title:{
+                                        text:'机构投资者持股比例走势',
+                                        itemStyle:{
+                                            fontSize:12
+                                        }
+                                    },
+
+                                    tooltip : {
+                                        trigger: 'axis',
+                                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                        }
+                                    },
+                                    legend:{
+                                        data:StockData_7_1_left_legendData,
+                                        x:'right'
+                                    },
+                                    // 缩放
+                                    dataZoom: [
+                                        {
+                                            type: 'inside',
+                                            start: 0,
+                                            end: 100,
+                                        },
+                                        {
+                                            show: false,
+                                            type: 'slider',
+                                            top: 'bottom',
+                                            start: 0,
+                                            end: 100,
+                                            fillerColor:'rgba(66,66,66,0.57)'
+                                        }
+                                    ],
+                                    grid: {
+                                        left: '3%',
+                                        right: '4%',
+                                        bottom: '3%',
+                                        containLabel: true
+                                    },
+                                    xAxis : [
+                                        {
+                                            type : 'category',
+                                            data : StockData_7_1_left_xData
+                                        }
+                                    ],
+                                    yAxis : [
+                                        {
+                                            type : 'value',
+                                            name:'%'
+                                        }
+                                    ],
+                                    series : StockData_7_1_left_seriesData
+                                }
+
+                                myChart_3.hideLoading();
+                                myChart_3.setOption(option_StockData_7_1_left);
+
+                            // ==============
+
+                                var StockData_7_1_midData = [
+                                    {"季度":"2016年第一季度","前十大股东":"52.62","非前十大股东":"47.38"},
+                                    {"季度":"2016年第二季度","前十大股东":"52.56","非前十大股东":"47.44"},
+                                    {"季度":"2016年第三季度","前十大股东":"51.99","非前十大股东":"48.01"},
+                                    {"季度":"2016年第四季度","前十大股东":"51.82","非前十大股东":"48.18"},
+                                    {"季度":"2017年第一季度","前十大股东":"51.98","非前十大股东":"48.02"},
+                                    {"季度":"2017年第二季度","前十大股东":"51.79","非前十大股东":"48.21"},
+                                    {"季度":"2017年第三季度","前十大股东":"51.71","非前十大股东":"48.29"},
+                                    {"季度":"2017年第四季度","前十大股东":"51.30","非前十大股东":"48.70"},
+                                    {"季度":"2018年第一季度","前十大股东":"52.84","非前十大股东":"47.16"},
+                                ]
+                                var StockData_7_1_mid_legendData = ['前十大股东','非前十大股东'];
+                                var StockData_7_1_mid_xData = [];
+                                var StockData_7_1_mid_series_1_Data = [],StockData_7_1_mid_series_2_Data = [],StockData_7_1_mid_series_3_Data = [];
+                                for(var i=0;i<StockData_7_1_midData.length;i++){
+                                    StockData_7_1_mid_xData.push(StockData_7_1_midData[i]['季度']);
+                                    StockData_7_1_mid_series_1_Data.push(StockData_7_1_midData[i]['前十大股东']);
+                                    StockData_7_1_mid_series_2_Data.push(StockData_7_1_midData[i]['非前十大股东']);
+                                }
+                                var StockData_7_1_mid_seriesData = [
+                                    {
+                                        name:'前十大股东',
+                                        type:'bar',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_mid_series_1_Data
+                                    },
+                                    {
+                                        name:'非前十大股东',
+                                        type:'bar',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_mid_series_2_Data
+                                    },
+                                ];
+                                var option_StockData_7_1_mid = {
+                                    // ============
+                                    // color: colorItem,
+                                    backgroundColor: 'transparent',
+                                    title:{
+                                        text:'前十大股东持股比例走势',
+                                        itemStyle:{
+                                            fontSize:12
+                                        }
+                                    },
+
+                                    tooltip : {
+                                        trigger: 'axis',
+                                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                        }
+                                    },
+                                    legend:{
+                                        data:StockData_7_1_mid_legendData,
+                                        x:'right'
+                                    },
+                                    // 缩放
+                                    dataZoom: [
+                                        {
+                                            type: 'inside',
+                                            start: 0,
+                                            end: 100,
+                                        },
+                                        {
+                                            show: false,
+                                            type: 'slider',
+                                            top: 'bottom',
+                                            start: 0,
+                                            end: 100,
+                                            fillerColor:'rgba(66,66,66,0.57)'
+                                        }
+                                    ],
+                                    grid: {
+                                        left: '3%',
+                                        right: '4%',
+                                        bottom: '3%',
+                                        containLabel: true
+                                    },
+                                    xAxis : [
+                                        {
+                                            type : 'category',
+                                            data : StockData_7_1_mid_xData
+                                        }
+                                    ],
+                                    yAxis : [
+                                        {
+                                            type : 'value',
+                                            name:'%'
+                                        }
+                                    ],
+                                    series : StockData_7_1_mid_seriesData
+                                }
+
+                                myChart_Stock_3.hideLoading();
+                                myChart_Stock_3.setOption(option_StockData_7_1_mid);
+
+                            // =========
+                                var StockData_7_1_rigData = [
+                                    {"季度":"2016年第一季度","机构投资者":"2","牛散":"0"},
+                                    {"季度":"2016年第二季度","机构投资者":"2","牛散":"0"},
+                                    {"季度":"2016年第三季度","机构投资者":"2","牛散":"0"},
+                                    {"季度":"2016年第四季度","机构投资者":"2","牛散":"0"},
+                                    {"季度":"2017年第一季度","机构投资者":"3","牛散":"0"},
+                                    {"季度":"2017年第二季度","机构投资者":"3","牛散":"0"},
+                                    {"季度":"2017年第三季度","机构投资者":"3","牛散":"0"},
+                                    {"季度":"2017年第四季度","机构投资者":"3","牛散":"0"},
+                                    {"季度":"2018年第一季度","机构投资者":"2","牛散":"1"},
+                                ]
+                                var StockData_7_1_rig_legendData = ['机构投资者','牛散'];
+                                var StockData_7_1_rig_xData = [];
+                                var StockData_7_1_rig_series_1_Data = [],StockData_7_1_rig_series_2_Data = [],StockData_7_1_rig_series_3_Data = [];
+                                for(var i=0;i<StockData_7_1_rigData.length;i++){
+                                    StockData_7_1_rig_xData.push(StockData_7_1_rigData[i]['季度']);
+                                    StockData_7_1_rig_series_1_Data.push(StockData_7_1_rigData[i]['机构投资者']);
+                                    StockData_7_1_rig_series_2_Data.push(StockData_7_1_rigData[i]['牛散']);
+                                }
+                                var StockData_7_1_rig_seriesData = [
+                                    {
+                                        name:'机构投资者',
+                                        type:'line',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_rig_series_1_Data
+                                    },
+                                    {
+                                        name:'牛散',
+                                        type:'line',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_rig_series_2_Data
+                                    },
+                                ];
+                                var option_StockData_7_1_rig = {
+                                    // ============
+                                    // color: colorItem,
+                                    backgroundColor: 'transparent',
+                                    title:{
+                                        text:'机构投资者及牛散数目变化',
+                                        itemStyle:{
+                                            fontSize:12
+                                        }
+                                    },
+
+                                    tooltip : {
+                                        trigger: 'axis',
+                                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                        }
+                                    },
+                                    legend:{
+                                        data:StockData_7_1_rig_legendData,
+                                        x:'right'
+                                    },
+                                    // 缩放
+                                    dataZoom: [
+                                        {
+                                            type: 'inside',
+                                            start: 0,
+                                            end: 100,
+                                        },
+                                        {
+                                            show: false,
+                                            type: 'slider',
+                                            top: 'bottom',
+                                            start: 0,
+                                            end: 100,
+                                            fillerColor:'rgba(66,66,66,0.57)'
+                                        }
+                                    ],
+                                    grid: {
+                                        left: '3%',
+                                        right: '4%',
+                                        bottom: '3%',
+                                        containLabel: true
+                                    },
+                                    xAxis : [
+                                        {
+                                            type : 'category',
+                                            data : StockData_7_1_rig_xData
+                                        }
+                                    ],
+                                    yAxis : [
+                                        {
+                                            type : 'value',
+                                            // name:'%'
+                                        }
+                                    ],
+                                    series : StockData_7_1_rig_seriesData
+                                }
+
+                                myChart_4.hideLoading();
+                                myChart_4.setOption(option_StockData_7_1_rig);
+
+                        })
+
+                        $('#tabLL_2').on('click',function(){
+                            myChart_3.showLoading();
+                            myChart_Stock_3.showLoading();
+                            myChart_4.showLoading();
+
+                            // =====
+                                StockData_7_1_leftData = [
+                                    {"季度":"2016年第一季度","机构投资者比例（流通股）":"5.80","非机构投资者":"94.20"},
+                                    {"季度":"2016年第二季度","机构投资者比例（流通股）":"5.80","非机构投资者":"94.20"},
+                                    {"季度":"2016年第三季度","机构投资者比例（流通股）":"3.66","非机构投资者":"96.34"},
+                                    {"季度":"2016年第四季度","机构投资者比例（流通股）":"3.76","非机构投资者":"96.24"},
+                                    {"季度":"2017年第一季度","机构投资者比例（流通股）":"3.76","非机构投资者":"96.24"},
+                                    {"季度":"2017年第二季度","机构投资者比例（流通股）":"1.57","非机构投资者":"98.43"},
+                                    {"季度":"2017年第三季度","机构投资者比例（流通股）":"1.57","非机构投资者":"98.43"},
+                                    {"季度":"2017年第四季度","机构投资者比例（流通股）":"0.72","非机构投资者":"99.28"},
+                                    {"季度":"2018年第一季度","机构投资者比例（流通股）":"0.72","非机构投资者":"99.28"}
+                                ];
+                                StockData_7_1_left_legendData = ['机构投资者比例（流通股）','非机构投资者'];
+                                StockData_7_1_left_xData = [];
+                                StockData_7_1_left_series_1_Data = [],StockData_7_1_left_series_2_Data = [];
+                                for(var i=0;i<StockData_7_1_leftData.length;i++){
+                                    StockData_7_1_left_xData.push(StockData_7_1_leftData[i]['季度']);
+                                    StockData_7_1_left_series_1_Data.push(StockData_7_1_leftData[i]['机构投资者比例（流通股）']);
+                                    StockData_7_1_left_series_2_Data.push(StockData_7_1_leftData[i]['非机构投资者']);
+                                }
+                                StockData_7_1_left_seriesData = [
+                                    {
+                                        name:'机构投资者',
+                                        type:'bar',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_left_series_1_Data
+                                    },
+                                    {
+                                        name:'非机构投资者',
+                                        type:'bar',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_left_series_2_Data
+                                    },
+                                ];
+                                option_StockData_7_1_left = {
+                                    // ============
+                                    // color: colorItem,
+                                    backgroundColor: 'transparent',
+                                    title:{
+                                        text:'机构投资者比例变化',
+                                        itemStyle:{
+                                            fontSize:12
+                                        }
+                                    },
+
+                                    tooltip : {
+                                        trigger: 'axis',
+                                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                        }
+                                    },
+                                    legend:{
+                                        data:StockData_7_1_left_legendData,
+                                        x:'right'
+                                    },
+                                    // 缩放
+                                    dataZoom: [
+                                        {
+                                            type: 'inside',
+                                            start: 0,
+                                            end: 100,
+                                        },
+                                        {
+                                            show: false,
+                                            type: 'slider',
+                                            top: 'bottom',
+                                            start: 0,
+                                            end: 100,
+                                            fillerColor:'rgba(66,66,66,0.57)'
+                                        }
+                                    ],
+                                    grid: {
+                                        left: '3%',
+                                        right: '4%',
+                                        bottom: '3%',
+                                        containLabel: true
+                                    },
+                                    xAxis : [
+                                        {
+                                            type : 'category',
+                                            data : StockData_7_1_left_xData
+                                        }
+                                    ],
+                                    yAxis : [
+                                        {
+                                            type : 'value',
+                                            name:'%'
+                                        }
+                                    ],
+                                    series : StockData_7_1_left_seriesData
+                                }
+
+                                myChart_3.hideLoading();
+                                myChart_3.setOption(option_StockData_7_1_left);
+
+                            // =====
+                                var StockData_7_1_midData = [
+                                    {"季度":"2016年第一季度","前十大流通股东":"35.40","非前十大流通股东":"64.60"},
+                                    {"季度":"2016年第二季度","前十大流通股东":"41.49","非前十大流通股东":"58.51"},
+                                    {"季度":"2016年第三季度","前十大流通股东":"40.88","非前十大流通股东":"59.12"},
+                                    {"季度":"2016年第四季度","前十大流通股东":"40.44","非前十大流通股东":"59.56"},
+                                    {"季度":"2017年第一季度","前十大流通股东":"40.66","非前十大流通股东":"59.34"},
+                                    {"季度":"2017年第二季度","前十大流通股东":"40.06","非前十大流通股东":"59.94"},
+                                    {"季度":"2017年第三季度","前十大流通股东":"38.58","非前十大流通股东":"61.42"},
+                                    {"季度":"2017年第四季度","前十大流通股东":"39.74","非前十大流通股东":"60.26"},
+                                    {"季度":"2018年第一季度","前十大流通股东":"55.12","非前十大流通股东":"44.88"}
+                                ]
+                                var StockData_7_1_mid_legendData = ['前十大流通股东','非前十大流通股东'];
+                                var StockData_7_1_mid_xData = [];
+                                var StockData_7_1_mid_series_1_Data = [],StockData_7_1_mid_series_2_Data = [],StockData_7_1_mid_series_3_Data = [];
+                                for(var i=0;i<StockData_7_1_midData.length;i++){
+                                    StockData_7_1_mid_xData.push(StockData_7_1_midData[i]['季度']);
+                                    StockData_7_1_mid_series_1_Data.push(StockData_7_1_midData[i]['前十大流通股东']);
+                                    StockData_7_1_mid_series_2_Data.push(StockData_7_1_midData[i]['非前十大流通股东']);
+                                }
+                                var StockData_7_1_mid_seriesData = [
+                                    {
+                                        name:'前十大流通股东',
+                                        type:'bar',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_mid_series_1_Data
+                                    },
+                                    {
+                                        name:'非前十大流通股东',
+                                        type:'bar',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_mid_series_2_Data
+                                    },
+                                ];
+                                var option_StockData_7_1_mid = {
+                                    // ============
+                                    // color: colorItem,
+                                    backgroundColor: 'transparent',
+                                    title:{
+                                        text:'前十大流通股东持股比例变化',
+                                        itemStyle:{
+                                            fontSize:12
+                                        }
+                                    },
+
+                                    tooltip : {
+                                        trigger: 'axis',
+                                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                        }
+                                    },
+                                    legend:{
+                                        data:StockData_7_1_mid_legendData,
+                                        x:'right'
+                                    },
+                                    // 缩放
+                                    dataZoom: [
+                                        {
+                                            type: 'inside',
+                                            start: 0,
+                                            end: 100,
+                                        },
+                                        {
+                                            show: false,
+                                            type: 'slider',
+                                            top: 'bottom',
+                                            start: 0,
+                                            end: 100,
+                                            fillerColor:'rgba(66,66,66,0.57)'
+                                        }
+                                    ],
+                                    grid: {
+                                        left: '3%',
+                                        right: '4%',
+                                        bottom: '3%',
+                                        containLabel: true
+                                    },
+                                    xAxis : [
+                                        {
+                                            type : 'category',
+                                            data : StockData_7_1_mid_xData
+                                        }
+                                    ],
+                                    yAxis : [
+                                        {
+                                            type : 'value',
+                                            name:'%'
+                                        }
+                                    ],
+                                    series : StockData_7_1_mid_seriesData
+                                }
+
+                                myChart_Stock_3.hideLoading();
+                                myChart_Stock_3.setOption(option_StockData_7_1_mid);
+
+                            // =========
+                                var StockData_7_1_rigData = [
+                                    {"季度":"2016年第一季度","机构投资者":"3","牛散":"2"},
+                                    {"季度":"2016年第二季度","机构投资者":"3","牛散":"1"},
+                                    {"季度":"2016年第三季度","机构投资者":"3","牛散":"1"},
+                                    {"季度":"2016年第四季度","机构投资者":"3","牛散":"2"},
+                                    {"季度":"2017年第一季度","机构投资者":"4","牛散":"2"},
+                                    {"季度":"2017年第二季度","机构投资者":"3","牛散":"2"},
+                                    {"季度":"2017年第三季度","机构投资者":"3","牛散":"1"},
+                                    {"季度":"2017年第四季度","机构投资者":"3","牛散":"1"},
+                                    {"季度":"2018年第一季度","机构投资者":"2","牛散":"1"},
+                                ]
+                                var StockData_7_1_rig_legendData = ['机构投资者','牛散'];
+                                var StockData_7_1_rig_xData = [];
+                                var StockData_7_1_rig_series_1_Data = [],StockData_7_1_rig_series_2_Data = [],StockData_7_1_rig_series_3_Data = [];
+                                for(var i=0;i<StockData_7_1_rigData.length;i++){
+                                    StockData_7_1_rig_xData.push(StockData_7_1_rigData[i]['季度']);
+                                    StockData_7_1_rig_series_1_Data.push(StockData_7_1_rigData[i]['机构投资者']);
+                                    StockData_7_1_rig_series_2_Data.push(StockData_7_1_rigData[i]['牛散']);
+                                }
+                                var StockData_7_1_rig_seriesData = [
+                                    {
+                                        name:'机构投资者',
+                                        type:'line',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_rig_series_1_Data
+                                    },
+                                    {
+                                        name:'牛散',
+                                        type:'line',
+                                        // barWidth: '60%',
+                                        data: StockData_7_1_rig_series_2_Data
+                                    },
+                                ];
+                                var option_StockData_7_1_rig = {
+                                    // ============
+                                    // color: colorItem,
+                                    backgroundColor: 'transparent',
+                                    title:{
+                                        text:'机构投资者及牛散数目变化',
+                                        itemStyle:{
+                                            fontSize:12
+                                        }
+                                    },
+
+                                    tooltip : {
+                                        trigger: 'axis',
+                                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                        }
+                                    },
+                                    legend:{
+                                        data:StockData_7_1_rig_legendData,
+                                        x:'right'
+                                    },
+                                    // 缩放
+                                    dataZoom: [
+                                        {
+                                            type: 'inside',
+                                            start: 0,
+                                            end: 100,
+                                        },
+                                        {
+                                            show: false,
+                                            type: 'slider',
+                                            top: 'bottom',
+                                            start: 0,
+                                            end: 100,
+                                            fillerColor:'rgba(66,66,66,0.57)'
+                                        }
+                                    ],
+                                    grid: {
+                                        left: '3%',
+                                        right: '4%',
+                                        bottom: '3%',
+                                        containLabel: true
+                                    },
+                                    xAxis : [
+                                        {
+                                            type : 'category',
+                                            data : StockData_7_1_rig_xData
+                                        }
+                                    ],
+                                    yAxis : [
+                                        {
+                                            type : 'value',
+                                            // name:'%'
+                                        }
+                                    ],
+                                    series : StockData_7_1_rig_seriesData
+                                }
+
+                                myChart_4.hideLoading();
+                                myChart_4.setOption(option_StockData_7_1_rig);
+
+                        })
 
 
                     // $('.shareholding_time').change(function(){
@@ -5184,10 +6997,7 @@
                     //     public_ajax.call_request('get',holderspct_url,Stock);
                     // });
 
-                    // 折线图
-                    var myChart_Stock_3 = echarts.init(document.getElementById('Stock_3'));
-                    // var myChart_Stock_4 = echarts.init(document.getElementById('Stock_4'));
-                    myChart_Stock_3.showLoading();
+
                     // myChart_Stock_4.showLoading();
                     var holderspctline_url = '/maniPulate/manipulateReport/holderspctline?id=' + id;
                     // public_ajax.call_request('get',holderspctline_url,holderspctline);
@@ -5267,127 +7077,8 @@
                         ]
                     }
 
-                    function holderspctline(data){
-                        var option_Stock_3 = {
-                            title: {
-                                text: stock+'机构投资者持股比例变化',
-                                x: 'center'
-                            },
-                            tooltip: {
-                                trigger: 'axis'
-                            },
-                            legend: {
-                                data: '机构投资者持股比例变化',
-                                orient:'horizontal',
-                                top:'7%',
-                                left:'center'
-                            },
-                            grid: {
-                                left: '0%',
-                                right: '9%',
-                                bottom: '0%',
-                                top:'17%',
-                                containLabel: true
-                            },
-                            xAxis:  {
-                                name:'时间',
-                                type: 'category',
-                                boundaryGap: false,
-                                data: data.season,
-                                axisLabel:{
-                                    // rotate:90
-                                    // rotate:45
-                                }
-                            },
-                            yAxis: {
-                                name:'',
-                                type: 'value',
-                                axisLabel: {
-                                    // formatter: '{value} °C'
-                                },
-                                // min:function(value) {
-                                //     return Math.floor(value.min - 5);//向下取整
-                                // },
-                                // max:function(value) {
-                                //     return Math.ceil(value.max + 5);//向上取整
-                                // },
-                                scale:true
-                            },
-                            // color:['#c23531','#749f83','#2f4554'],
-                            series: [
-                                {
-                                    name: '投资者',
-                                    type:'line',
-                                    data: data.inst,
-                                    showSymbol: true,
-                                    hoverAnimation: true,
-                                },
-                            ]
-                        };
-                        myChart_Stock_3.hideLoading();
-                        myChart_Stock_3.setOption(option_Stock_3);
-
-                        var option_Stock_4 = {
-                            title: {
-                                text: stock+'十大股东持股比例变化',
-                                x: 'center'
-                            },
-                            tooltip: {
-                                trigger: 'axis'
-                            },
-                            legend: {
-                                data: '十大股东持股比例变化',
-                                orient:'horizontal',
-                                top:'7%',
-                                left:'center'
-                            },
-                            grid: {
-                                left: '0%',
-                                right: '9%',
-                                bottom: '0%',
-                                top:'17%',
-                                containLabel: true
-                            },
-                            xAxis:  {
-                                name:'时间',
-                                type: 'category',
-                                boundaryGap: false,
-                                data: data.season,
-                                axisLabel:{
-                                    // rotate:90
-                                }
-                            },
-                            yAxis: {
-                                name:'',
-                                type: 'value',
-                                axisLabel: {
-                                    // formatter: '{value} °C'
-                                },
-                                // min:function(value) {
-                                //     return Math.floor(value.min - 5);//向下取整
-                                // },
-                                // max:function(value) {
-                                //     return Math.ceil(value.max + 5);//向上取整
-                                // },
-                                scale:true
-                            },
-                            // color:['#c23531','#749f83','#2f4554'],
-                            series: [
-                                {
-                                    // name:'万科',
-                                    name: '股东',
-                                    type:'line',
-                                    data: data.top10,
-                                    showSymbol: true,
-                                    hoverAnimation: true,
-                                },
-                            ]
-                        };
-                        // myChart_Stock_4.hideLoading();
-                        // myChart_Stock_4.setOption(option_Stock_4);
-                    }
-                    holderspctline(holderspctlineData)
             }
+
         }
 
     </script>
