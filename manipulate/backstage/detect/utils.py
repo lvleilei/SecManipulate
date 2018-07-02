@@ -43,6 +43,7 @@ def leveltable(level):
             dic['ifpunish'] = '是'
         else:
             dic['ifpunish'] = '否'
+        dic['id'] = hit['_id']
         result.append(dic)
     return result
 
