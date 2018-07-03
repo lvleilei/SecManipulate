@@ -1,11 +1,6 @@
 // 操纵详情 页 js
 // 2018-7-2 10:01:20
 
-$(document).ready(function(){
-    console.log("document--ready------2-------");
-    // console.log($('.half').height());
-})
-
 //下拉菜单
     $(function(){
         $(".selectBox .imitationSelect").on("click",function(){
@@ -446,7 +441,7 @@ if(screen.width<1920){
                 pagination: true,//是否分页
                 // pageSize: 5,//单页记录数
                 // pageSize: pageSizeData,//单页记录数
-                pageSize: 3,//单页记录数
+                pageSize: 5,//单页记录数
                 pageList: [15,20,25],//分页步进值
                 sidePagination: "client",//服务端分页
                 searchAlign: "left",
@@ -621,7 +616,7 @@ if(screen.width<1920){
                 pagination: true,//是否分页
                 // pageSize: 5,//单页记录数
                 // pageSize: pageSizeData,//单页记录数
-                pageSize: 3,//单页记录数
+                pageSize: 5,//单页记录数
                 pageList: [15,20,25],//分页步进值
                 sidePagination: "client",//服务端分页
                 searchAlign: "left",
@@ -2141,7 +2136,7 @@ if(screen.width<1920){
             pagination: true,//是否分页
             // pageSize: 5,//单页记录数
             // pageSize: pageSizeData,//单页记录数
-            pageSize: 3,//单页记录数
+            pageSize: 4,//单页记录数
             pageList: [15,20,25],//分页步进值
             sidePagination: "client",//服务端分页
             searchAlign: "left",
@@ -2288,7 +2283,7 @@ if(screen.width<1920){
                 pagination: true,//是否分页
                 // pageSize: 5,//单页记录数
                 // pageSize: pageSizeData,//单页记录数
-                pageSize: 3,//单页记录数
+                pageSize: 4,//单页记录数
                 pageList: [15,20,25],//分页步进值
                 sidePagination: "client",//服务端分页
                 searchAlign: "left",
@@ -3463,13 +3458,26 @@ if(screen.width<1920){
     ];
     // 只显示特定时间内
     var profit_tableData = [
-        // {
-        //     roe      net_profit_ratio  gross_profit_rate  net_profits
-        //     -0.57               -15.7                24.2                   -17.7767
-
-        //     eps     business_income    bips
-        //     -0.0349         113.2126           0.2223
-        // },
+        {
+            bips: 1.7193,
+            business_income: 875.5168,
+            net_profits: 30.1007,
+            roe: 0.96,
+            eps: 0.0591,
+            net_profit_ratio: 3.43,
+            gross_profit_rate: 30.1133,
+            date: "占营业总收入百分比（最新）"
+        },
+        {
+            bips: 1.7193,
+            business_income: 875.5168,
+            net_profits: 30.1007,
+            roe: 0.96,
+            eps: 0.0591,
+            net_profit_ratio: 3.43,
+            gross_profit_rate: 30.1133,
+            date: "同行业均值（最新）"
+        },
         {
             bips: 0.2223,
             business_income: 113.2126,
@@ -3528,8 +3536,8 @@ if(screen.width<1920){
             data:data,
             search: true,//是否搜索
             pagination: true,//是否分页
-            // pageSize: 5,//单页记录数
-            pageSize: pageSizeData,//单页记录数
+            pageSize: 5,//单页记录数
+            // pageSize: pageSizeData,//单页记录数
             pageList: [15,20,25],//分页步进值
             sidePagination: "client",//服务端分页
             searchAlign: "left",
@@ -3544,7 +3552,7 @@ if(screen.width<1920){
             sortOrder:"desc",
             columns: [
                 {
-                    title: "季度",//标题
+                    title: "时间",//标题
                     field: "date",//键名
                     sortable: true,//是否可排序
                     order: "desc",//默认排序方式
@@ -3558,8 +3566,9 @@ if(screen.width<1920){
                         };
                     }
                 },
+
                 {
-                    title: "净资产收益率(%)",//标题
+                    title: "营业总收入（万元）",//标题
                     field: "roe",//键名
                     sortable: true,//是否可排序
                     order: "desc",//默认排序方式
@@ -3574,7 +3583,7 @@ if(screen.width<1920){
                     }
                 },
                 {
-                    title: "净利率(%)",//标题
+                    title: "营业总成本（万元）",//标题
                     field: "net_profit_ratio",//键名
                     sortable: true,//是否可排序
                     order: "desc",//默认排序方式
@@ -3589,7 +3598,7 @@ if(screen.width<1920){
                     }
                 },
                 {
-                    title: "毛利率(%)",//标题
+                    title: "营业利润（万元）",//标题
                     field: "gross_profit_rate",//键名
                     sortable: true,//是否可排序
                     order: "desc",//默认排序方式
@@ -3604,7 +3613,7 @@ if(screen.width<1920){
                     }
                 },
                 {
-                    title: "净利润(万元)",//标题
+                    title: "营业外收入（万元）",//标题
                     field: "net_profits",//键名
                     sortable: true,//是否可排序
                     order: "desc",//默认排序方式
@@ -3619,7 +3628,7 @@ if(screen.width<1920){
                     }
                 },
                 {
-                    title: "每股收益",//标题
+                    title: "利润总额（万元）",//标题
                     field: "eps",//键名
                     sortable: true,//是否可排序
                     order: "desc",//默认排序方式
@@ -3634,7 +3643,7 @@ if(screen.width<1920){
                     }
                 },
                 {
-                    title: "营业收入(百万元)",//标题
+                    title: "净利润（万元）",//标题
                     field: "business_income",//键名
                     sortable: true,//是否可排序
                     order: "desc",//默认排序方式
@@ -3648,21 +3657,7 @@ if(screen.width<1920){
                         };
                     }
                 },
-                {
-                    title: "每股主营业务收入(元)",//标题
-                    field: "bips",//键名
-                    sortable: true,//是否可排序
-                    order: "desc",//默认排序方式
-                    align: "center",//水平
-                    valign: "middle",//垂直
-                    formatter: function (value, row, index) {
-                        if (row.bips=='null'||row.bips=='unknown'){
-                            return '-';
-                        }else {
-                            return row.bips;
-                        };
-                    }
-                },
+
             ],
         });
 
