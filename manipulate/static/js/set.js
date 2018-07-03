@@ -1,5 +1,6 @@
 // 操纵详情 页 js
 // 2018-7-2 10:01:20
+console.log("testPush");
 
 //下拉菜单
     $(function(){
@@ -59,7 +60,7 @@ if(screen.width<1920){
             var name = '未知';//公司名称
             var firm_addr = '未知';//注册地址
             var listed_time = '未知';//成立时间
-            var industry_name = '未知';//所属板块
+            var industry_name = '未知';//所属行业
 
             var money = '未知';//注册资本
             var person = '未知';//法人代表
