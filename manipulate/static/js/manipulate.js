@@ -64,7 +64,7 @@
                         if (row.stock_name==''||row.stock_name=='null'||row.stock_name=='unknown'||!row.stock_name){
                             return '未知';
                         }else {
-                            return '<span style="cursor:pointer;" onclick="jumpFrame_1(\''+row.name+'\',\''+row.id+'\',\''+row.manipulate_type_num+'\')" title="'+row.stock_name+'">'+row.stock_name+'</span>';
+                            return '<span style="cursor:pointer;" onclick="jumpFrame_1(\''+row.name+'\',\''+row.id+'\',\''+row.manipulate_type_num+'\')" title="'+row.stock_name+'">'+row.stock_name+'&nbsp;<i class="fa fa-file-text-o" title="查看详情"></i></span>';
                         };
                     }
                 },
@@ -217,49 +217,30 @@
                     }
                 },
                 {
-                    title: "是否操纵",//标题
-                    field: "ifpunish",//键名 ifmanipulate
-                    sortable: true,//是否可排序
-                    order: "desc",//默认排序方式
-                    align: "center",//水平
-                    valign: "middle",//垂直
-                    formatter: function (value, row, index) {
-                        var str = '';
-                        if(row.ifpunish == 0 || row.ifpunish == '否'){ //不是谣言 checkbox 为不选中
-                            str = '<input type="checkbox" id="checkbox_d'+(index+1)+'" class="chk" _id="'+row.id+'" /><label for="checkbox_d'+(index+1)+'"></label>';
-                        }else if(row.ifpunish == 1 || row.ifpunish == '是'){// 是谣言 选中 checkbox
-                            str = '<input type="checkbox" checked=checked id="checkbox_d'+(index+1)+'" class="chk" _id="'+row.id+'" /><label for="checkbox_d'+(index+1)+'"></label>';
-                        }
-                        // return '<input type="checkbox" id="checkbox_d'+index+'" class="chk"/><label for="checkbox_d'+index+'"></label>';
-                        return str;
-                    }
-                },
-                {
-                    title: "是否处理",//标题
+                    title: "审核结果",//标题
                     field: "ifpunish",//键名
                     sortable: true,//是否可排序
                     order: "desc",//默认排序方式
                     align: "center",//水平
                     valign: "middle",//垂直
                     formatter: function (value, row, index) {
-                        var str = '';
-                        if(row.ifpunish == 0 || row.ifpunish == '否'){ //不是谣言 checkbox 为不选中
-                            str = '<input type="checkbox" id="checkbox_2d'+(index+1)+'" class="chk" _id="'+row.id+'" /><label for="checkbox_2d'+(index+1)+'"></label>';
-                        }else if(row.ifpunish == 1 || row.ifpunish == '是'){// 是谣言 选中 checkbox
-                            str = '<input type="checkbox" checked=checked id="checkbox_2d'+(index+1)+'" class="chk" _id="'+row.id+'" /><label for="checkbox_2d'+(index+1)+'"></label>';
-                        }
+                        var str = '<span style="cursor:pointer;display:inline-block;margin-right:10px;" onclick="" title="赞成预警"><i class="fa fa-thumbs-up"></i>(21)</span>'+
+                            '<span style="cursor:pointer;" onclick="" title="反对预警"><i class="fa fa-thumbs-down"></i>(13)</span>';
                         return str;
                     }
                 },
                 {
-                    title: "监测详情",//标题
+                    title: "操作",//标题
                     field: "",//键名
                     sortable: true,//是否可排序
                     order: "desc",//默认排序方式
                     align: "center",//水平
                     valign: "middle",//垂直
                     formatter: function (value, row, index) {
-                        return '<span style="cursor:pointer;" onclick="jumpFrame_1(\''+row.name+'\',\''+row.id+'\',\''+row.manipulate_type_num+'\')" title="查看详情"><i class="fa fa-file-o"></i></span>';
+                        return '<span style="cursor:pointer;" onclick="" title="审核"><i class="fa fa-hand-pointer-o"></i></span>'+
+                            '<span style="cursor:pointer;display:inline-block;margin: 0 5px;" onclick="" title="处理"><i class="fa fa-gavel"></i></span>'+
+                            '<span style="cursor:pointer;" onclick="" title="查看审核理由"><i class="fa fa-navicon"></i></span>';
+                            // '<span style="cursor:pointer;display:inline-block;margin-left:5px;" onclick="jumpFrame_1(\''+row.name+'\',\''+row.id+'\',\''+row.manipulate_type_num+'\')" title="查看详情"><i class="fa fa-file-o"></i></span>';
                     }
                 },
             ],
