@@ -39,46 +39,47 @@ if(screen.width<1920){
     pageSizeData = 5;
 }
 
-// 基本信息
-    var gongshang_url = '/maniPulate/manipulateReport/gongshang/?id=' + id;
+// 基本信息 2018-7-3 13:31:56
+    // var gongshang_url = '/maniPulate/manipulateReport/gongshang/?id=' + id;
+    var gongshang_url = '/backstage_detail/firm_basic_info/?id=' + id;
     // public_ajax.call_request('get',gongshang_url,gongshang);
     var gongshangData = {
         plate: "创业板",
         name: "南方风机股份有限公司",
-        money: "5.09219亿",
-        industry: "制造业",
-        kind: "民营企业",
-        start_date: "1999年05月24日",
-        person: "杨子善",
-        place: "广东省佛山市"
+        registered_fund: "5.09219亿",
+        industry_name: "制造业",
+        firm_type: "民营企业",
+        listed_time: "1999年05月24日",
+        legal_person: "杨子善",
+        firm_addr: "广东省佛山市"
     };
 
     function gongshang(data){
         if(data){
-            var name = '未知';
-            var place = '未知';
-            var start_date = '未知';
-            var industry = '未知';
+            var name = '未知';//公司名称
+            var firm_addr = '未知';//注册地址
+            var listed_time = '未知';//成立时间
+            var industry_name = '未知';//所属板块
 
-            var money = '未知';
-            var person = '未知';
-            var kind = '未知';
-            var plate = '未知';
+            var money = '未知';//注册资本
+            var person = '未知';//法人代表
+            var kind = '未知';//公司属性
+            var plate = '未知';//所属板块
 
-            if(data.name && data.name!= '' && data.name!=null){name = data.name};
-            if(data.place && data.place!= '' && data.place!=null){place = data.place};
-            if(data.start_date && data.start_date!= '' && data.start_date!=null){start_date = data.start_date};
-            if(data.industry && data.industry!= '' && data.industry!=null){industry = data.industry};
+            if(data.firm_name && data.firm_name!= '' && data.firm_name!=null){name = data.firm_name};
+            if(data.firm_addr && data.firm_addr!= '' && data.firm_addr!=null){firm_addr = data.firm_addr};
+            if(data.listed_time && data.listed_time!= '' && data.listed_time!=null){listed_time = data.listed_time};
+            if(data.industry_name && data.industry_name!= '' && data.industry_name!=null){industry_name = data.industry_name};
 
-            if(data.money && data.money!= '' && data.money!=null){money = data.money};
-            if(data.person && data.person!= '' && data.person!=null){person = data.person};
-            if(data.kind && data.kind!= '' && data.kind!=null){kind = data.kind};
+            if(data.registered_fund && data.registered_fund!= '' && data.registered_fund!=null){money = data.registered_fund};
+            if(data.legal_person && data.legal_person!= '' && data.legal_person!=null){person = data.legal_person};
+            if(data.firm_type && data.firm_type!= '' && data.firm_type!=null){kind = data.firm_type};
             if(data.plate && data.plate!= '' && data.plate!=null){plate = data.plate};
 
             $('#card .type-1').text(name).attr('title',name);
-            $('#card .type-2').text(place).attr('title',place);
-            $('#card .type-3').text(start_date).attr('title',start_date);
-            $('#card .type-4').text(industry).attr('title',industry);
+            $('#card .type-2').text(firm_addr).attr('title',firm_addr);
+            $('#card .type-3').text(listed_time).attr('title',listed_time);
+            $('#card .type-4').text(industry_name).attr('title',industry_name);
             $('#card .type-5').text(money).attr('title',money);
             $('#card .type-6').text(person).attr('title',person);
             $('#card .type-7').text(kind).attr('title',kind);
@@ -2238,7 +2239,7 @@ if(screen.width<1920){
                         if (row['查看原文']==''||row['查看原文']=='null'||row['查看原文']=='unknown'||!row['查看原文']){
                             return '未知';
                         }else {
-                            return row['查看原文'];
+                            return '<span style="cursor:pointer;" onclick="" title="查看原文"><i class="fa fa-file-o"></i></span>';
                         };
 
                     }
